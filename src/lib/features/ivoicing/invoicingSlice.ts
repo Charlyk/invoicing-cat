@@ -43,7 +43,9 @@ const initialState: InvoicingSliceState = {
     tax: 0,
     discount: discounts[0],
     notes: '',
-    items: [emptyProduct()]
+    items: [
+      emptyProduct(),
+    ]
 };
 
 // If you are not using async thunks you can use the standalone `createSlice`.
