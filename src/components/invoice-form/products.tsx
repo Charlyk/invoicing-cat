@@ -11,7 +11,7 @@ export const Products = () => {
     const products = useAppSelector(selectItems);
 
     return (
-        <Box background="gray.50" rounded="md" p="4" overflow="hidden">
+        <Box background="bg.panel" border="xs" rounded="md" p="4" overflow="hidden">
             <SimpleGrid py="4" hideBelow="md" columns={{ base: 6, md: 14 }} gap="1">
                 <For
                     each={[
@@ -44,7 +44,6 @@ export const Products = () => {
 
             <Box pt="4">
                 <Button
-                    colorPalette="blue"
                     variant="subtle"
                     onClick={() => dispatch(addItem())}
                 >
