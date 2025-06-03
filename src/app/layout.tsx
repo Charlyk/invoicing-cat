@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from "next/font/google";
 import {Provider} from "@/components/ui/provider"
 import {StoreProvider} from "@/components/store";
 import { getServerTranslation } from '@/lib/localization';
+import {CookieConsentManager} from "@/components/cookie-consent";
 
 export async function generateMetadata({
                                            params,
@@ -68,6 +69,7 @@ export default function RootLayout({
         <StoreProvider>
             <html suppressHydrationWarning>
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <CookieConsentManager/>
             <Provider>{children}</Provider>
             </body>
             </html>
