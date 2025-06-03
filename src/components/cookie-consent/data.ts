@@ -3,13 +3,16 @@ import {CookieConsentConfig, CookieItem} from "vanilla-cookieconsent";
 
 const cookies: CookieItem[] = [
     {
-        name: "_ga"
+        name: /^_ga$/
     },
     {
-        name: "_gid"
+        name: /^_ga_.*$/
     },
     {
-        name: "_gac_*"
+        name: /^_gid$/
+    },
+    {
+        name: /^_gac_.*$/
     }
 ]
 
