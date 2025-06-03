@@ -3,6 +3,7 @@ import {InvoiceForm} from "@/components/invoice-form";
 import {Preview} from "@/components/preview";
 import {NavBar} from "@/components/nav-bar";
 import {LuEye, LuPencil} from "react-icons/lu";
+import {Footer} from "@/components/footer";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
             </HStack>
           </Container>
         </Flex>
+        <Footer/>
       </Stack>
     </>
   );
