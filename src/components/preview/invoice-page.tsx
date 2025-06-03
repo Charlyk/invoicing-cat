@@ -20,7 +20,6 @@ export const InvoicePage = ({ children }: { children: React.ReactNode }) => {
         }
 
         updateScale()
-        console.log("Scale changed")
         window.addEventListener('resize', updateScale)
         return () => window.removeEventListener('resize', updateScale)
     }, [])
