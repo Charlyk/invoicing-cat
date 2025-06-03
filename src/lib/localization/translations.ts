@@ -4,6 +4,8 @@ const translations = {
             title: "InvoicingCat - Free Invoice Generator",
             description: "Generate invoices for free",
         },
+        edit: "Edit",
+        preview: "Preview",
         createdBy: "❤️ Created with love by Eduard Albu.",
         copyright: "InvoicingCat, All rights reserved.",
         downloadInvoice: "Download invoice",
