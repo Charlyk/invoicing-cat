@@ -4,8 +4,10 @@ import {Preview} from "@/components/preview";
 import {NavBar} from "@/components/nav-bar";
 import {LuEye, LuPencil} from "react-icons/lu";
 import {Footer} from "@/components/footer";
+import {getServerTranslation} from "@/lib/localization";
 
-export default function Home() {
+export default function Home(params: { locale: string }) {
+  const t = getServerTranslation(params?.locale)
   return (
     <>
       <Stack colorPalette="orange">
@@ -16,11 +18,11 @@ export default function Home() {
               <Tabs.List>
                 <Tabs.Trigger value="edit">
                   <LuPencil/>
-                  Edit
+                  {t.edit}
                 </Tabs.Trigger>
                 <Tabs.Trigger value="preview">
                   <LuEye/>
-                  Preview
+                  {t.preview}
                 </Tabs.Trigger>
               </Tabs.List>
               <Tabs.Content value="edit">
