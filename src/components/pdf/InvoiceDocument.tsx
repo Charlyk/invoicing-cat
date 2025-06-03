@@ -6,6 +6,8 @@ import {Page, Text, View, Document, StyleSheet} from '@react-pdf/renderer';
 import {colors} from '@/components/ui/theme';
 import currencies, {Currency} from "@/data/currencies";
 import {DateTime} from "luxon";
+import {Translation} from "@/lib/localization";
+import discounts, {DiscountOption} from "@/data/discounts";
 
 export type ProductData = {
     title: string
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
 });
 
 export const InvoiceDocument = ({
+                                    translation: t,
                                     invoiceNumber,
                                     dueDate,
                                     subject,
@@ -102,10 +105,11 @@ export const InvoiceDocument = ({
                                     clientEmail,
                                     products,
                                     currency = currencies[0],
-                                    discount = 0,
+                                    discount = discounts[0],
                                     tax = 0,
     notes = ''
                                 }: {
+    translation: Translation
     invoiceNumber: string
     dueDate: string
     subject: string
@@ -115,12 +119,12 @@ export const InvoiceDocument = ({
     clientEmail: string
     products: ProductData[]
     currency?: Currency
-    discount?: number // 0–1 float
+    discount?: DiscountOption
     tax?: number // percent (e.g., 15)
     notes?: string
 }) => {
     const subtotal = products.reduce((sum, p) => sum + p.price * p.quantity, 0)
-    const discountAmount = subtotal * discount
+    const discountAmount = subtotal * discount.numeric
     const taxableBase = subtotal - discountAmount
     const taxAmount = (tax / 100) * taxableBase
     const total = taxableBase + taxAmount
@@ -135,30 +139,30 @@ export const InvoiceDocument = ({
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={styles.headerContainer}>
-                    <Text style={styles.header}>Invoice {invoiceNumber}</Text>
+                    <Text style={styles.header}>{t.invoiceDetails.invoice}{' '}{invoiceNumber}</Text>
                 </View>
 
                 <View style={styles.section}>
                     <View style={styles.valuesRow}>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>Due date</Text>
+                            <Text style={styles.valueLabel}>{t.invoiceDetails.dueDate}</Text>
                             <Text
                                 style={styles.valueText}>{DateTime.fromSQL(dueDate).toLocaleString(DateTime.DATE_MED)}</Text>
                         </View>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>Subject</Text>
+                            <Text style={styles.valueLabel}>{t.invoiceDetails.subject}</Text>
                             <Text style={styles.valueText}>{subject || '---'}</Text>
                         </View>
                     </View>
 
                     <View style={styles.valuesRow}>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>Created by</Text>
+                            <Text style={styles.valueLabel}>{t.invoiceDetails.createdBy}</Text>
                             <Text style={styles.valueText}>{senderName || '---'}</Text>
                             {senderEmail && <Text style={styles.valueText}>{senderEmail}</Text>}
                         </View>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>Billed to</Text>
+                            <Text style={styles.valueLabel}>{t.invoiceDetails.billedTo}</Text>
                             <Text style={styles.valueText}>{clientName || '---'}</Text>
                             {clientEmail && <Text style={styles.valueText}>{clientEmail}</Text>}
                         </View>
@@ -167,10 +171,10 @@ export const InvoiceDocument = ({
 
                 <View style={styles.section}>
                     <View style={styles.tableHeader}>
-                        <Text style={[styles.cell, styles.col8]}>Item</Text>
-                        <Text style={[styles.cell, styles.col2]}>Qty</Text>
-                        <Text style={[styles.cell, styles.col2]}>Price</Text>
-                        <Text style={[styles.cell, styles.colTotal]}>Total</Text>
+                        <Text style={[styles.cell, styles.col8]}>{t.products.items}</Text>
+                        <Text style={[styles.cell, styles.col2]}>{t.products.quantity}</Text>
+                        <Text style={[styles.cell, styles.col2]}>{t.products.price}</Text>
+                        <Text style={[styles.cell, styles.colTotal]}>{t.products.total}</Text>
                     </View>
                     {products.map((item, index) => (
                         <View key={index} style={styles.tableRow}>
@@ -188,30 +192,32 @@ export const InvoiceDocument = ({
 
                 <View style={styles.totalsContainer}>
                     <View style={styles.totalsRow}>
-                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>Subtotal</Text>
+                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.subtotal}</Text>
                         <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{formatCurrency(subtotal)}</Text>
                     </View>
                     {discountAmount > 0 && (
                         <View style={styles.totalsRow}>
-                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>Discount</Text>
+                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.discount}{' '}{discount.value}</Text>
                             <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>-{formatCurrency(discountAmount)}</Text>
                         </View>
                     )}
                     {taxAmount > 0 && (
                         <View style={styles.totalsRow}>
-                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>Tax ({tax}%)</Text>
+                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.tax} {tax}%</Text>
                             <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{formatCurrency(taxAmount)}</Text>
                         </View>
                     )}
                     <View style={styles.totalsRow}>
-                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>Total</Text>
+                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.total}</Text>
                         <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{formatCurrency(total)}</Text>
                     </View>
                 </View>
-                <View style={styles.notesContainer}>
-                    <Text style={styles.notesTitle}>Notes:</Text>
-                    <Text style={styles.notesText}>{notes}</Text>
-                </View>
+                {notes && (
+                    <View style={styles.notesContainer}>
+                        <Text style={styles.notesTitle}>{t.products.notes}:</Text>
+                        <Text style={styles.notesText}>{notes}</Text>
+                    </View>
+                )}
             </Page>
         </Document>
     )

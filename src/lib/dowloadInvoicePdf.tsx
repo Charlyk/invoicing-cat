@@ -1,10 +1,15 @@
+'use client'
+
 import {pdf} from '@react-pdf/renderer'
 import {saveAs} from 'file-saver'
 import {InvoiceDocument} from '@/components/pdf/InvoiceDocument'
 import currencies, {Currency} from "@/data/currencies";
-import {ProductData} from "@/components/pdf/InvoiceDocument"; // adjust path if needed
+import {ProductData} from "@/components/pdf/InvoiceDocument";
+import discounts, {DiscountOption} from "@/data/discounts";
+import {Translation} from "@/lib/localization"; // adjust path if needed
 
 export async function downloadInvoicePdf({
+                                             translation,
                                              invoiceNumber,
                                              dueDate,
                                              subject,
@@ -13,10 +18,11 @@ export async function downloadInvoicePdf({
                                              clientEmail,
                                              products,
                                              currency = currencies[0],
-                                             discount = 0,
+                                             discount = discounts[0],
                                              tax = 0,
     notes = ''
                                          }: {
+    translation: Translation,
     invoiceNumber: string
     dueDate: string
     subject: string
@@ -26,12 +32,13 @@ export async function downloadInvoicePdf({
     clientEmail: string
     products: ProductData[]
     currency?: Currency
-    discount?: number // 0–1 float
+    discount?: DiscountOption
     tax?: number // percent (e.g., 15)
     notes?: string
 }) {
     const blob = await pdf(
         <InvoiceDocument
+            translation={translation}
             invoiceNumber={invoiceNumber}
             dueDate={dueDate}
             subject={subject}

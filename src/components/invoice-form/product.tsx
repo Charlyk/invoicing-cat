@@ -12,12 +12,14 @@ import type { ProductData } from './types'
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {removeItem, selectCurrency, updateItem} from "@/lib/features/ivoicing/invoicingSlice";
 import {LuTrash} from "react-icons/lu";
+import {useTranslation} from "@/lib/localization";
 
 interface ProductProps extends FlexProps {
     data: ProductData
 }
 
 export const Product = (props: ProductProps) => {
+    const {t} = useTranslation()
     const { data } = props
     const dispatch = useAppDispatch();
     const currency = useAppSelector(selectCurrency);
@@ -26,9 +28,9 @@ export const Product = (props: ProductProps) => {
         <Box>
             <VStack gap="2" align="flex-start" hideFrom="md">
                 <Field.Root>
-                    <Field.Label>Item name</Field.Label>
+                    <Field.Label>{t.products.product.name}</Field.Label>
                     <Input
-                        placeholder="Item name"
+                        placeholder={t.products.product.name}
                         value={data.title}
                         onChange={(e) => {
                             dispatch(updateItem({...data, title: e.target.value}))
@@ -38,10 +40,10 @@ export const Product = (props: ProductProps) => {
 
                 <HStack>
                     <Field.Root>
-                        <Field.Label>Quantity</Field.Label>
+                        <Field.Label>{t.products.product.quantity}</Field.Label>
                         <Input
                             type="number"
-                            placeholder="Quantity"
+                            placeholder={t.products.product.quantity}
                             value={data.quantity}
                             onChange={(e) => {
                                 dispatch(updateItem({...data, quantity: Math.max(0, Number(e.target.value))}))
@@ -49,9 +51,9 @@ export const Product = (props: ProductProps) => {
                         />
                     </Field.Root>
                     <Field.Root>
-                        <Field.Label>Price</Field.Label>
+                        <Field.Label>{t.products.product.price}</Field.Label>
                         <Input
-                            placeholder="Price"
+                            placeholder={t.products.product.price}
                             type="number"
                             value={data.price}
                             onChange={(e) => {
@@ -64,7 +66,7 @@ export const Product = (props: ProductProps) => {
                 <HStack gap="4" justify="space-between" width="full" align="center">
                     <Box flex="1" alignContent="center">
                         <Text fontWeight="semibold" fontSize="sm">
-                            Total: {' '}
+                            {t.products.product.total}{' '}
                             <FormatNumber
                                 value={data.price * data.quantity}
                                 style="currency"
@@ -81,7 +83,7 @@ export const Product = (props: ProductProps) => {
             <SimpleGrid columns={{ base: 6, md: 14 }} gap="1" hideBelow="md">
                 <Flex gridColumn="span 7" gap="4" alignContent="center">
                     <Input
-                        placeholder="Product name"
+                        placeholder={t.products.product.name}
                         value={data.title}
                         onChange={(e) => {
                             dispatch(updateItem({...data, title: e.target.value}))
@@ -92,7 +94,7 @@ export const Product = (props: ProductProps) => {
                 <Box gridColumn="span 2" hideBelow="md" alignContent="center">
                     <Input
                         type="number"
-                        placeholder="Quantity"
+                        placeholder={t.products.product.quantity}
                         value={data.quantity}
                         onChange={(e) => {
                             dispatch(updateItem({...data, quantity: Math.max(0, Number(e.target.value))}))
@@ -102,7 +104,7 @@ export const Product = (props: ProductProps) => {
 
                 <Box gridColumn="span 2" hideBelow="md" alignContent="center">
                     <Input
-                        placeholder="Price"
+                        placeholder={t.products.product.price}
                         type="number"
                         value={data.price}
                         onChange={(e) => {

@@ -16,8 +16,10 @@ import {
     selectTax, senderEmail, senderName,
     subject, tax
 } from "@/lib/features/ivoicing/invoicingSlice";
+import {useTranslation} from "@/lib/localization";
 
 export const InvoiceDetails = () => {
+    const {t} = useTranslation();
     const dispatch = useAppDispatch();
     const invoiceNumberValue = useAppSelector(selectInvoiceNumber);
     const senderNameValue = useAppSelector(selectSenderName);
@@ -31,11 +33,11 @@ export const InvoiceDetails = () => {
 
     return (
         <Card.Root flex="1" width="full">
-            <Card.Header>Invoice Details</Card.Header>
+            <Card.Header>{t.invoiceDetails.title}</Card.Header>
             <Card.Body>
                 <VStack gap="4">
                     <Field.Root>
-                        <Field.Label>Invoice number</Field.Label>
+                        <Field.Label>{t.invoiceDetails.invoiceNumber}</Field.Label>
                         <Input
                             value={invoiceNumberValue}
                             type="text"
@@ -45,7 +47,7 @@ export const InvoiceDetails = () => {
                     </Field.Root>
                     <HStack width="full" gap="4">
                         <Field.Root>
-                            <Field.Label>Sender Name</Field.Label>
+                            <Field.Label>{t.invoiceDetails.senderName}</Field.Label>
                             <Input
                                 value={senderNameValue}
                                 type="text"
@@ -54,7 +56,7 @@ export const InvoiceDetails = () => {
                             />
                         </Field.Root>
                         <Field.Root>
-                            <Field.Label>Sender Email (Optional)</Field.Label>
+                            <Field.Label>{t.invoiceDetails.senderEmail}</Field.Label>
                             <Input
                                 type="email"
                                 placeholder="john.doe@email.com"
@@ -65,7 +67,7 @@ export const InvoiceDetails = () => {
                     </HStack>
                     <HStack width="full" gap="4">
                         <Field.Root>
-                            <Field.Label>Client Name</Field.Label>
+                            <Field.Label>{t.invoiceDetails.clientName}</Field.Label>
                             <Input
                                 value={clientNameValue}
                                 type="text"
@@ -74,7 +76,7 @@ export const InvoiceDetails = () => {
                             />
                         </Field.Root>
                         <Field.Root>
-                            <Field.Label>Client Email (Optional)</Field.Label>
+                            <Field.Label>{t.invoiceDetails.clientEmail}</Field.Label>
                             <Input
                                 type="email"
                                 placeholder="john.doe@email.com"
@@ -85,7 +87,7 @@ export const InvoiceDetails = () => {
                     </HStack>
                     <HStack width="full" gap="4">
                         <Field.Root>
-                            <Field.Label>Subject</Field.Label>
+                            <Field.Label>{t.invoiceDetails.subject}</Field.Label>
                             <Input
                                 placeholder="Dashboard design"
                                 value={subjectValue}
@@ -93,7 +95,7 @@ export const InvoiceDetails = () => {
                             />
                         </Field.Root>
                         <Field.Root>
-                            <Field.Label>Due date</Field.Label>
+                            <Field.Label>{t.invoiceDetails.dueDate}</Field.Label>
                             <Input
                                 type="date"
                                 placeholder="02 May 2025"
@@ -105,13 +107,13 @@ export const InvoiceDetails = () => {
                     <HStack width="full" gap="4">
                         <VStack gap="1" align="flex-start" flex="1">
                             <Text as="label" fontSize="sm" fontWeight="semibold">
-                                Currency
+                                {t.invoiceDetails.currency}
                             </Text>
                             <NativeSelect.Root>
                                 <NativeSelect.Field
                                     defaultValue={currencyValue.code}
                                     bg="bg"
-                                    aria-label="Select discount"
+                                    aria-label={t.invoiceDetails.selectCurrency}
                                     onChange={(e) => {
                                         const currencyItem = currencies.find((c) => c.code === e.target.value)
                                         if (currencyItem) {
@@ -129,7 +131,7 @@ export const InvoiceDetails = () => {
                             </NativeSelect.Root>
                         </VStack>
                         <Field.Root flex="1">
-                            <Field.Label>Tax %</Field.Label>
+                            <Field.Label>{t.invoiceDetails.tax}</Field.Label>
                             <InputGroup endElement="%">
                                 <Input
                                     placeholder="0"

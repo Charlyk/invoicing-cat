@@ -9,7 +9,6 @@ import {
   Spacer,
 } from '@chakra-ui/react'
 import { Logo } from './logo'
-import { NavbarLinks } from './navbar-links'
 import {ColorModeButton} from "@/components/ui/color-mode";
 import {LuDownload} from "react-icons/lu";
 import {useAppSelector} from "@/lib/hooks";
@@ -22,9 +21,11 @@ import {
 import {downloadInvoicePdf} from "@/lib/dowloadInvoicePdf";
 import {useState} from "react";
 import useFirebaseAnalytics from "@/lib/firebase";
+import {useTranslation} from "@/lib/localization";
 
 export const NavBar = () => {
   useFirebaseAnalytics();
+  const {t} = useTranslation()
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const invoiceNumber = useAppSelector(selectInvoiceNumber);
   const dueDate = useAppSelector(selectDueDate)
@@ -42,6 +43,7 @@ export const NavBar = () => {
   const handleDownloadClick = async () => {
     setIsLoading(true)
     await downloadInvoicePdf({
+      translation: t,
       invoiceNumber: invoiceNumber,
       dueDate: dueDate,
       subject: subject,
@@ -51,7 +53,7 @@ export const NavBar = () => {
       clientEmail: clientEmail,
       products: products,
       currency: currency,
-      discount: discount.numeric,
+      discount: discount,
       tax: tax,
       notes: notes,
     })
@@ -73,7 +75,6 @@ export const NavBar = () => {
           <HStack gap={{ base: '3', md: '8' }}>
             <Logo />
             <Spacer hideFrom="md" />
-            <NavbarLinks hideBelow="md" />
             <ColorModeButton/>
             <Button
               size={{ base: 'sm', md: 'md' }}
@@ -81,7 +82,7 @@ export const NavBar = () => {
               onClick={handleDownloadClick}
             >
               <LuDownload />
-              Download Invoice
+              {t.downloadInvoice}
             </Button>
           </HStack>
         </CollapsibleRoot>
