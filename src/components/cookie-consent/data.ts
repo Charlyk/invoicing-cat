@@ -1,5 +1,17 @@
 import {initFirebaseAnalytics} from "@/lib/firebase";
-import {CookieConsentConfig} from "vanilla-cookieconsent";
+import {CookieConsentConfig, CookieItem} from "vanilla-cookieconsent";
+
+const cookies: CookieItem[] = [
+    {
+        name: "_ga"
+    },
+    {
+        name: "_gid"
+    },
+    {
+        name: "_gac_*"
+    }
+]
 
 export const cookieConsentConfig: CookieConsentConfig = {
     autoShow: true,
@@ -27,33 +39,13 @@ export const cookieConsentConfig: CookieConsentConfig = {
         analytics: {
             enabled: false,
             autoClear: {
-                cookies: [
-                    {
-                        name: "_ga"
-                    },
-                    {
-                        name: "_gid"
-                    },
-                    {
-                        name: "_gac_*"
-                    }
-                ],
+                cookies,
                 reloadPage: true
             },
             services: {
                 firebase: {
                     label: "Firebase Analytics",
-                    cookies: [
-                        {
-                            name: "_ga"
-                        },
-                        {
-                            name: "_gid"
-                        },
-                        {
-                            name: "_gac_*"
-                        }
-                    ],
+                    cookies,
                     onAccept: () => {
                         // Call your Firebase analytics initializer
                         initFirebaseAnalytics()
