@@ -1,5 +1,5 @@
 import { Container, HStack, Icon, Link, Stack } from '@chakra-ui/react'
-import {SiGithub, SiInstagram, SiLinkedin, SiX} from 'react-icons/si'
+import {SiGithub, SiInstagram, SiLinkedin, SiReddit, SiX} from 'react-icons/si'
 import { Copyright } from './copyright'
 import {Logo} from "@/components/nav-bar/logo";
 
@@ -26,4 +26,5 @@ const socialLinks = [
   { href: 'https://github.com/Charlyk', icon: <SiGithub /> },
   { href: 'https://www.linkedin.com/in/eduard-albu-4a156698/', icon: <SiLinkedin /> },
   { href: 'https://www.instagram.com/eduard.albu.dev', icon: <SiInstagram /> },
+  { href: 'https://www.reddit.com/user/eduardalbu/', icon: <SiReddit /> },
 ]
