@@ -1,6 +1,7 @@
 import {initFirebaseAnalytics} from "@/lib/firebase";
+import {CookieConsentConfig} from "vanilla-cookieconsent";
 
-export const cookieConsentConfig = {
+export const cookieConsentConfig: CookieConsentConfig = {
     autoShow: true,
     disablePageInteraction: false,
     guiOptions: {
@@ -25,12 +26,34 @@ export const cookieConsentConfig = {
         },
         analytics: {
             enabled: false,
-            autoClear: true,
-            services: [
-                {
-                    id: "firebase-analytics",
+            autoClear: {
+                cookies: [
+                    {
+                        name: "_ga"
+                    },
+                    {
+                        name: "_gid"
+                    },
+                    {
+                        name: "_gac_*"
+                    }
+                ],
+                reloadPage: true
+            },
+            services: {
+                firebase: {
                     label: "Firebase Analytics",
-                    cookies: ["_ga", "_gid", "_gac_*"],
+                    cookies: [
+                        {
+                            name: "_ga"
+                        },
+                        {
+                            name: "_gid"
+                        },
+                        {
+                            name: "_gac_*"
+                        }
+                    ],
                     onAccept: () => {
                         // Call your Firebase analytics initializer
                         initFirebaseAnalytics()
@@ -40,7 +63,7 @@ export const cookieConsentConfig = {
                         // Firebase disables tracking automatically if not initialized
                     }
                 }
-            ]
+            },
         }
     },
 
