@@ -94,8 +94,6 @@ export const Invoice = () => {
     tax,
   })
 
-  console.log(productPages)
-
   return (
     <Box width="100%">
       {productPages.map((pageItems, index) => (
