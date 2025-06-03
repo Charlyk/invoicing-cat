@@ -21,8 +21,10 @@ import {
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {downloadInvoicePdf} from "@/lib/dowloadInvoicePdf";
 import {useState} from "react";
+import useFirebaseAnalytics from "@/lib/firebase";
 
 export const NavBar = () => {
+  useFirebaseAnalytics();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const invoiceNumber = useAppSelector(selectInvoiceNumber);
   const dueDate = useAppSelector(selectDueDate)
