@@ -13,6 +13,9 @@ const cookies: CookieItem[] = [
     },
     {
         name: /^_gac_.*$/
+    },
+    {
+        name: "cc_cookie"
     }
 ]
 
