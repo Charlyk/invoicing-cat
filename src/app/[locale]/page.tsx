@@ -6,7 +6,7 @@ import {LuEye, LuPencil} from "react-icons/lu";
 import {Footer} from "@/components/footer";
 import {getServerTranslation} from "@/lib/localization";
 
-export default function Home(params: { locale: string }) {
+export default function Home({ params }: { params: { locale: string } }) {
   const t = getServerTranslation(params?.locale)
   return (
     <>
