@@ -6,7 +6,13 @@ import {LuEye, LuPencil} from "react-icons/lu";
 import {Footer} from "@/components/footer";
 import {getServerTranslation} from "@/lib/localization";
 
-export default function Home({ params }: { params: { locale: string } }) {
+type Props = {
+  params: {
+    locale: string;
+  };
+};
+
+export default function Home({ params }: Props) {
   const t = getServerTranslation(params?.locale)
   return (
     <>
