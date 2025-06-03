@@ -12,7 +12,7 @@ export const InvoiceData = () => {
     const discountValue = useAppSelector(selectDiscount);
 
     return (
-        <Card.Root flex="1">
+        <Card.Root flex="1" width="full">
             <Card.Header>Products</Card.Header>
             <Card.Body>
                 <Stack gap="4">

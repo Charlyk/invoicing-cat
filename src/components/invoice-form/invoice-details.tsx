@@ -11,15 +11,17 @@ import {
     selectClientEmail,
     selectClientName,
     selectCurrency,
-    selectDueDate, selectInvoiceNumber,
+    selectDueDate, selectInvoiceNumber, selectSenderEmail, selectSenderName,
     selectSubject,
-    selectTax,
+    selectTax, senderEmail, senderName,
     subject, tax
 } from "@/lib/features/ivoicing/invoicingSlice";
 
 export const InvoiceDetails = () => {
     const dispatch = useAppDispatch();
     const invoiceNumberValue = useAppSelector(selectInvoiceNumber);
+    const senderNameValue = useAppSelector(selectSenderName);
+    const senderEmailValue = useAppSelector(selectSenderEmail);
     const clientNameValue = useAppSelector(selectClientName);
     const clientEmailValue = useAppSelector(selectClientEmail);
     const subjectValue = useAppSelector(selectSubject);
@@ -41,25 +43,46 @@ export const InvoiceDetails = () => {
                             onChange={(e) => dispatch(invoiceNumber(e.target.value))}
                         />
                     </Field.Root>
-                    <Field.Root>
-                        <Field.Label>Client Name</Field.Label>
-                        <Input
-                            value={clientNameValue}
-                            type="text"
-                            placeholder="John Doe"
-                            onChange={(e) => dispatch(clientName(e.target.value))}
-                        />
-                    </Field.Root>
-                    <Field.Root>
-                        <Field.Label>Client Email</Field.Label>
-                        <Input
-                            type="email"
-                            placeholder="john.doe@email.com"
-                            value={clientEmailValue}
-                            onChange={(e) => dispatch(clientEmail(e.target.value))}
-                        />
-                        <Field.HelperText>Optional</Field.HelperText>
-                    </Field.Root>
+                    <HStack width="full" gap="4">
+                        <Field.Root>
+                            <Field.Label>Sender Name</Field.Label>
+                            <Input
+                                value={senderNameValue}
+                                type="text"
+                                placeholder="John Doe"
+                                onChange={(e) => dispatch(senderName(e.target.value))}
+                            />
+                        </Field.Root>
+                        <Field.Root>
+                            <Field.Label>Sender Email (Optional)</Field.Label>
+                            <Input
+                                type="email"
+                                placeholder="john.doe@email.com"
+                                value={senderEmailValue}
+                                onChange={(e) => dispatch(senderEmail(e.target.value))}
+                            />
+                        </Field.Root>
+                    </HStack>
+                    <HStack width="full" gap="4">
+                        <Field.Root>
+                            <Field.Label>Client Name</Field.Label>
+                            <Input
+                                value={clientNameValue}
+                                type="text"
+                                placeholder="John Doe"
+                                onChange={(e) => dispatch(clientName(e.target.value))}
+                            />
+                        </Field.Root>
+                        <Field.Root>
+                            <Field.Label>Client Email (Optional)</Field.Label>
+                            <Input
+                                type="email"
+                                placeholder="john.doe@email.com"
+                                value={clientEmailValue}
+                                onChange={(e) => dispatch(clientEmail(e.target.value))}
+                            />
+                        </Field.Root>
+                    </HStack>
                     <HStack width="full" gap="4">
                         <Field.Root>
                             <Field.Label>Subject</Field.Label>

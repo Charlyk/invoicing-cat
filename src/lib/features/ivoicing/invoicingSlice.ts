@@ -8,6 +8,8 @@ import {v4 as uuidv4} from 'uuid';
 
 export interface InvoicingSliceState {
     invoiceNumber: string;
+    senderName: string;
+    senderEmail: string;
     clientName: string;
     clientEmail: string;
     subject: string;
@@ -35,6 +37,8 @@ function defaultInvoiceNumber(count: number): string {
 
 const initialState: InvoicingSliceState = {
     invoiceNumber: defaultInvoiceNumber(1),
+    senderName: '',
+    senderEmail: '',
     clientName: '',
     clientEmail: '',
     subject: '',
@@ -57,6 +61,12 @@ export const invoicingSlice = createAppSlice({
     reducers: (create) => ({
         invoiceNumber: create.reducer((state, action: PayloadAction<string>) => {
             state.invoiceNumber = action.payload
+        }),
+        senderName: create.reducer((state, action: PayloadAction<string>) => {
+            state.senderName = action.payload
+        }),
+        senderEmail: create.reducer((state, action: PayloadAction<string>) => {
+            state.senderEmail = action.payload
         }),
         clientName: create.reducer((state, action: PayloadAction<string>) => {
             state.clientName = action.payload
@@ -101,6 +111,8 @@ export const invoicingSlice = createAppSlice({
     // state as their first argument.
     selectors: {
         selectInvoiceNumber: (invoice) => invoice.invoiceNumber,
+        selectSenderName: (invoice) => invoice.senderName,
+        selectSenderEmail: (invoice) => invoice.senderEmail,
         selectClientName: (invoice) => invoice.clientName,
         selectClientEmail: (invoice) => invoice.clientEmail,
         selectSubject: (invoice) => invoice.subject,
@@ -116,6 +128,8 @@ export const invoicingSlice = createAppSlice({
 // Action creators are generated for each case reducer function.
 export const {
     invoiceNumber,
+    senderName,
+    senderEmail,
     clientName,
     clientEmail,
     subject,
@@ -133,6 +147,8 @@ export const {
 // Selectors returned by `slice.selectors` take the root state as their first argument.
 export const {
     selectInvoiceNumber,
+    selectSenderName,
+    selectSenderEmail,
     selectClientName,
     selectClientEmail,
     selectSubject,

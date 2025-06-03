@@ -3,14 +3,12 @@
 import {
   Button,
   Center,
-  CollapsibleContent,
   CollapsibleRoot,
   Container,
   HStack,
   Spacer,
 } from '@chakra-ui/react'
 import { Logo } from './logo'
-import { CollapsibleTrigger } from './collapsible-trigger'
 import { NavbarLinks } from './navbar-links'
 import {ColorModeButton} from "@/components/ui/color-mode";
 import {LuDownload} from "react-icons/lu";
@@ -18,7 +16,7 @@ import {useAppSelector} from "@/lib/hooks";
 import {
   selectClientEmail,
   selectClientName, selectCurrency, selectDiscount,
-  selectDueDate, selectInvoiceNumber, selectItems,
+  selectDueDate, selectInvoiceNumber, selectItems, selectNotes, selectSenderEmail, selectSenderName,
   selectSubject, selectTax
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {downloadInvoicePdf} from "@/lib/dowloadInvoicePdf";
@@ -29,12 +27,15 @@ export const NavBar = () => {
   const invoiceNumber = useAppSelector(selectInvoiceNumber);
   const dueDate = useAppSelector(selectDueDate)
   const subject = useAppSelector(selectSubject)
+  const senderName = useAppSelector(selectSenderName)
+  const senderEmail = useAppSelector(selectSenderEmail)
   const clientName = useAppSelector(selectClientName)
   const clientEmail = useAppSelector(selectClientEmail)
   const products = useAppSelector(selectItems)
   const currency = useAppSelector(selectCurrency)
   const discount = useAppSelector(selectDiscount)
   const tax = useAppSelector(selectTax)
+  const notes = useAppSelector(selectNotes)
 
   const handleDownloadClick = async () => {
     setIsLoading(true)
@@ -42,12 +43,15 @@ export const NavBar = () => {
       invoiceNumber: invoiceNumber,
       dueDate: dueDate,
       subject: subject,
+      senderName: senderName,
+      senderEmail: senderEmail,
       clientName: clientName,
       clientEmail: clientEmail,
       products: products,
       currency: currency,
       discount: discount.numeric,
-      tax: tax
+      tax: tax,
+      notes: notes,
     })
     setIsLoading(false)
   }
@@ -60,6 +64,7 @@ export const NavBar = () => {
         boxShadow="xs"
         maxW={{ base: 'full', md: 'fit-content' }}
         px="4"
+        mx={{ base: '4', md: 'auto' }}
         py="3"
       >
         <CollapsibleRoot>
@@ -76,11 +81,7 @@ export const NavBar = () => {
               <LuDownload />
               Download Invoice
             </Button>
-            <CollapsibleTrigger />
           </HStack>
-          <CollapsibleContent hideFrom="md">
-            <NavbarLinks pt="5" pb="2" alignItems="center" />
-          </CollapsibleContent>
         </CollapsibleRoot>
       </Container>
     </Center>

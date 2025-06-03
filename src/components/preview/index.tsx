@@ -1,12 +1,12 @@
 'use client'
 
-import {Stack} from "@chakra-ui/react";
+import {VStack} from "@chakra-ui/react";
 import {Invoice} from "@/components/preview/invoice";
 
 export const Preview = () => {
     return (
-        <Stack bg="bg.emphasized" flex="1" height="full" p={16}>
+        <VStack bg="bg.emphasized" align="flex-start" rounded="md" flex="1" p={{ base: 4, md: 8}}>
             <Invoice/>
-        </Stack>
+        </VStack>
     )
 }
