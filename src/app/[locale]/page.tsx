@@ -6,14 +6,13 @@ import {LuEye, LuPencil} from "react-icons/lu";
 import {Footer} from "@/components/footer";
 import {getServerTranslation} from "@/lib/localization";
 
-type Props = {
-  params: {
-    locale: string;
-  };
-};
-
-export default function Home({ params }: Props) {
-  const t = getServerTranslation(params?.locale)
+export default async function Home({
+                                     params,
+                                   }: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const t = getServerTranslation(locale)
   return (
     <>
       <Stack colorPalette="orange">
