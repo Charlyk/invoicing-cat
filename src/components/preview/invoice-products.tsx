@@ -13,7 +13,7 @@ export const InvoiceProducts = ({items}: { items: ProductData[] }) => {
                 background="bg.muted"
                 py="2"
                 width="full"
-                columns={{base: 6, md: 14}}
+                columns={14}
                 gap="2"
             >
                 <For
@@ -49,7 +49,7 @@ export const InvoiceProducts = ({items}: { items: ProductData[] }) => {
 const InvoiceProduct = ({data}: { data: ProductData }) => {
     const currency = useAppSelector(selectCurrency)
     return (
-        <SimpleGrid px="4" py="2" columns={{base: 6, md: 14}} gap="2">
+        <SimpleGrid px="4" py="2" columns={14} gap="2">
             <Flex gridColumn="span 8" gap="4" alignContent="center">
                 <Text fontSize="sm">{data.title}</Text>
             </Flex>

@@ -38,7 +38,7 @@ const translations = {
             notesPlaceholder: "Add notes here...",
             addItem: "Add item",
             product: {
-                name: "Item name`",
+                name: "Item name",
                 quantity: "Quantity",
                 price: "Price",
                 total: "Total:",

@@ -34,16 +34,16 @@ export const InvoiceTotals = () => {
             {totals.map((item) => (
                 <SimpleGrid
                     key={item.title}
-                    px={{ base: '8', md: '4' }}
-                    columns={{base: 6, md: 14}}
+                    px="4"
+                    columns={14}
                     gap="1"
                 >
-                    <VStack align="flex-end" gridColumn={{ base: 'span 5', md: 'span 12' }}>
+                    <VStack align="flex-end" gridColumn="span 12">
                         <Text fontWeight="semibold" fontSize="sm">
                             {item.title}
                         </Text>
                     </VStack>
-                    <VStack align="flex-end" gridColumn={{ base: 'span 1', md: 'span 2' }}>
+                    <VStack align="flex-end" gridColumn="span 2">
                         <Text fontWeight="semibold" fontSize="sm">
                             {typeof item.value === 'number' ? (
                                 <FormatNumber
