@@ -1,22 +1,37 @@
 'use client'
 
-import {Card, Text, Input, InputGroup, Field, VStack, HStack, NativeSelect} from '@chakra-ui/react';
+import {
+    Card,
+    Text,
+    Input,
+    InputGroup,
+    Field,
+    VStack,
+    HStack,
+    NativeSelect,
+    Center,
+    Image,
+    Box,
+    Button
+} from '@chakra-ui/react';
+import {ChangeEvent, useRef} from 'react';
 import currencies from "@/data/currencies";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {
     clientEmail,
     clientName,
     currency,
-    dueDate, invoiceNumber,
+    dueDate, invoiceNumber, logoFile,
     selectClientEmail,
     selectClientName,
     selectCurrency,
-    selectDueDate, selectInvoiceNumber, selectSenderEmail, selectSenderName,
+    selectDueDate, selectInvoiceNumber, selectLogoFile, selectSenderEmail, selectSenderName,
     selectSubject,
     selectTax, senderEmail, senderName,
     subject, tax
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {useTranslation} from "@/lib/localization";
+import {LuImageUp, LuTrash} from "react-icons/lu";
 
 export const InvoiceDetails = () => {
     const {t} = useTranslation();
@@ -30,12 +45,104 @@ export const InvoiceDetails = () => {
     const dueDateValue = useAppSelector(selectDueDate);
     const currencyValue = useAppSelector(selectCurrency);
     const taxValue = useAppSelector(selectTax);
+    const fileValue = useAppSelector(selectLogoFile);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handleImageClick = () => {
+        inputRef.current?.click();
+    };
+
+    const handleInputChanged = async (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.item(0)
+        const base64 = await fileToBase64(file!)
+        dispatch(logoFile(base64))
+
+        // ✅ Clear input to allow re-selecting same file
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
+    }
+
+    function fileToBase64(file: File): Promise<string> {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file); // will result in base64 string like "data:image/png;base64,..."
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = error => reject(error);
+        });
+    }
 
     return (
         <Card.Root flex="1" width="full">
             <Card.Header>{t.invoiceDetails.title}</Card.Header>
             <Card.Body>
                 <VStack gap="4">
+                    <HStack
+                        gap="4"
+                        width="full"
+                        align="flex-start"
+                        verticalAlign="center"
+                    >
+                        <input
+                            ref={inputRef}
+                            onChange={handleInputChanged}
+                            id="image-input"
+                            type="file"
+                            accept="image/jpeg, image/png"
+                            style={{display: "none"}}
+                        />
+                        {fileValue ? (
+                            <Box position="relative">
+                                <Image
+                                    src={fileValue}
+                                    alt="Logo"
+                                    height="70px"
+                                    maxW="200px"
+                                    overflow="hidden"
+                                    objectFit="contain"
+                                    objectPosition="center"
+                                    borderRadius="md"
+                                    cursor="pointer"
+                                    onClick={handleImageClick}
+                                />
+                                <Button
+                                    position="absolute"
+                                    colorPalette="red"
+                                    size="sm"
+                                    padding={0}
+                                    top="-2"
+                                    right="-2"
+                                    rounded="full"
+                                    variant="subtle"
+                                    onClick={(e) => {
+                                        dispatch(logoFile(null))
+                                        e.stopPropagation()
+                                    }}>
+                                    <LuTrash/>
+                                </Button>
+                            </Box>
+                        ) : (
+                            <Center
+                                height="70px"
+                                width="70px"
+                                borderWidth={2}
+                                borderColor="border.emphasized"
+                                borderRadius="md"
+                                color="border.emphasized"
+                                cursor="pointer"
+                                padding={4}
+                                onClick={handleImageClick}
+                            >
+                                <LuImageUp size={30}/>
+                            </Center>
+                        )}
+                        <VStack align="flex-start" alignSelf="center" gap="1" flex="1" width="full">
+                            <Text alignSelf="start" fontSize="sm"
+                                  fontWeight="semibold">{t.invoiceDetails.uploadLogo}</Text>
+                            <Text alignSelf="start" fontSize="xs"
+                                  color="fg.muted">{t.invoiceDetails.uploadSecureMessage}</Text>
+                        </VStack>
+                    </HStack>
                     <Field.Root>
                         <Field.Label>{t.invoiceDetails.invoiceNumber}</Field.Label>
                         <Input
@@ -127,7 +234,7 @@ export const InvoiceDetails = () => {
                                         </option>
                                     ))}
                                 </NativeSelect.Field>
-                                <NativeSelect.Indicator />
+                                <NativeSelect.Indicator/>
                             </NativeSelect.Root>
                         </VStack>
                         <Field.Root flex="1">

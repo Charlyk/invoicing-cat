@@ -11,6 +11,8 @@ const translations = {
         downloadInvoice: "Download invoice",
         invoiceDetails: {
             title: "Invoice Details",
+            uploadLogo: "Upload your logo",
+            uploadSecureMessage: "Your logo is not uploaded to the server. It is only used locally in the browser.",
             invoiceNumber: "Invoice Number",
             invoiceDate: "Invoice Date",
             senderName: "Sender name",

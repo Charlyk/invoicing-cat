@@ -10,6 +10,7 @@ import {Translation} from "@/lib/localization"; // adjust path if needed
 
 export async function downloadInvoicePdf({
                                              translation,
+    logo,
                                              invoiceNumber,
                                              dueDate,
                                              subject,
@@ -23,6 +24,7 @@ export async function downloadInvoicePdf({
     notes = ''
                                          }: {
     translation: Translation,
+    logo?: string | null
     invoiceNumber: string
     dueDate: string
     subject: string
@@ -39,6 +41,7 @@ export async function downloadInvoicePdf({
     const blob = await pdf(
         <InvoiceDocument
             translation={translation}
+            logo={logo}
             invoiceNumber={invoiceNumber}
             dueDate={dueDate}
             subject={subject}

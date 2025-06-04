@@ -7,6 +7,7 @@ import {DateTime} from "luxon";
 import {v4 as uuidv4} from 'uuid';
 
 export interface InvoicingSliceState {
+    logoFile?: string | null;
     invoiceNumber: string;
     senderName: string;
     senderEmail: string;
@@ -36,6 +37,7 @@ function defaultInvoiceNumber(count: number): string {
 }
 
 const initialState: InvoicingSliceState = {
+    logoFile: null,
     invoiceNumber: defaultInvoiceNumber(1),
     senderName: '',
     senderEmail: '',
@@ -59,6 +61,9 @@ export const invoicingSlice = createAppSlice({
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: (create) => ({
+        logoFile: create.reducer((state, action: PayloadAction<string | null | undefined>) => {
+            state.logoFile = action.payload;
+        }),
         invoiceNumber: create.reducer((state, action: PayloadAction<string>) => {
             state.invoiceNumber = action.payload
         }),
@@ -110,6 +115,7 @@ export const invoicingSlice = createAppSlice({
     // You can define your selectors here. These selectors receive the slice
     // state as their first argument.
     selectors: {
+        selectLogoFile: (invoice) => invoice.logoFile,
         selectInvoiceNumber: (invoice) => invoice.invoiceNumber,
         selectSenderName: (invoice) => invoice.senderName,
         selectSenderEmail: (invoice) => invoice.senderEmail,
@@ -127,6 +133,7 @@ export const invoicingSlice = createAppSlice({
 
 // Action creators are generated for each case reducer function.
 export const {
+    logoFile,
     invoiceNumber,
     senderName,
     senderEmail,
@@ -146,6 +153,7 @@ export const {
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
 export const {
+    selectLogoFile,
     selectInvoiceNumber,
     selectSenderName,
     selectSenderEmail,

@@ -2,12 +2,22 @@
 'use client'
 
 import React from 'react';
-import {Page, Text, View, Document, StyleSheet} from '@react-pdf/renderer';
+import {Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer';
 import {colors} from '@/components/ui/theme';
 import currencies, {Currency} from "@/data/currencies";
 import {DateTime} from "luxon";
 import {Translation} from "@/lib/localization";
 import discounts, {DiscountOption} from "@/data/discounts";
+import { Font } from '@react-pdf/renderer'
+
+Font.register({
+    family: "Geist",
+    fonts: [
+        { src: "/fonts/Geist-Regular.ttf", fontWeight: 'normal' },
+        { src: "/fonts/Geist-Medium.ttf", fontWeight: 'medium' },
+        { src: "/fonts/Geist-Bold.ttf", fontWeight: 'bold' },
+    ]
+})
 
 export type ProductData = {
     title: string
@@ -20,14 +30,22 @@ const styles = StyleSheet.create({
         padding: 40,
         backgroundColor: '#ffffff',
         fontSize: 12,
-        fontFamily: 'Helvetica',
+        fontFamily: 'Geist',
     },
     headerContainer: {
         textAlign: 'right',
         marginBottom: 30,
     },
+    headerContainerWithImage: {
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        textAlign: 'right',
+        marginBottom: 30,
+    },
     header: {
-        fontSize: 15,
+        fontSize: 10,
         color: colors.gray['400'].value,
     },
     valuesRow: {
@@ -47,7 +65,7 @@ const styles = StyleSheet.create({
     valueText: {
         fontSize: 12,
         color: colors.gray['800'].value,
-        fontWeight: 'bold',
+        fontWeight: 'semibold',
         marginBottom: 4,
     },
     section: {
@@ -97,6 +115,7 @@ const styles = StyleSheet.create({
 
 export const InvoiceDocument = ({
                                     translation: t,
+    logo,
                                     invoiceNumber,
                                     dueDate,
                                     subject,
@@ -110,6 +129,7 @@ export const InvoiceDocument = ({
     notes = ''
                                 }: {
     translation: Translation
+    logo?: string | null
     invoiceNumber: string
     dueDate: string
     subject: string
@@ -138,7 +158,8 @@ export const InvoiceDocument = ({
     return (
         <Document>
             <Page size="A4" style={styles.page}>
-                <View style={styles.headerContainer}>
+                <View style={logo ? styles.headerContainerWithImage : styles.headerContainer}>
+                    {logo && <Image src={logo} style={{height: "40px"}}/>}
                     <Text style={styles.header}>{t.invoiceDetails.invoice}{' '}{invoiceNumber}</Text>
                 </View>
 
