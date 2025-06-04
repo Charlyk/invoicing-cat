@@ -3,10 +3,10 @@ import {
     selectClientEmail,
     selectClientName,
     selectDueDate,
-    selectInvoiceNumber, selectSenderEmail, selectSenderName,
+    selectInvoiceNumber, selectLogoFile, selectSenderEmail, selectSenderName,
     selectSubject
 } from "@/lib/features/ivoicing/invoicingSlice";
-import {SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
+import {SimpleGrid, Text, VStack, Image, HStack} from "@chakra-ui/react";
 import {DateTime} from "luxon";
 import {useTranslation} from "@/lib/localization";
 
@@ -19,14 +19,16 @@ export const InvoiceHeader = () => {
     const senderEmail = useAppSelector(selectSenderEmail)
     const clientName = useAppSelector(selectClientName)
     const clientEmail = useAppSelector(selectClientEmail)
+    const logoFile = useAppSelector(selectLogoFile)
 
     return (
         <VStack gap={8} width="full" overflow="hidden">
-            <Stack flex="1" align="end" width="full">
-                <Text fontSize="sm" color="fg.muted">
+            <HStack flex="1" align="end" width="full" justify={logoFile ? "space-between" : "flex-end"}>
+                {logoFile && <Image src={logoFile} alt="Logo" height="60px"/>}
+                <Text fontSize="sm" color="fg.muted" alignSelf="flex-start">
                     {t.invoiceDetails.invoice}{' '}{invoiceNumber}
                 </Text>
-            </Stack>
+            </HStack>
 
             <SimpleGrid flex="1" width="full" columns={{base: 4, md: 4}}>
                 <VStack align="start" gap="1" gridColumn="span 2">

@@ -15,6 +15,14 @@ export type RootState = ReturnType<typeof rootReducer>;
 export const makeStore = () => {
   return configureStore({
     reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          serializableCheck: {
+            // Ignore specific paths
+            ignoredActions: ['file/setFile'],
+            ignoredPaths: ['file.file'],
+          },
+        }),
   });
 };
 

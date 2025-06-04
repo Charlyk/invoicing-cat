@@ -15,7 +15,7 @@ import {useAppSelector} from "@/lib/hooks";
 import {
   selectClientEmail,
   selectClientName, selectCurrency, selectDiscount,
-  selectDueDate, selectInvoiceNumber, selectItems, selectNotes, selectSenderEmail, selectSenderName,
+  selectDueDate, selectInvoiceNumber, selectItems, selectLogoFile, selectNotes, selectSenderEmail, selectSenderName,
   selectSubject, selectTax
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {downloadInvoicePdf} from "@/lib/dowloadInvoicePdf";
@@ -37,11 +37,13 @@ export const NavBar = () => {
   const discount = useAppSelector(selectDiscount)
   const tax = useAppSelector(selectTax)
   const notes = useAppSelector(selectNotes)
+  const logo = useAppSelector(selectLogoFile)
 
   const handleDownloadClick = async () => {
     setIsLoading(true)
     await downloadInvoicePdf({
       translation: t,
+      logo: logo,
       invoiceNumber: invoiceNumber,
       dueDate: dueDate,
       subject: subject,
