@@ -6,7 +6,9 @@
     "preview": "Vorschau"
   },
   "NavBar": {
-    "downloadInvoice": "Rechnung herunterladen"
+    "downloadInvoice": "Rechnung herunterladen",
+    "clients": "Clients",
+    "home": "Home"
   },
   "Footer": {
     "createdBy": "❤️ Mit Liebe erstellt von Eduard Albu.",

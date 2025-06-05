@@ -6,7 +6,9 @@
     "preview": "Aperçu"
   },
   "NavBar": {
-    "downloadInvoice": "Télécharger la facture"
+    "downloadInvoice": "Télécharger la facture",
+    "clients": "Clients",
+    "home": "Home"
   },
   "Footer": {
     "createdBy": "❤️ Créé avec amour par Eduard Albu.",

@@ -2,10 +2,10 @@
 
 import {
     Button,
-    Center,
+    Center, CollapsibleContent,
     CollapsibleRoot,
     Container,
-    HStack,
+    HStack, Link,
     Spacer,
 } from '@chakra-ui/react'
 import {Logo} from './logo'
@@ -22,6 +22,8 @@ import {downloadInvoicePdf} from "@/lib/dowloadInvoicePdf";
 import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {InvoiceStrings} from "@/components/pdf/InvoiceDocument";
+import {NavbarLinks} from "@/components/nav-bar/navbar-links";
+import {CollapsibleTrigger} from "@/components/nav-bar/collapsible-trigger";
 
 export const NavBar = () => {
     const t = useTranslations('NavBar')
@@ -96,8 +98,11 @@ export const NavBar = () => {
             >
                 <CollapsibleRoot>
                     <HStack gap={{base: '3', md: '8'}}>
-                        <Logo/>
+                        <Link href="/">
+                            <Logo/>
+                        </Link>
                         <Spacer hideFrom="md"/>
+                        <NavbarLinks hideBelow="md" />
                         <ColorModeButton/>
                         <Button
                             size={{base: 'sm', md: 'md'}}
@@ -107,7 +112,11 @@ export const NavBar = () => {
                             <LuDownload/>
                             {t('downloadInvoice')}
                         </Button>
+                        <CollapsibleTrigger />
                     </HStack>
+                    <CollapsibleContent hideFrom="md">
+                        <NavbarLinks pt="5" pb="2" alignItems="center" />
+                    </CollapsibleContent>
                 </CollapsibleRoot>
             </Container>
         </Center>

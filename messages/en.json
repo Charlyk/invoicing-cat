@@ -6,7 +6,9 @@
     "preview": "Preview"
   },
   "NavBar": {
-    "downloadInvoice": "Download invoice"
+    "downloadInvoice": "Download invoice",
+    "clients": "Clients",
+    "home": "Home"
   },
   "Footer": {
     "createdBy": "❤️ Created with love by Eduard Albu.",
