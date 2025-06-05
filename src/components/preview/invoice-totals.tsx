@@ -1,10 +1,10 @@
 import {useAppSelector} from "@/lib/hooks";
 import {selectCurrency, selectDiscount, selectItems, selectTax} from "@/lib/features/ivoicing/invoicingSlice";
 import {FormatNumber, SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
-import {useTranslation} from "@/lib/localization";
+import {useTranslations} from "next-intl";
 
 export const InvoiceTotals = () => {
-    const {t} = useTranslation()
+    const t = useTranslations('Products')
     const products = useAppSelector(selectItems)
     const currency = useAppSelector(selectCurrency)
     const discount = useAppSelector(selectDiscount)
@@ -19,14 +19,14 @@ export const InvoiceTotals = () => {
     const total = Math.max(taxableBase + taxAmount, 0)
 
     const totals: { title: string; value: string | number }[] = [
-        {title: t.products.subtotal, value: subtotal},
+        {title: t('subtotal'), value: subtotal},
         ...(discountAmount > 0
-            ? [{title: `${t.products.discount} ${discount.value}`, value: -discountAmount}]
+            ? [{title: t('discount', {value: discount.value}), value: -discountAmount}]
             : []),
         ...(taxAmount > 0
-            ? [{title: `${t.products.tax} ${tax}%`, value: taxAmount}]
+            ? [{title: t('tax', {value: tax}), value: taxAmount}]
             : []),
-        {title: t.products.total, value: total}
+        {title: t('total'), value: total}
     ]
 
     return (

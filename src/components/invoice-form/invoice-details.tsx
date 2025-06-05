@@ -30,11 +30,11 @@ import {
     selectTax, senderEmail, senderName,
     subject, tax
 } from "@/lib/features/ivoicing/invoicingSlice";
-import {useTranslation} from "@/lib/localization";
 import {LuImageUp, LuTrash} from "react-icons/lu";
+import {useTranslations} from "next-intl";
 
 export const InvoiceDetails = () => {
-    const {t} = useTranslation();
+    const t = useTranslations('InvoiceDetails')
     const dispatch = useAppDispatch();
     const invoiceNumberValue = useAppSelector(selectInvoiceNumber);
     const senderNameValue = useAppSelector(selectSenderName);
@@ -74,7 +74,7 @@ export const InvoiceDetails = () => {
 
     return (
         <Card.Root flex="1" width="full">
-            <Card.Header>{t.invoiceDetails.title}</Card.Header>
+            <Card.Header>{t('title')}</Card.Header>
             <Card.Body>
                 <VStack gap="4">
                     <HStack
@@ -138,13 +138,13 @@ export const InvoiceDetails = () => {
                         )}
                         <VStack align="flex-start" alignSelf="center" gap="1" flex="1" width="full">
                             <Text alignSelf="start" fontSize="sm"
-                                  fontWeight="semibold">{t.invoiceDetails.uploadLogo}</Text>
+                                  fontWeight="semibold">{t('uploadLogo')}</Text>
                             <Text alignSelf="start" fontSize="xs"
-                                  color="fg.muted">{t.invoiceDetails.uploadSecureMessage}</Text>
+                                  color="fg.muted">{t('uploadSecureMessage')}</Text>
                         </VStack>
                     </HStack>
                     <Field.Root>
-                        <Field.Label>{t.invoiceDetails.invoiceNumber}</Field.Label>
+                        <Field.Label>{t('invoiceNumber')}</Field.Label>
                         <Input
                             value={invoiceNumberValue}
                             type="text"
@@ -154,7 +154,7 @@ export const InvoiceDetails = () => {
                     </Field.Root>
                     <HStack width="full" gap="4">
                         <Field.Root>
-                            <Field.Label>{t.invoiceDetails.senderName}</Field.Label>
+                            <Field.Label>{t('senderName')}</Field.Label>
                             <Input
                                 value={senderNameValue}
                                 type="text"
@@ -163,7 +163,7 @@ export const InvoiceDetails = () => {
                             />
                         </Field.Root>
                         <Field.Root>
-                            <Field.Label>{t.invoiceDetails.senderEmail}</Field.Label>
+                            <Field.Label>{t('senderEmail')}</Field.Label>
                             <Input
                                 type="email"
                                 placeholder="john.doe@email.com"
@@ -174,7 +174,7 @@ export const InvoiceDetails = () => {
                     </HStack>
                     <HStack width="full" gap="4">
                         <Field.Root>
-                            <Field.Label>{t.invoiceDetails.clientName}</Field.Label>
+                            <Field.Label>{t('clientName')}</Field.Label>
                             <Input
                                 value={clientNameValue}
                                 type="text"
@@ -183,7 +183,7 @@ export const InvoiceDetails = () => {
                             />
                         </Field.Root>
                         <Field.Root>
-                            <Field.Label>{t.invoiceDetails.clientEmail}</Field.Label>
+                            <Field.Label>{t('clientEmail')}</Field.Label>
                             <Input
                                 type="email"
                                 placeholder="john.doe@email.com"
@@ -194,7 +194,7 @@ export const InvoiceDetails = () => {
                     </HStack>
                     <HStack width="full" gap="4">
                         <Field.Root>
-                            <Field.Label>{t.invoiceDetails.subject}</Field.Label>
+                            <Field.Label>{t('subject')}</Field.Label>
                             <Input
                                 placeholder="Dashboard design"
                                 value={subjectValue}
@@ -202,7 +202,7 @@ export const InvoiceDetails = () => {
                             />
                         </Field.Root>
                         <Field.Root>
-                            <Field.Label>{t.invoiceDetails.dueDate}</Field.Label>
+                            <Field.Label>{t('dueDate')}</Field.Label>
                             <Input
                                 type="date"
                                 placeholder="02 May 2025"
@@ -214,13 +214,13 @@ export const InvoiceDetails = () => {
                     <HStack width="full" gap="4">
                         <VStack gap="1" align="flex-start" flex="1">
                             <Text as="label" fontSize="sm" fontWeight="semibold">
-                                {t.invoiceDetails.currency}
+                                {t('currency')}
                             </Text>
                             <NativeSelect.Root>
                                 <NativeSelect.Field
                                     defaultValue={currencyValue.code}
                                     bg="bg"
-                                    aria-label={t.invoiceDetails.selectCurrency}
+                                    aria-label={t('selectCurrency')}
                                     onChange={(e) => {
                                         const currencyItem = currencies.find((c) => c.code === e.target.value)
                                         if (currencyItem) {
@@ -238,7 +238,7 @@ export const InvoiceDetails = () => {
                             </NativeSelect.Root>
                         </VStack>
                         <Field.Root flex="1">
-                            <Field.Label>{t.invoiceDetails.tax}</Field.Label>
+                            <Field.Label>{t('tax')}</Field.Label>
                             <InputGroup endElement="%">
                                 <Input
                                     placeholder="0"

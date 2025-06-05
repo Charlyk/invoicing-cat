@@ -2,10 +2,10 @@ import {ProductData} from "@/components/invoice-form/types";
 import {Box, Flex, For, FormatNumber, SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
 import {useAppSelector} from "@/lib/hooks";
 import {selectCurrency} from "@/lib/features/ivoicing/invoicingSlice";
-import {useTranslation} from "@/lib/localization";
+import {useTranslations} from "next-intl";
 
 export const InvoiceProducts = ({items}: { items: ProductData[] }) => {
-    const {t} = useTranslation()
+    const t = useTranslations('Products')
     return (
         <Box overflow="hidden" width="full">
             <SimpleGrid
@@ -18,10 +18,10 @@ export const InvoiceProducts = ({items}: { items: ProductData[] }) => {
             >
                 <For
                     each={[
-                        {title: t.products.items, gridColumn: 'span 8'},
-                        {title: t.products.quantity, gridColumn: 'span 2'},
-                        {title: t.products.price, gridColumn: 'span 2'},
-                        {title: t.products.total, gridColumn: 'span 2', align: 'flex-end'},
+                        {title: t('items'), gridColumn: 'span 8'},
+                        {title: t('quantity'), gridColumn: 'span 2'},
+                        {title: t('price'), gridColumn: 'span 2'},
+                        {title: t('total'), gridColumn: 'span 2', align: 'flex-end'},
                     ]}
                 >
                     {(item) => (

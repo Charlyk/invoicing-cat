@@ -2,15 +2,15 @@
 
 import {pdf} from '@react-pdf/renderer'
 import {saveAs} from 'file-saver'
-import {InvoiceDocument} from '@/components/pdf/InvoiceDocument'
+import {InvoiceDocument, InvoiceStrings} from '@/components/pdf/InvoiceDocument'
 import currencies, {Currency} from "@/data/currencies";
 import {ProductData} from "@/components/pdf/InvoiceDocument";
 import discounts, {DiscountOption} from "@/data/discounts";
-import {Translation} from "@/lib/localization"; // adjust path if needed
+import {toaster} from "@/components/ui/toaster";
 
 export async function downloadInvoicePdf({
-                                             translation,
-    logo,
+                                             strings,
+                                             logo,
                                              invoiceNumber,
                                              dueDate,
                                              subject,
@@ -21,9 +21,9 @@ export async function downloadInvoicePdf({
                                              currency = currencies[0],
                                              discount = discounts[0],
                                              tax = 0,
-    notes = ''
+                                             notes = ''
                                          }: {
-    translation: Translation,
+    strings: InvoiceStrings
     logo?: string | null
     invoiceNumber: string
     dueDate: string
@@ -38,23 +38,29 @@ export async function downloadInvoicePdf({
     tax?: number // percent (e.g., 15)
     notes?: string
 }) {
-    const blob = await pdf(
-        <InvoiceDocument
-            translation={translation}
-            logo={logo}
-            invoiceNumber={invoiceNumber}
-            dueDate={dueDate}
-            subject={subject}
-            senderName={senderName}
-            senderEmail={senderEmail}
-            clientName={clientName}
-            clientEmail={clientEmail}
-            products={products}
-            tax={tax}
-            currency={currency}
-            discount={discount}
-            notes={notes}
-        />
-    ).toBlob()
-    saveAs(blob, `Invoice-${invoiceNumber}.pdf`)
+    try {
+        const blob = await pdf(
+            <InvoiceDocument
+                strings={strings}
+                logo={logo}
+                dueDate={dueDate}
+                subject={subject}
+                senderName={senderName}
+                senderEmail={senderEmail}
+                clientName={clientName}
+                clientEmail={clientEmail}
+                products={products}
+                tax={tax}
+                currency={currency}
+                discount={discount}
+                notes={notes}
+            />
+        ).toBlob()
+        saveAs(blob, `Invoice-${invoiceNumber}.pdf`)
+    } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : 'Unknown error';
+        toaster.error({
+            description: message,
+        })
+    }
 }

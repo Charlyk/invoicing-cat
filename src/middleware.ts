@@ -1,20 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server'
+import createMiddleware from 'next-intl/middleware';
+import {routing} from './i18n/routing';
 
-export function middleware(req: NextRequest) {
-    const { pathname } = req.nextUrl
+export default createMiddleware(routing);
 
-    // Skip locales
-    const PUBLIC_FILE = /\.(.*)$/;
-    if (
-        pathname.startsWith('/en') ||
-        pathname.startsWith('/ro') ||
-        pathname.startsWith('/ru') ||
-        PUBLIC_FILE.test(pathname)
-    ) {
-        return NextResponse.next();
-    }
-
-    // Redirect root to default locale
-    const locale = 'en';
-    return NextResponse.redirect(new URL(`/${locale}${pathname}`, req.url));
-}
+export const config = {
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+};

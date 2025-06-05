@@ -8,10 +8,10 @@ import {
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {SimpleGrid, Text, VStack, Image, HStack} from "@chakra-ui/react";
 import {DateTime} from "luxon";
-import {useTranslation} from "@/lib/localization";
+import {useTranslations} from "next-intl";
 
 export const InvoiceHeader = () => {
-    const {t} = useTranslation()
+    const t = useTranslations('InvoiceDetails')
     const invoiceNumber = useAppSelector(selectInvoiceNumber)
     const dueDate = useAppSelector(selectDueDate)
     const subject = useAppSelector(selectSubject)
@@ -26,14 +26,14 @@ export const InvoiceHeader = () => {
             <HStack flex="1" align="end" width="full" justify={logoFile ? "space-between" : "flex-end"}>
                 {logoFile && <Image src={logoFile} alt="Logo" height="60px"/>}
                 <Text fontSize="sm" color="fg.muted" alignSelf="flex-start">
-                    {t.invoiceDetails.invoice}{' '}{invoiceNumber}
+                    {t('invoice', {invoiceNumber})}
                 </Text>
             </HStack>
 
             <SimpleGrid flex="1" width="full" columns={{base: 4, md: 4}}>
                 <VStack align="start" gap="1" gridColumn="span 2">
                     <Text fontSize="sm" color="fg.muted">
-                        {t.invoiceDetails.dueDate}
+                        {t('dueDate')}
                     </Text>
                     <Text fontSize="md" fontWeight="semibold">
                         {DateTime.fromSQL(dueDate).toLocaleString(DateTime.DATE_MED)}
@@ -41,7 +41,7 @@ export const InvoiceHeader = () => {
                 </VStack>
                 <VStack align="start" gap="1" gridColumn="span 2">
                     <Text fontSize="sm" color="fg.muted">
-                        {t.invoiceDetails.subject}
+                        {t('subject')}
                     </Text>
                     <Text fontSize="md" fontWeight="semibold">
                         {subject || '---'}
@@ -52,7 +52,7 @@ export const InvoiceHeader = () => {
             <SimpleGrid flex="1" width="full" columns={{base: 4, md: 4}}>
                 <VStack align="start" gap="1" gridColumn="span 2">
                     <Text fontSize="sm" color="fg.muted">
-                        {t.invoiceDetails.createdBy}
+                        {t('createdBy')}
                     </Text>
                     <Text fontSize="md" fontWeight="semibold">
                         {senderName || '---'}
@@ -65,7 +65,7 @@ export const InvoiceHeader = () => {
                 </VStack>
                 <VStack align="start" gap="1" gridColumn="span 2">
                     <Text fontSize="sm" color="fg.muted">
-                        {t.invoiceDetails.billedTo}
+                        {t('billedTo')}
                     </Text>
                     <Text fontSize="md" fontWeight="semibold">
                         {clientName || '---'}

@@ -1,0 +1,87 @@
+{
+  "HomePage": {
+    "metaTitle": "InvoicingCat - Gerador de Faturas Gratuito",
+    "metaDescription": "Gere faturas gratuitamente",
+    "edit": "Editar",
+    "preview": "Visualizar"
+  },
+  "NavBar": {
+    "downloadInvoice": "Baixar fatura"
+  },
+  "Footer": {
+    "createdBy": "❤️ Criado com carinho por Eduard Albu.",
+    "copyright": "InvoicingCat, Todos os direitos reservados."
+  },
+  "InvoiceDetails": {
+    "title": "Detalhes da Fatura",
+    "uploadLogo": "Envie seu logotipo",
+    "uploadSecureMessage": "Seu logotipo não é enviado ao servidor. Ele é usado apenas localmente no navegador.",
+    "invoiceNumber": "Número da fatura",
+    "invoiceDate": "Data da fatura",
+    "senderName": "Nome do remetente",
+    "senderEmail": "E-mail do remetente (Opcional)",
+    "clientName": "Nome do cliente",
+    "clientEmail": "E-mail do cliente (Opcional)",
+    "subject": "Assunto",
+    "dueDate": "Data de vencimento",
+    "currency": "Moeda",
+    "tax": "Imposto %",
+    "invoice": "Fatura {invoiceNumber}",
+    "selectCurrency": "Selecionar moeda",
+    "createdBy": "Criado por",
+    "billedTo": "Faturado para"
+  },
+  "Products": {
+    "title": "Produtos",
+    "items": "Itens",
+    "price": "Preço",
+    "quantity": "Qtd",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Desconto {value}",
+    "discountTitle": "Desconto",
+    "selectDiscount": "Selecionar desconto",
+    "tax": "Imposto {value, number}%",
+    "notes": "Observações",
+    "notesPlaceholder": "Adicione observações aqui...",
+    "addItem": "Adicionar item"
+  },
+  "Product": {
+    "name": "Nome do item",
+    "quantity": "Quantidade",
+    "price": "Preço",
+    "total": "Total:"
+  },
+  "CookieConsent": {
+    "consentModal": {
+      "title": "Nós usamos cookies",
+      "description": "Usamos cookies para melhorar sua experiência com o Firebase Analytics.",
+      "acceptAllBtn": "Aceitar todos",
+      "acceptNecessaryBtn": "Rejeitar todos",
+      "showPreferencesBtn": "Gerenciar preferências"
+    },
+    "preferencesModal": {
+      "title": "Gerenciar preferências de cookies",
+      "acceptAllBtn": "Aceitar todos",
+      "acceptNecessaryBtn": "Rejeitar todos",
+      "savePreferencesBtn": "Aceitar seleção",
+      "closeIconLabel": "Fechar modal",
+      "sections": [
+        {
+          "title": "Cookies?",
+          "description": "Sim, só os úteis 🍪"
+        },
+        {
+          "title": "Cookies Necessários",
+          "description": "Necessários para o funcionamento adequado do site.",
+          "linkedCategory": "necessary"
+        },
+        {
+          "title": "Análise",
+          "description": "Usado para rastrear dados de uso anônimos via Firebase Analytics.",
+          "linkedCategory": "analytics"
+        }
+      ]
+    }
+  }
+}
