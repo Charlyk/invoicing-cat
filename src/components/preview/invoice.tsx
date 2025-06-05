@@ -17,7 +17,7 @@ import {InvoicePage, MobileInvoicePage} from "@/components/preview/invoice-page"
 import {InvoiceTotals} from "@/components/preview/invoice-totals";
 import {InvoiceProducts} from "@/components/preview/invoice-products";
 import {InvoiceHeader} from "@/components/preview/invoice-header";
-import {useTranslation} from "@/lib/localization";
+import {useTranslations} from "next-intl";
 
 // 🧠 Pagination utility
 function paginateInvoiceItems<T>({
@@ -81,7 +81,7 @@ function paginateInvoiceItems<T>({
 }
 
 export const Invoice = () => {
-  const {t} = useTranslation()
+  const t = useTranslations('Products')
   const [isMdUp] = useMediaQuery(['(min-width: 48em)'])
   const products = useAppSelector(selectItems)
   const notes = useAppSelector(selectNotes)
@@ -105,7 +105,7 @@ export const Invoice = () => {
                     {index === productPages.length - 1 && <InvoiceTotals />}
                     {index === productPages.length - 1 && notes && (
                         <HStack width="full">
-                          <Text fontWeight="semibold">{t.products.notes}:</Text>
+                          <Text fontWeight="semibold">{t('notes')}:</Text>
                           <Text>{notes}</Text>
                         </HStack>
                     )}
@@ -119,7 +119,7 @@ export const Invoice = () => {
                     {index === productPages.length - 1 && <InvoiceTotals />}
                     {index === productPages.length - 1 && notes && (
                         <HStack width="full">
-                          <Text fontWeight="semibold">{t.products.notes}:</Text>
+                          <Text fontWeight="semibold">{t('notes')}:</Text>
                           <Text>{notes}</Text>
                         </HStack>
                     )}

@@ -1,5 +1,9 @@
 import {initFirebaseAnalytics} from "@/lib/firebase";
 import {CookieConsentConfig, CookieItem} from "vanilla-cookieconsent";
+import en from '../../../messages/en.json';
+import fr from '../../../messages/fr.json';
+import pt from '../../../messages/pt.json';
+import de from '../../../messages/de.json';
 
 const cookies: CookieItem[] = [
     {
@@ -68,38 +72,10 @@ export const cookieConsentConfig: CookieConsentConfig = {
     language: {
         default: "en",
         translations: {
-            en: {
-                consentModal: {
-                    title: "We use cookies",
-                    description: "We use cookies to improve your experience with Firebase Analytics.",
-                    acceptAllBtn: "Accept all",
-                    acceptNecessaryBtn: "Reject all",
-                    showPreferencesBtn: "Manage preferences"
-                },
-                preferencesModal: {
-                    title: "Manage cookie preferences",
-                    acceptAllBtn: "Accept all",
-                    acceptNecessaryBtn: "Reject all",
-                    savePreferencesBtn: "Accept selected",
-                    closeIconLabel: "Close modal",
-                    sections: [
-                        {
-                            title: "Cookies?",
-                            description: "Yep, just the useful kind 🍪"
-                        },
-                        {
-                            title: "Necessary Cookies",
-                            description: "Required for the site to function properly.",
-                            linkedCategory: "necessary"
-                        },
-                        {
-                            title: "Analytics",
-                            description: "Used to track anonymous usage data via Firebase Analytics.",
-                            linkedCategory: "analytics"
-                        },
-                    ]
-                }
-            }
+            en: en.CookieConsent,
+            fr: fr.CookieConsent,
+            pt: pt.CookieConsent,
+            de: de.CookieConsent
         }
     }
 }

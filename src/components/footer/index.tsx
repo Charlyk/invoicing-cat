@@ -9,6 +9,13 @@ export const Footer = () => (
       <Stack direction="row" justify="space-between" align="center">
         <Logo />
         <HStack gap="4">
+          {navLinks.map(({ href, label }, index) => (
+              <Link key={index} href={href} colorPalette="gray">
+                {label}
+              </Link>
+          ))}
+        </HStack>
+        <HStack gap="4">
           {socialLinks.map(({ href, icon }, index) => (
             <Link key={index} href={href} colorPalette="gray">
               <Icon size="md">{icon}</Icon>
@@ -28,3 +35,10 @@ const socialLinks = [
   { href: 'https://www.instagram.com/eduard.albu.dev', icon: <SiInstagram /> },
   { href: 'https://www.reddit.com/user/eduardalbu/', icon: <SiReddit /> },
 ]
+
+const navLinks = [
+  { href: '/en', label: 'English' },
+  { href: '/fr', label: 'Français' },
+  { href: '/de', label: 'Deutsch' },
+  { href: '/pt', label: 'Português' },
+];

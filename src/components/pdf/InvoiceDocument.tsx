@@ -6,16 +6,15 @@ import {Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer
 import {colors} from '@/components/ui/theme';
 import currencies, {Currency} from "@/data/currencies";
 import {DateTime} from "luxon";
-import {Translation} from "@/lib/localization";
 import discounts, {DiscountOption} from "@/data/discounts";
-import { Font } from '@react-pdf/renderer'
+import {Font} from '@react-pdf/renderer'
 
 Font.register({
     family: "Geist",
     fonts: [
-        { src: "/fonts/Geist-Regular.ttf", fontWeight: 'normal' },
-        { src: "/fonts/Geist-Medium.ttf", fontWeight: 'medium' },
-        { src: "/fonts/Geist-Bold.ttf", fontWeight: 'bold' },
+        {src: "/fonts/Geist-Regular.ttf", fontWeight: 'normal'},
+        {src: "/fonts/Geist-Medium.ttf", fontWeight: 'medium'},
+        {src: "/fonts/Geist-Bold.ttf", fontWeight: 'bold'},
     ]
 })
 
@@ -23,6 +22,26 @@ export type ProductData = {
     title: string
     quantity: number
     price: number
+}
+
+export type InvoiceStrings = {
+    details: {
+        subject: string
+        dueDate: string
+        invoiceNumberTitle: string
+        createdBy: string
+        billedTo: string
+    },
+    products: {
+        items: string,
+        price: string,
+        quantity: string,
+        total: string,
+        subtotal: string,
+        discountTitle: string,
+        taxTitle: string,
+        notesTitle: string
+    }
 }
 
 const styles = StyleSheet.create({
@@ -114,9 +133,8 @@ const styles = StyleSheet.create({
 });
 
 export const InvoiceDocument = ({
-                                    translation: t,
-    logo,
-                                    invoiceNumber,
+                                    strings,
+                                    logo,
                                     dueDate,
                                     subject,
                                     senderName, senderEmail,
@@ -126,11 +144,10 @@ export const InvoiceDocument = ({
                                     currency = currencies[0],
                                     discount = discounts[0],
                                     tax = 0,
-    notes = ''
+                                    notes = ''
                                 }: {
-    translation: Translation
+    strings: InvoiceStrings
     logo?: string | null
-    invoiceNumber: string
     dueDate: string
     subject: string
     senderName: string
@@ -160,30 +177,30 @@ export const InvoiceDocument = ({
             <Page size="A4" style={styles.page}>
                 <View style={logo ? styles.headerContainerWithImage : styles.headerContainer}>
                     {logo && <Image src={logo} style={{height: "40px"}}/>}
-                    <Text style={styles.header}>{t.invoiceDetails.invoice}{' '}{invoiceNumber}</Text>
+                    <Text style={styles.header}>{strings.details.invoiceNumberTitle}</Text>
                 </View>
 
                 <View style={styles.section}>
                     <View style={styles.valuesRow}>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>{t.invoiceDetails.dueDate}</Text>
+                            <Text style={styles.valueLabel}>{strings.details.dueDate}</Text>
                             <Text
                                 style={styles.valueText}>{DateTime.fromSQL(dueDate).toLocaleString(DateTime.DATE_MED)}</Text>
                         </View>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>{t.invoiceDetails.subject}</Text>
+                            <Text style={styles.valueLabel}>{strings.details.subject}</Text>
                             <Text style={styles.valueText}>{subject || '---'}</Text>
                         </View>
                     </View>
 
                     <View style={styles.valuesRow}>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>{t.invoiceDetails.createdBy}</Text>
+                            <Text style={styles.valueLabel}>{strings.details.createdBy}</Text>
                             <Text style={styles.valueText}>{senderName || '---'}</Text>
                             {senderEmail && <Text style={styles.valueText}>{senderEmail}</Text>}
                         </View>
                         <View style={styles.valueContainer}>
-                            <Text style={styles.valueLabel}>{t.invoiceDetails.billedTo}</Text>
+                            <Text style={styles.valueLabel}>{strings.details.billedTo}</Text>
                             <Text style={styles.valueText}>{clientName || '---'}</Text>
                             {clientEmail && <Text style={styles.valueText}>{clientEmail}</Text>}
                         </View>
@@ -192,10 +209,10 @@ export const InvoiceDocument = ({
 
                 <View style={styles.section}>
                     <View style={styles.tableHeader}>
-                        <Text style={[styles.cell, styles.col8]}>{t.products.items}</Text>
-                        <Text style={[styles.cell, styles.col2]}>{t.products.quantity}</Text>
-                        <Text style={[styles.cell, styles.col2]}>{t.products.price}</Text>
-                        <Text style={[styles.cell, styles.colTotal]}>{t.products.total}</Text>
+                        <Text style={[styles.cell, styles.col8]}>{strings.products.items}</Text>
+                        <Text style={[styles.cell, styles.col2]}>{strings.products.quantity}</Text>
+                        <Text style={[styles.cell, styles.col2]}>{strings.products.price}</Text>
+                        <Text style={[styles.cell, styles.colTotal]}>{strings.products.total}</Text>
                     </View>
                     {products.map((item, index) => (
                         <View key={index} style={styles.tableRow}>
@@ -213,29 +230,69 @@ export const InvoiceDocument = ({
 
                 <View style={styles.totalsContainer}>
                     <View style={styles.totalsRow}>
-                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.subtotal}</Text>
-                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{formatCurrency(subtotal)}</Text>
+                        <Text style={{
+                            width: '50%',
+                            textAlign: 'right',
+                            fontSize: 10,
+                            fontWeight: 'semibold'
+                        }}>{strings.products.subtotal}</Text>
+                        <Text style={{
+                            width: '50%',
+                            textAlign: 'right',
+                            fontSize: 10,
+                            fontWeight: 'semibold'
+                        }}>{formatCurrency(subtotal)}</Text>
                     </View>
                     {discountAmount > 0 && (
                         <View style={styles.totalsRow}>
-                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.discount}{' '}{discount.value}</Text>
-                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>-{formatCurrency(discountAmount)}</Text>
+                            <Text style={{
+                                width: '50%',
+                                textAlign: 'right',
+                                fontSize: 10,
+                                fontWeight: 'semibold'
+                            }}>{strings.products.discountTitle}</Text>
+                            <Text style={{
+                                width: '50%',
+                                textAlign: 'right',
+                                fontSize: 10,
+                                fontWeight: 'semibold'
+                            }}>-{formatCurrency(discountAmount)}</Text>
                         </View>
                     )}
                     {taxAmount > 0 && (
                         <View style={styles.totalsRow}>
-                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.tax} {tax}%</Text>
-                            <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{formatCurrency(taxAmount)}</Text>
+                            <Text style={{
+                                width: '50%',
+                                textAlign: 'right',
+                                fontSize: 10,
+                                fontWeight: 'semibold'
+                            }}>{strings.products.taxTitle}</Text>
+                            <Text style={{
+                                width: '50%',
+                                textAlign: 'right',
+                                fontSize: 10,
+                                fontWeight: 'semibold'
+                            }}>{formatCurrency(taxAmount)}</Text>
                         </View>
                     )}
                     <View style={styles.totalsRow}>
-                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{t.products.total}</Text>
-                        <Text style={{ width: '50%', textAlign: 'right', fontSize: 10, fontWeight: 'semibold' }}>{formatCurrency(total)}</Text>
+                        <Text style={{
+                            width: '50%',
+                            textAlign: 'right',
+                            fontSize: 10,
+                            fontWeight: 'semibold'
+                        }}>{strings.products.total}</Text>
+                        <Text style={{
+                            width: '50%',
+                            textAlign: 'right',
+                            fontSize: 10,
+                            fontWeight: 'semibold'
+                        }}>{formatCurrency(total)}</Text>
                     </View>
                 </View>
                 {notes && (
                     <View style={styles.notesContainer}>
-                        <Text style={styles.notesTitle}>{t.products.notes}:</Text>
+                        <Text style={styles.notesTitle}>{strings.products.notesTitle}:</Text>
                         <Text style={styles.notesText}>{notes}</Text>
                     </View>
                 )}

@@ -1,0 +1,87 @@
+{
+  "HomePage": {
+    "metaTitle": "InvoicingCat - Free Invoice Generator",
+    "metaDescription": "Generate invoices for free",
+    "edit": "Edit",
+    "preview": "Preview"
+  },
+  "NavBar": {
+    "downloadInvoice": "Download invoice"
+  },
+  "Footer": {
+    "createdBy": "❤️ Created with love by Eduard Albu.",
+    "copyright": "InvoicingCat, All rights reserved."
+  },
+  "InvoiceDetails": {
+    "title": "Invoice Details",
+    "uploadLogo": "Upload your logo",
+    "uploadSecureMessage": "Your logo is not uploaded to the server. It is only used locally in the browser.",
+    "invoiceNumber": "Invoice Number",
+    "invoiceDate": "Invoice Date",
+    "senderName": "Sender name",
+    "senderEmail": "Sender email (Optional)",
+    "clientName": "Client name",
+    "clientEmail": "Customer email (Optional)",
+    "subject": "Subject",
+    "dueDate": "Due date",
+    "currency": "Currency",
+    "tax": "Tax %",
+    "invoice": "Invoice {invoiceNumber}",
+    "selectCurrency": "Select currency",
+    "createdBy": "Created by",
+    "billedTo": "Billed to"
+  },
+  "Products": {
+    "title": "Products",
+    "items": "Items",
+    "price": "Price",
+    "quantity": "Qty",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Discount {value}",
+    "discountTitle": "Discount",
+    "selectDiscount": "Select discount",
+    "tax": "Tax {value, number}%",
+    "notes": "Notes",
+    "notesPlaceholder": "Add notes here...",
+    "addItem": "Add item"
+  },
+  "Product": {
+    "name": "Item name",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total:"
+  },
+  "CookieConsent": {
+    "consentModal": {
+      "title": "We use cookies",
+      "description": "We use cookies to improve your experience with Firebase Analytics.",
+      "acceptAllBtn": "Accept all",
+      "acceptNecessaryBtn": "Reject all",
+      "showPreferencesBtn": "Manage preferences"
+    },
+    "preferencesModal": {
+      "title": "Manage cookie preferences",
+      "acceptAllBtn": "Accept all",
+      "acceptNecessaryBtn": "Reject all",
+      "savePreferencesBtn": "Accept selected",
+      "closeIconLabel": "Close modal",
+      "sections": [
+        {
+          "title": "Cookies?",
+          "description": "Yep, just the useful kind 🍪"
+        },
+        {
+          "title": "Necessary Cookies",
+          "description": "Required for the site to function properly.",
+          "linkedCategory": "necessary"
+        },
+        {
+          "title": "Analytics",
+          "description": "Used to track anonymous usage data via Firebase Analytics.",
+          "linkedCategory": "analytics"
+        }
+      ]
+    }
+  }
+}

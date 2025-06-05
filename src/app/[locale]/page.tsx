@@ -1,20 +1,19 @@
+import {use} from 'react';
 import {Container, Flex, HStack, Stack, Tabs} from "@chakra-ui/react";
 import {InvoiceForm} from "@/components/invoice-form";
 import {Preview} from "@/components/preview";
 import {NavBar} from "@/components/nav-bar";
 import {LuEye, LuPencil} from "react-icons/lu";
 import {Footer} from "@/components/footer";
-import {getServerTranslation} from "@/lib/localization";
+import {setRequestLocale} from "next-intl/server";
+import {useTranslations} from 'next-intl';
 
-export default async function Home({
-                                     params,
-                                   }: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  const t = getServerTranslation(locale)
+export default function Home({params}: { params: Promise<{ locale: string }> }) {
+  const {locale} = use(params);
+  setRequestLocale(locale);
+  const t = useTranslations('HomePage');
+
   return (
-    <>
       <Stack colorPalette="orange">
         <NavBar/>
         <Flex flex={1} width="full" pt={8}>
@@ -23,11 +22,11 @@ export default async function Home({
               <Tabs.List>
                 <Tabs.Trigger value="edit">
                   <LuPencil/>
-                  {t.edit}
+                  {t('edit')}
                 </Tabs.Trigger>
                 <Tabs.Trigger value="preview">
                   <LuEye/>
-                  {t.preview}
+                  {t('preview')}
                 </Tabs.Trigger>
               </Tabs.List>
               <Tabs.Content value="edit">
@@ -45,6 +44,5 @@ export default async function Home({
         </Flex>
         <Footer/>
       </Stack>
-    </>
   );
 }

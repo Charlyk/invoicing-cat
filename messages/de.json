@@ -1,0 +1,87 @@
+{
+  "HomePage": {
+    "metaTitle": "InvoicingCat – Kostenloser Rechnungsgenerator",
+    "metaDescription": "Erstelle Rechnungen kostenlos",
+    "edit": "Bearbeiten",
+    "preview": "Vorschau"
+  },
+  "NavBar": {
+    "downloadInvoice": "Rechnung herunterladen"
+  },
+  "Footer": {
+    "createdBy": "❤️ Mit Liebe erstellt von Eduard Albu.",
+    "copyright": "InvoicingCat, Alle Rechte vorbehalten."
+  },
+  "InvoiceDetails": {
+    "title": "Rechnungsdetails",
+    "uploadLogo": "Lade dein Logo hoch",
+    "uploadSecureMessage": "Dein Logo wird nicht auf dem Server gespeichert. Es wird nur lokal im Browser verwendet.",
+    "invoiceNumber": "Rechnungsnummer",
+    "invoiceDate": "Rechnungsdatum",
+    "senderName": "Name des Absenders",
+    "senderEmail": "E-Mail des Absenders (Optional)",
+    "clientName": "Name des Kunden",
+    "clientEmail": "E-Mail des Kunden (Optional)",
+    "subject": "Betreff",
+    "dueDate": "Fälligkeitsdatum",
+    "currency": "Währung",
+    "tax": "Steuer %",
+    "invoice": "Rechnung {invoiceNumber}",
+    "selectCurrency": "Währung auswählen",
+    "createdBy": "Erstellt von",
+    "billedTo": "In Rechnung gestellt an"
+  },
+  "Products": {
+    "title": "Produkte",
+    "items": "Artikel",
+    "price": "Preis",
+    "quantity": "Menge",
+    "total": "Gesamt",
+    "subtotal": "Zwischensumme",
+    "discount": "Rabatt {value}",
+    "discountTitle": "Rabatt",
+    "selectDiscount": "Rabatt auswählen",
+    "tax": "Steuer {value, number}%",
+    "notes": "Notizen",
+    "notesPlaceholder": "Notizen hier hinzufügen...",
+    "addItem": "Artikel hinzufügen"
+  },
+  "Product": {
+    "name": "Artikelname",
+    "quantity": "Menge",
+    "price": "Preis",
+    "total": "Gesamt:"
+  },
+  "CookieConsent": {
+    "consentModal": {
+      "title": "Wir verwenden Cookies",
+      "description": "Wir verwenden Cookies, um Ihre Erfahrung mit Firebase Analytics zu verbessern.",
+      "acceptAllBtn": "Alle akzeptieren",
+      "acceptNecessaryBtn": "Nur notwendige ablehnen",
+      "showPreferencesBtn": "Einstellungen verwalten"
+    },
+    "preferencesModal": {
+      "title": "Cookie-Einstellungen verwalten",
+      "acceptAllBtn": "Alle akzeptieren",
+      "acceptNecessaryBtn": "Nur notwendige ablehnen",
+      "savePreferencesBtn": "Ausgewählte akzeptieren",
+      "closeIconLabel": "Modal schließen",
+      "sections": [
+        {
+          "title": "Cookies?",
+          "description": "Ja, nur die nützlichen 🍪"
+        },
+        {
+          "title": "Notwendige Cookies",
+          "description": "Erforderlich für die ordnungsgemäße Funktion der Website.",
+          "linkedCategory": "necessary"
+        },
+        {
+          "title": "Analyse",
+          "description": "Wird verwendet, um anonyme Nutzungsdaten über Firebase Analytics zu verfolgen.",
+          "linkedCategory": "analytics"
+        }
+      ]
+    }
+  }
+}

@@ -5,10 +5,10 @@ import {Product} from "@/components/invoice-form/product";
 import {LuPlus} from "react-icons/lu";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {addItem, selectItems} from "@/lib/features/ivoicing/invoicingSlice";
-import {useTranslation} from "@/lib/localization";
+import {useTranslations} from "next-intl";
 
 export const Products = () => {
-    const {t} = useTranslation()
+    const t = useTranslations('Products')
     const dispatch = useAppDispatch();
     const products = useAppSelector(selectItems);
 
@@ -17,10 +17,10 @@ export const Products = () => {
             <SimpleGrid py="4" hideBelow="md" columns={{ base: 6, md: 14 }} gap="1">
                 <For
                     each={[
-                        { title: t.products.items, gridColumn: 'span 7' },
-                        { title: t.products.quantity, gridColumn: 'span 2' },
-                        { title: t.products.price, gridColumn: 'span 2' },
-                        { title: t.products.total, gridColumn: 'span 2', align: 'flex-end' },
+                        { title: t('items'), gridColumn: 'span 7' },
+                        { title: t('quantity'), gridColumn: 'span 2' },
+                        { title: t('price'), gridColumn: 'span 2' },
+                        { title: t('total'), gridColumn: 'span 2', align: 'flex-end' },
                         { title: '', gridColumn: 'span 1', align: 'flex-start' },
                     ]}
                 >
@@ -50,7 +50,7 @@ export const Products = () => {
                     onClick={() => dispatch(addItem())}
                 >
                     <LuPlus/>
-                    {t.products.addItem}
+                    {t('addItem')}
                 </Button>
             </Box>
         </Box>
