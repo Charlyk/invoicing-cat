@@ -8,6 +8,7 @@ import currencies, {Currency} from "@/data/currencies";
 import {DateTime} from "luxon";
 import discounts, {DiscountOption} from "@/data/discounts";
 import {Font} from '@react-pdf/renderer'
+import {Client} from "@/lib/db";
 
 Font.register({
     family: "Geist",
@@ -138,8 +139,7 @@ export const InvoiceDocument = ({
                                     dueDate,
                                     subject,
                                     senderName, senderEmail,
-                                    clientName,
-                                    clientEmail,
+                                    client,
                                     products,
                                     currency = currencies[0],
                                     discount = discounts[0],
@@ -152,8 +152,7 @@ export const InvoiceDocument = ({
     subject: string
     senderName: string
     senderEmail: string
-    clientName: string
-    clientEmail: string
+    client: Client
     products: ProductData[]
     currency?: Currency
     discount?: DiscountOption
@@ -201,8 +200,8 @@ export const InvoiceDocument = ({
                         </View>
                         <View style={styles.valueContainer}>
                             <Text style={styles.valueLabel}>{strings.details.billedTo}</Text>
-                            <Text style={styles.valueText}>{clientName || '---'}</Text>
-                            {clientEmail && <Text style={styles.valueText}>{clientEmail}</Text>}
+                            <Text style={styles.valueText}>{client.name || '---'}</Text>
+                            {client.email && <Text style={styles.valueText}>{client.email}</Text>}
                         </View>
                     </View>
                 </View>

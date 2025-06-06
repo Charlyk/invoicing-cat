@@ -17,17 +17,19 @@ import currencies from "@/data/currencies";
 import supportedLocales from "@/data/locales";
 import {Client} from "@/lib/db";
 import {useEffect, useState} from "react";
+import {useClients} from "@/lib/db/clients";
 
 export interface ClientFormDialogProps extends Omit<DialogRootProps, 'children'> {
   client?: Client | null
-  isLoading?: boolean;
   onClose?: () => void
-  onSave?: (client: Client) => void
+  onSaved?: (client: Client) => void
 }
 
 export const ClientFormDialog = (props: ClientFormDialogProps) => {
   const {client: clientToEdit} = props;
   const t = useTranslations('ClientFormDialog')
+  const {createClient} = useClients();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isNameValid, setNameValid] = useState<boolean>(true)
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
@@ -48,10 +50,12 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
     }
   }, [clientToEdit]);
 
-  const onSave = () => {
+  const onSave = async () => {
     if (name.length === 0) {
       return setNameValid(false)
     }
+
+    setIsLoading(true)
 
     const client: Client = {
       id: clientToEdit?.id ?? undefined,
@@ -61,7 +65,12 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
       currency: currency ?? currencies[0].code,
     }
 
-    props.onSave?.(client)
+    const newClient = await createClient(client)
+
+    setIsLoading(false)
+    if (newClient && props.onSaved) {
+      props.onSaved?.(newClient)
+    } else props.onClose?.()
 
     setNameValid(true)
     setName('')
@@ -156,7 +165,7 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
               <Button onClick={props.onClose} variant="outline">
                 {t('cancel')}
               </Button>
-              <Button onClick={onSave} loading={props.isLoading}>
+              <Button onClick={onSave} loading={isLoading}>
                 {t('save')}
               </Button>
             </Dialog.Footer>

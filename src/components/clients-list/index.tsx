@@ -6,23 +6,12 @@ import {LuPlus, LuShieldCheck} from "react-icons/lu";
 import {ClientsTable} from "@/components/clients-list/clients-table";
 import {ClientFormDialog} from "@/components/clients-list/client-form-dialog";
 import {useState} from "react";
-import {useClients} from "@/lib/db/clients";
 import {Client} from "@/lib/db";
 
 export const ClientsList = () => {
   const t = useTranslations('ClientsList')
   const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [clientToEdit, setClientToEdit] = useState<Client | null>(null);
-  const {createClient} = useClients()
-
-  const onSaveClient = async (client: Client) => {
-    setIsLoading(true);
-    await createClient(client)
-    setShowModal(false);
-    setIsLoading(false);
-    setClientToEdit(null)
-  }
 
   return (
     <Stack gap={8} width="full">
@@ -54,13 +43,15 @@ export const ClientsList = () => {
       />
       <ClientFormDialog
         open={showModal}
-        isLoading={isLoading}
         client={clientToEdit}
         onClose={() => {
           setShowModal(false)
           setClientToEdit(null)
         }}
-        onSave={onSaveClient}
+        onSaved={() => {
+          setShowModal(false)
+          setClientToEdit(null)
+        }}
       />
     </Stack>
   )

@@ -7,6 +7,7 @@ import currencies, {Currency} from "@/data/currencies";
 import {ProductData} from "@/components/pdf/InvoiceDocument";
 import discounts, {DiscountOption} from "@/data/discounts";
 import {toaster} from "@/components/ui/toaster";
+import {Client} from "@/lib/db";
 
 export async function downloadInvoicePdf({
                                              strings,
@@ -15,8 +16,7 @@ export async function downloadInvoicePdf({
                                              dueDate,
                                              subject,
                                              senderName, senderEmail,
-                                             clientName,
-                                             clientEmail,
+                                             client,
                                              products,
                                              currency = currencies[0],
                                              discount = discounts[0],
@@ -30,8 +30,7 @@ export async function downloadInvoicePdf({
     subject: string
     senderName: string
     senderEmail: string
-    clientName: string
-    clientEmail: string
+    client: Client,
     products: ProductData[]
     currency?: Currency
     discount?: DiscountOption
@@ -47,8 +46,7 @@ export async function downloadInvoicePdf({
                 subject={subject}
                 senderName={senderName}
                 senderEmail={senderEmail}
-                clientName={clientName}
-                clientEmail={clientEmail}
+                client={client}
                 products={products}
                 tax={tax}
                 currency={currency}

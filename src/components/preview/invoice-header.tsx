@@ -1,7 +1,6 @@
 import {useAppSelector} from "@/lib/hooks";
 import {
-    selectClientEmail,
-    selectClientName,
+    selectClient,
     selectDueDate,
     selectInvoiceNumber, selectLogoFile, selectSenderEmail, selectSenderName,
     selectSubject
@@ -17,8 +16,7 @@ export const InvoiceHeader = () => {
     const subject = useAppSelector(selectSubject)
     const senderName = useAppSelector(selectSenderName)
     const senderEmail = useAppSelector(selectSenderEmail)
-    const clientName = useAppSelector(selectClientName)
-    const clientEmail = useAppSelector(selectClientEmail)
+    const client = useAppSelector(selectClient)
     const logoFile = useAppSelector(selectLogoFile)
 
     return (
@@ -68,11 +66,11 @@ export const InvoiceHeader = () => {
                         {t('billedTo')}
                     </Text>
                     <Text fontSize="md" fontWeight="semibold">
-                        {clientName || '---'}
+                        {client?.name || '---'}
                     </Text>
-                    {clientEmail && (
+                    {client?.email && (
                         <Text fontSize="md" fontWeight="semibold">
-                            {clientEmail}
+                            {client?.email || '---'}
                         </Text>
                     )}
                 </VStack>
