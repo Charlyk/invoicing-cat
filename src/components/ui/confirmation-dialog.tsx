@@ -18,7 +18,7 @@ export const ConfirmationDialog = (props: ConfirmationDialogProps) => {
     <Dialog.Root {...props}>
       <Portal>
         <Dialog.Backdrop />
-        <Dialog.Positioner>
+        <Dialog.Positioner px={4}>
           <Dialog.Content colorPalette="orange">
             <Dialog.Header>
               <Dialog.Title>{title}</Dialog.Title>

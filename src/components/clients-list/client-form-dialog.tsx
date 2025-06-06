@@ -40,6 +40,11 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
       setEmail(clientToEdit.email ?? '')
       setLocale(clientToEdit.locale ?? supportedLocales[0].value)
       setCurrency(clientToEdit.currency ?? currencies[0].code)
+    } else {
+      setName('')
+      setEmail('')
+      setLocale(supportedLocales[0].value)
+      setCurrency(currencies[0].code)
     }
   }, [clientToEdit]);
 
@@ -52,8 +57,8 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
       id: clientToEdit?.id ?? undefined,
       name: name,
       email: email,
-      locale: locale,
-      currency: currency,
+      locale: locale ?? supportedLocales[0].value,
+      currency: currency ?? currencies[0].code,
     }
 
     props.onSave?.(client)
@@ -61,8 +66,8 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
     setNameValid(true)
     setName('')
     setEmail('')
-    setLocale('')
-    setCurrency('')
+    setLocale(supportedLocales[0].value)
+    setCurrency(currencies[0].code)
   }
 
   return (
@@ -93,6 +98,7 @@ export const ClientFormDialog = (props: ClientFormDialogProps) => {
                     placeholder="john.doe@email.com"
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                  <Field.HelperText>{t('optional')}</Field.HelperText>
                 </Field.Root>
                 <VStack gap="1" align="flex-start" flex="1" width="full">
                   <Text as="label" fontSize="sm" fontWeight="medium">

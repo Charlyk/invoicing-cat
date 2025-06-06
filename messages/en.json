@@ -88,6 +88,7 @@
   },
   "ClientsList": {
     "title": "Clients",
+    "privacyMessage": "All the information is stored only in your browser.",
     "metaTitle": "Clients - InvoicingCat",
     "metaDescription": "Clients - InvoicingCat",
     "addClient": "Add client"

@@ -1,8 +1,8 @@
 'use client'
 
-import {Button, Heading, HStack, Stack} from "@chakra-ui/react";
+import {Button, Heading, HStack, Stack, Text, VStack} from "@chakra-ui/react";
 import {useTranslations} from "next-intl";
-import {LuPlus} from "react-icons/lu";
+import {LuPlus, LuShieldCheck} from "react-icons/lu";
 import {ClientsTable} from "@/components/clients-list/clients-table";
 import {ClientFormDialog} from "@/components/clients-list/client-form-dialog";
 import {useState} from "react";
@@ -25,11 +25,19 @@ export const ClientsList = () => {
   }
 
   return (
-    <Stack gap={2} width="full">
+    <Stack gap={8} width="full">
       <HStack gap="4" justify="space-between" width="full" align="center">
-        <Heading as="h1" fontSize="xl" fontWeight="bold">
-          {t('title')}
-        </Heading>
+        <VStack alignItems="flex-start">
+          <Heading as="h1" fontSize="xl" fontWeight="bold">
+            {t('title')}
+          </Heading>
+          <HStack>
+            <LuShieldCheck/>
+            <Text fontSize="sm">
+              {t('privacyMessage')}
+            </Text>
+          </HStack>
+        </VStack>
         <Button onClick={() => setShowModal(true)}>
           <LuPlus/>
           {t('addClient')}

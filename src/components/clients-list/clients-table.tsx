@@ -33,25 +33,25 @@ export const ClientsTable = (props: ClientsTableProps) => {
           onDeleteClient(clientToDelete?.id)
         }}
       />
-      <Table.Root size="sm" hideBelow="md" stickyHeader>
+      <Table.Root size="sm">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeader>{t('name')}</Table.ColumnHeader>
-            <Table.ColumnHeader>{t('email')}</Table.ColumnHeader>
-            <Table.ColumnHeader width="40">{t('locale')}</Table.ColumnHeader>
-            <Table.ColumnHeader width="40">{t('currency')}</Table.ColumnHeader>
-            <Table.ColumnHeader width="40">{t('actions')}</Table.ColumnHeader>
+            <Table.ColumnHeader hideBelow="md">{t('email')}</Table.ColumnHeader>
+            <Table.ColumnHeader hideBelow="md" width="40">{t('locale')}</Table.ColumnHeader>
+            <Table.ColumnHeader hideBelow="md" width="40">{t('currency')}</Table.ColumnHeader>
+            <Table.ColumnHeader width="40" textAlign="right">{t('actions')}</Table.ColumnHeader>
           </Table.Row>
         </Table.Header>
         <Table.Body>
           {allClients.map((client) => (
             <Table.Row key={client.id}>
               <Table.Cell>{client.name}</Table.Cell>
-              <Table.Cell>{client.email}</Table.Cell>
-              <Table.Cell width="40">{client.locale}</Table.Cell>
-              <Table.Cell width="40">{client.currency}</Table.Cell>
-              <Table.Cell width="40">
-                <HStack gap={2}>
+              <Table.Cell hideBelow="md">{client.email}</Table.Cell>
+              <Table.Cell hideBelow="md" width="40">{client.locale}</Table.Cell>
+              <Table.Cell hideBelow="md" width="40">{client.currency}</Table.Cell>
+              <Table.Cell width="40" textAlign="right">
+                <HStack gap={2} justify="flex-end">
                   <Button
                     variant="plain"
                     size="sm"
