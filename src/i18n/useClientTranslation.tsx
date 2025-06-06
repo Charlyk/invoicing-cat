@@ -6,7 +6,7 @@ import {useLocale} from "use-intl";
 
 type TranslationFunction = (key: string, values?: Record<string, unknown>) => string
 
-export function useClientTranslation(locale?: string, namespace = 'InvoiceDocument'): TranslationFunction {
+export function useClientTranslation(locale?: string, namespace: string = 'InvoiceDocument'): TranslationFunction {
   const fallbackLocale = useLocale()
   const [t, setT] = useState<TranslationFunction>(() => () => '')
 
@@ -14,6 +14,7 @@ export function useClientTranslation(locale?: string, namespace = 'InvoiceDocume
     const loadTranslator = async () => {
       const unwrappedLocale = locale ?? fallbackLocale
       const messages = (await import(`../../messages/${unwrappedLocale}.json`)).default
+      console.log('messages', messages, unwrappedLocale)
       const translator = createTranslator({locale: unwrappedLocale, messages, namespace: namespace})
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
@@ -21,7 +22,7 @@ export function useClientTranslation(locale?: string, namespace = 'InvoiceDocume
     }
 
     loadTranslator()
-  }, [locale, namespace])
+  }, [locale, namespace, fallbackLocale])
 
   return t
 }
