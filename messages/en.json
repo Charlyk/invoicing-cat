@@ -23,16 +23,11 @@
     "invoiceDate": "Invoice Date",
     "senderName": "Sender name",
     "senderEmail": "Sender email",
-    "clientName": "Client name",
-    "clientEmail": "Customer email",
     "subject": "Subject",
     "dueDate": "Due date",
     "currency": "Currency",
     "tax": "Tax %",
-    "invoice": "Invoice #{invoiceNumber}",
     "selectCurrency": "Select currency",
-    "createdBy": "Created by",
-    "billedTo": "Billed to",
     "selectClient": "Select client"
   },
   "Products": {
@@ -41,11 +36,8 @@
     "price": "Price",
     "quantity": "Qty",
     "total": "Total",
-    "subtotal": "Subtotal",
-    "discount": "Discount {value}",
     "discountTitle": "Discount",
     "selectDiscount": "Select discount",
-    "tax": "Tax {value, number}%",
     "notes": "Notes",
     "notesPlaceholder": "Add notes here...",
     "addItem": "Add item"
@@ -121,5 +113,21 @@
   "ConfirmationDialog": {
     "confirm": "Confirm",
     "cancel": "Cancel"
+  },
+  "InvoiceDocument": {
+    "invoice": "Invoice #{invoiceNumber}",
+    "dueDate": "Due date",
+    "subject": "Subject",
+    "createdBy": "Created by",
+    "billedTo": "Billed to",
+    "items": "Items",
+    "quantity": "Qty",
+    "price": "Price",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Discount {value}",
+    "tax": "Tax {value, number}%",
+    "grandTotal": "Amount due",
+    "notes": "Notes"
   }
 }

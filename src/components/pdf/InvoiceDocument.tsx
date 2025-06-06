@@ -32,16 +32,18 @@ export type InvoiceStrings = {
         invoiceNumberTitle: string
         createdBy: string
         billedTo: string
+        subtotal: string,
+        grandTotal: string,
+        discountTitle: string,
+        taxTitle: string,
+        notesTitle: string
     },
     products: {
         items: string,
         price: string,
         quantity: string,
         total: string,
-        subtotal: string,
-        discountTitle: string,
-        taxTitle: string,
-        notesTitle: string
+
     }
 }
 
@@ -234,7 +236,7 @@ export const InvoiceDocument = ({
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{strings.products.subtotal}</Text>
+                        }}>{strings.details.subtotal}</Text>
                         <Text style={{
                             width: '50%',
                             textAlign: 'right',
@@ -249,7 +251,7 @@ export const InvoiceDocument = ({
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>{strings.products.discountTitle}</Text>
+                            }}>{strings.details.discountTitle}</Text>
                             <Text style={{
                                 width: '50%',
                                 textAlign: 'right',
@@ -265,7 +267,7 @@ export const InvoiceDocument = ({
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>{strings.products.taxTitle}</Text>
+                            }}>{strings.details.taxTitle}</Text>
                             <Text style={{
                                 width: '50%',
                                 textAlign: 'right',
@@ -280,7 +282,7 @@ export const InvoiceDocument = ({
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{strings.products.total}</Text>
+                        }}>{strings.details.grandTotal}</Text>
                         <Text style={{
                             width: '50%',
                             textAlign: 'right',
@@ -291,7 +293,7 @@ export const InvoiceDocument = ({
                 </View>
                 {notes && (
                     <View style={styles.notesContainer}>
-                        <Text style={styles.notesTitle}>{strings.products.notesTitle}:</Text>
+                        <Text style={styles.notesTitle}>{strings.details.notesTitle}:</Text>
                         <Text style={styles.notesText}>{notes}</Text>
                     </View>
                 )}

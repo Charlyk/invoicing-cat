@@ -1,10 +1,10 @@
 import {useAppSelector} from "@/lib/hooks";
 import {selectCurrency, selectDiscount, selectItems, selectTax} from "@/lib/features/ivoicing/invoicingSlice";
 import {FormatNumber, SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
-import {useTranslations} from "next-intl";
+import {useClientTranslation} from "@/i18n/useClientTranslation";
 
-export const InvoiceTotals = () => {
-    const t = useTranslations('Products')
+export const InvoiceTotals = ({locale}: {locale: string}) => {
+    const t = useClientTranslation(locale)
     const products = useAppSelector(selectItems)
     const currency = useAppSelector(selectCurrency)
     const discount = useAppSelector(selectDiscount)
@@ -26,7 +26,7 @@ export const InvoiceTotals = () => {
         ...(taxAmount > 0
             ? [{title: t('tax', {value: tax}), value: taxAmount}]
             : []),
-        {title: t('total'), value: total}
+        {title: t('grandTotal'), value: total}
     ]
 
     return (

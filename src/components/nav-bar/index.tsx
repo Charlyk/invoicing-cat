@@ -24,11 +24,10 @@ import {InvoiceStrings} from "@/components/pdf/InvoiceDocument";
 import {NavbarLinks} from "@/components/nav-bar/navbar-links";
 import {CollapsibleTrigger} from "@/components/nav-bar/collapsible-trigger";
 import {toaster} from "@/components/ui/toaster";
+import {useClientTranslation} from "@/i18n/useClientTranslation";
 
 export const NavBar = () => {
   const t = useTranslations('NavBar')
-  const invoiceDetailsT = useTranslations('InvoiceDetails')
-  const productsT = useTranslations('Products')
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const invoiceNumber = useAppSelector(selectInvoiceNumber);
   const dueDate = useAppSelector(selectDueDate)
@@ -42,31 +41,35 @@ export const NavBar = () => {
   const tax = useAppSelector(selectTax)
   const notes = useAppSelector(selectNotes)
   const logo = useAppSelector(selectLogoFile)
+  const documentT = useClientTranslation(client?.locale)
 
   const handleDownloadClick = async () => {
-    setIsLoading(true)
     if (!client) {
       return toaster.error({
         description: t('clientNullMessage')
       })
     }
+
+    setIsLoading(true)
+
     const strings: InvoiceStrings = {
       details: {
-        subject: invoiceDetailsT('subject'),
-        dueDate: invoiceDetailsT('dueDate'),
-        invoiceNumberTitle: invoiceDetailsT('invoice', {invoiceNumber}),
-        createdBy: invoiceDetailsT('createdBy'),
-        billedTo: invoiceDetailsT('billedTo'),
+        subject: documentT('subject'),
+        dueDate: documentT('dueDate'),
+        invoiceNumberTitle: documentT('invoice', {invoiceNumber}),
+        createdBy: documentT('createdBy'),
+        billedTo: documentT('billedTo'),
+        subtotal: documentT('subtotal'),
+        discountTitle: documentT('discount', {value: discount.value}),
+        taxTitle: documentT('tax', {value: tax}),
+        notesTitle: documentT('notes'),
+        grandTotal: documentT('grandTotal'),
       },
       products: {
-        items: productsT('items'),
-        price: productsT('price'),
-        quantity: productsT('quantity'),
-        total: productsT('total'),
-        subtotal: productsT('subtotal'),
-        discountTitle: productsT('discount', {value: discount.value}),
-        taxTitle: productsT('tax', {value: tax}),
-        notesTitle: productsT('notes'),
+        items: documentT('items'),
+        price: documentT('price'),
+        quantity: documentT('quantity'),
+        total: documentT('total'),
       }
     }
 

@@ -7,10 +7,9 @@ import {
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {SimpleGrid, Text, VStack, Image, HStack} from "@chakra-ui/react";
 import {DateTime} from "luxon";
-import {useTranslations} from "next-intl";
+import {useClientTranslation} from "@/i18n/useClientTranslation";
 
-export const InvoiceHeader = () => {
-    const t = useTranslations('InvoiceDetails')
+export const InvoiceHeader = ({locale}: {locale: string}) => {
     const invoiceNumber = useAppSelector(selectInvoiceNumber)
     const dueDate = useAppSelector(selectDueDate)
     const subject = useAppSelector(selectSubject)
@@ -18,6 +17,7 @@ export const InvoiceHeader = () => {
     const senderEmail = useAppSelector(selectSenderEmail)
     const client = useAppSelector(selectClient)
     const logoFile = useAppSelector(selectLogoFile)
+    const t = useClientTranslation(locale)
 
     return (
         <VStack gap={8} width="full" overflow="hidden">
