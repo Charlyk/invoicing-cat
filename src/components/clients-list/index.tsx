@@ -31,12 +31,15 @@ export const ClientsList = () => {
           <Heading as="h1" fontSize="xl" fontWeight="bold">
             {t('title')}
           </Heading>
-          <HStack>
+          <HStack hideBelow="md">
             <LuShieldCheck/>
             <Text fontSize="sm">
               {t('privacyMessage')}
             </Text>
           </HStack>
+          <Text fontSize="sm" hideFrom="md">
+            {t('privacyMessage')}
+          </Text>
         </VStack>
         <Button onClick={() => setShowModal(true)}>
           <LuPlus/>

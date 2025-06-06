@@ -33,7 +33,7 @@ export const ClientsTable = (props: ClientsTableProps) => {
           onDeleteClient(clientToDelete?.id)
         }}
       />
-      <Table.Root size="sm">
+      <Table.Root size="sm" variant="outline">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeader>{t('name')}</Table.ColumnHeader>
