@@ -1,133 +1,133 @@
 {
   "HomePage": {
-    "metaTitle": "InvoicingCat - Free Invoice Generator",
-    "metaDescription": "Generate invoices for free",
-    "edit": "Edit",
-    "preview": "Preview"
+    "metaTitle": "InvoicingCat - Kostenloser Rechnungsgenerator",
+    "metaDescription": "Erstellen Sie kostenlos Rechnungen",
+    "edit": "Bearbeiten",
+    "preview": "Vorschau"
   },
   "NavBar": {
-    "downloadInvoice": "Download invoice",
-    "clients": "Clients",
-    "home": "Home",
-    "clientNullMessage": "Please select a client in the invoice form first."
+    "downloadInvoice": "Rechnung herunterladen",
+    "clients": "Kunden",
+    "home": "Startseite",
+    "clientNullMessage": "Bitte wählen Sie zuerst einen Kunden im Formular aus."
   },
   "Footer": {
-    "createdBy": "❤️ Created with love by Eduard Albu.",
-    "copyright": "InvoicingCat, All rights reserved."
+    "createdBy": "❤️ Mit Liebe erstellt von Eduard Albu.",
+    "copyright": "InvoicingCat, Alle Rechte vorbehalten."
   },
   "InvoiceDetails": {
-    "title": "Invoice Details",
-    "uploadLogo": "Upload your logo",
-    "uploadSecureMessage": "Your logo is not uploaded to the server. It is only used locally in the browser.",
-    "invoiceNumber": "Invoice Number",
-    "invoiceDate": "Invoice Date",
-    "senderName": "Sender name",
-    "senderEmail": "Sender email",
-    "subject": "Subject",
-    "dueDate": "Due date",
-    "currency": "Currency",
-    "tax": "Tax %",
-    "selectCurrency": "Select currency",
-    "selectClient": "Select client"
+    "title": "Rechnungsdetails",
+    "uploadLogo": "Logo hochladen",
+    "uploadSecureMessage": "Ihr Logo wird nicht auf dem Server gespeichert. Es wird nur lokal im Browser verwendet.",
+    "invoiceNumber": "Rechnungsnummer",
+    "invoiceDate": "Rechnungsdatum",
+    "senderName": "Absendername",
+    "senderEmail": "Absender-E-Mail",
+    "subject": "Betreff",
+    "dueDate": "Fälligkeitsdatum",
+    "currency": "Währung",
+    "tax": "MwSt %",
+    "selectCurrency": "Währung auswählen",
+    "selectClient": "Kunden auswählen"
   },
   "Products": {
-    "title": "Products",
-    "items": "Items",
-    "price": "Price",
-    "quantity": "Qty",
-    "total": "Total",
-    "discountTitle": "Discount",
-    "selectDiscount": "Select discount",
-    "notes": "Notes",
-    "notesPlaceholder": "Add notes here...",
-    "addItem": "Add item"
+    "title": "Produkte",
+    "items": "Artikel",
+    "price": "Preis",
+    "quantity": "Menge",
+    "total": "Gesamt",
+    "discountTitle": "Rabatt",
+    "selectDiscount": "Rabatt auswählen",
+    "notes": "Notizen",
+    "notesPlaceholder": "Notizen hier hinzufügen...",
+    "addItem": "Artikel hinzufügen"
   },
   "Product": {
-    "name": "Item name",
-    "quantity": "Quantity",
-    "price": "Price",
-    "total": "Total:"
+    "name": "Artikelname",
+    "quantity": "Menge",
+    "price": "Preis",
+    "total": "Gesamt:"
   },
   "CookieConsent": {
     "consentModal": {
-      "title": "We use cookies",
-      "description": "We use cookies to improve your experience with Firebase Analytics.",
-      "acceptAllBtn": "Accept all",
-      "acceptNecessaryBtn": "Reject all",
-      "showPreferencesBtn": "Manage preferences"
+      "title": "Wir verwenden Cookies",
+      "description": "Wir verwenden Cookies, um Ihre Erfahrung mit Firebase Analytics zu verbessern.",
+      "acceptAllBtn": "Alle akzeptieren",
+      "acceptNecessaryBtn": "Nur notwendige ablehnen",
+      "showPreferencesBtn": "Einstellungen verwalten"
     },
     "preferencesModal": {
-      "title": "Manage cookie preferences",
-      "acceptAllBtn": "Accept all",
-      "acceptNecessaryBtn": "Reject all",
-      "savePreferencesBtn": "Accept selected",
-      "closeIconLabel": "Close modal",
+      "title": "Cookie-Einstellungen verwalten",
+      "acceptAllBtn": "Alle akzeptieren",
+      "acceptNecessaryBtn": "Nur notwendige ablehnen",
+      "savePreferencesBtn": "Ausgewählte akzeptieren",
+      "closeIconLabel": "Modal schließen",
       "sections": [
         {
           "title": "Cookies?",
-          "description": "Yep, just the useful kind 🍪"
+          "description": "Ja, nur die nützlichen 🍪"
         },
         {
-          "title": "Necessary Cookies",
-          "description": "Required for the site to function properly.",
+          "title": "Notwendige Cookies",
+          "description": "Erforderlich, damit die Website richtig funktioniert.",
           "linkedCategory": "necessary"
         },
         {
           "title": "Analytics",
-          "description": "Used to track anonymous usage data via Firebase Analytics.",
+          "description": "Verwendet zur anonymen Nachverfolgung über Firebase Analytics.",
           "linkedCategory": "analytics"
         }
       ]
     }
   },
   "ClientsList": {
-    "title": "Clients",
-    "privacyMessage": "All the information is stored only in your browser.",
-    "metaTitle": "Clients - InvoicingCat",
-    "metaDescription": "Clients - InvoicingCat",
-    "addClient": "Add client"
+    "title": "Kunden",
+    "privacyMessage": "Alle Informationen werden nur in Ihrem Browser gespeichert.",
+    "metaTitle": "Kunden - InvoicingCat",
+    "metaDescription": "Kunden - InvoicingCat",
+    "addClient": "Kunden hinzufügen"
   },
   "ClientsTable": {
     "name": "Name",
-    "email": "Email",
-    "locale": "Locale",
-    "currency": "Currency",
-    "edit": "Edit",
-    "delete": "Delete",
-    "actions": "Actions",
-    "deleteClientTitle": "Delete client",
-    "deleteClientMessage": "Please confirm that you want to delete this client. This action can't be undone."
+    "email": "E-Mail",
+    "locale": "Sprache",
+    "currency": "Währung",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "actions": "Aktionen",
+    "deleteClientTitle": "Kunden löschen",
+    "deleteClientMessage": "Bitte bestätigen Sie, dass Sie diesen Kunden löschen möchten. Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "ClientFormDialog": {
-    "addTitle": "Add new client",
-    "editTitle": "Edit client",
-    "name": "Client name",
-    "email": "Client email",
+    "addTitle": "Neuen Kunden hinzufügen",
+    "editTitle": "Kunden bearbeiten",
+    "name": "Kundenname",
+    "email": "Kunden-E-Mail",
     "optional": "Optional",
-    "locale": "Locale",
-    "currency": "Currency",
-    "cancel": "Cancel",
-    "save": "Save",
-    "selectCurrency": "Select currency"
+    "locale": "Sprache",
+    "currency": "Währung",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "selectCurrency": "Währung auswählen"
   },
   "ConfirmationDialog": {
-    "confirm": "Confirm",
-    "cancel": "Cancel"
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen"
   },
   "InvoiceDocument": {
-    "invoice": "Invoice #{invoiceNumber}",
-    "dueDate": "Due date",
-    "subject": "Subject",
-    "createdBy": "Created by",
-    "billedTo": "Billed to",
-    "items": "Items",
-    "quantity": "Qty",
-    "price": "Price",
-    "total": "Total",
-    "subtotal": "Subtotal",
-    "discount": "Discount {value}",
-    "tax": "Tax {value, number}%",
-    "grandTotal": "Amount due",
-    "notes": "Notes"
+    "invoice": "Rechnung #{invoiceNumber}",
+    "dueDate": "Fälligkeitsdatum",
+    "subject": "Betreff",
+    "createdBy": "Erstellt von",
+    "billedTo": "Abgerechnet an",
+    "items": "Artikel",
+    "quantity": "Menge",
+    "price": "Preis",
+    "total": "Gesamt",
+    "subtotal": "Zwischensumme",
+    "discount": "Rabatt {value}",
+    "tax": "MwSt {value, number}%",
+    "grandTotal": "Fälliger Betrag",
+    "notes": "Notizen"
   }
 }
