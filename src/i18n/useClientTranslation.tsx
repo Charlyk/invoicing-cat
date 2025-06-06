@@ -13,7 +13,7 @@ export function useClientTranslation(locale?: string, namespace = 'InvoiceDocume
   useEffect(() => {
     const loadTranslator = async () => {
       const unwrappedLocale = locale ?? fallbackLocale
-      const messages = (await import(`../../../messages/${unwrappedLocale}.json`)).default
+      const messages = (await import(`../../messages/${unwrappedLocale}.json`)).default
       const translator = createTranslator({locale: unwrappedLocale, messages, namespace: namespace})
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
