@@ -14,7 +14,6 @@ export function useClientTranslation(locale?: string, namespace: string = 'Invoi
     const loadTranslator = async () => {
       const unwrappedLocale = locale ?? fallbackLocale
       const messages = (await import(`../../messages/${unwrappedLocale}.json`)).default
-      console.log('messages', messages, unwrappedLocale)
       const translator = createTranslator({locale: unwrappedLocale, messages, namespace: namespace})
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
