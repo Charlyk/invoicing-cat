@@ -85,5 +85,38 @@
         }
       ]
     }
+  },
+  "ClientsList": {
+    "title": "Clients",
+    "metaTitle": "Clients - InvoicingCat",
+    "metaDescription": "Clients - InvoicingCat",
+    "addClient": "Add client"
+  },
+  "ClientsTable": {
+    "name": "Name",
+    "email": "Email",
+    "locale": "Locale",
+    "currency": "Currency",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "Actions",
+    "deleteClientTitle": "Delete client",
+    "deleteClientMessage": "Please confirm that you want to delete this client. This action can't be undone."
+  },
+  "ClientFormDialog": {
+    "addTitle": "Add new client",
+    "editTitle": "Edit client",
+    "name": "Client name",
+    "email": "Client email",
+    "optional": "Optional",
+    "locale": "Locale",
+    "currency": "Currency",
+    "cancel": "Cancel",
+    "save": "Save",
+    "selectCurrency": "Select currency"
+  },
+  "ConfirmationDialog": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   }
 }
