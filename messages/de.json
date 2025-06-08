@@ -8,6 +8,7 @@
   "NavBar": {
     "downloadInvoice": "Rechnung herunterladen",
     "clients": "Kunden",
+    "invoices": "Rechnungen",
     "home": "Startseite",
     "clientNullMessage": "Bitte wählen Sie zuerst einen Kunden im Formular aus."
   },
@@ -28,7 +29,8 @@
     "currency": "Währung",
     "tax": "MwSt %",
     "selectCurrency": "Währung auswählen",
-    "selectClient": "Kunden auswählen"
+    "selectClient": "Kunden auswählen",
+    "lastInvoiceNumber": "Die letzte Rechnungsnummer war #{invoiceNumber}"
   },
   "Products": {
     "title": "Produkte",
@@ -129,5 +131,28 @@
     "tax": "MwSt {value, number}%",
     "grandTotal": "Fälliger Betrag",
     "notes": "Notizen"
+  },
+  "InvoicesPage": {
+    "title": "Rechnungsverlauf",
+    "metaTitle": "Rechnungsverlauf – InvoicingCat",
+    "metaDescription": "Sehen Sie alle Ihre heruntergeladenen Rechnungen und verwalten Sie deren Status."
+  },
+  "InvoicesList": {
+    "title": "Rechnungsverlauf",
+    "privacyMessage": "Alle Informationen werden nur in Ihrem Browser gespeichert."
+  },
+  "InvoicesTable": {
+    "title": "Rechnungsverlauf",
+    "client": "Kunde",
+    "date": "Datum",
+    "status": "Status",
+    "total": "Gesamt",
+    "actions": "Aktionen",
+    "deleteTitle": "Rechnung löschen",
+    "deleteMessage": "Bitte bestätigen Sie, dass Sie diese Rechnung löschen möchten. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "unknown": "Unbekannt",
+    "sent": "Gesendet",
+    "overdue": "Überfällig",
+    "paid": "Bezahlt"
   }
 }

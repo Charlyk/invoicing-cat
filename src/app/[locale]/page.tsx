@@ -15,7 +15,7 @@ export default function Home({params}: { params: Promise<{ locale: string }> }) 
 
   return (
       <Stack colorPalette="orange">
-        <NavBar/>
+        <NavBar downloadable/>
         <Flex flex={1} width="full" pt={8}>
           <Container display="flex" flex="1" width="full">
             <Tabs.Root hideFrom="md" width="full" defaultValue="edit">

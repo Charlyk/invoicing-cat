@@ -8,6 +8,7 @@
   "NavBar": {
     "downloadInvoice": "Descarcă factura",
     "clients": "Clienți",
+    "invoices": "Facturi",
     "home": "Acasă",
     "clientNullMessage": "Te rugăm să selectezi un client mai întâi în formularul facturii."
   },
@@ -28,7 +29,8 @@
     "currency": "Monedă",
     "tax": "Taxă %",
     "selectCurrency": "Selectează moneda",
-    "selectClient": "Selectează clientul"
+    "selectClient": "Selectează clientul",
+    "lastInvoiceNumber": "Ultimul număr de factură a fost #{invoiceNumber}"
   },
   "Products": {
     "title": "Produse",
@@ -129,5 +131,28 @@
     "tax": "Taxă {value, number}%",
     "grandTotal": "Total de plată",
     "notes": "Note"
+  },
+  "InvoicesPage": {
+    "title": "Istoric facturi",
+    "metaTitle": "Istoric facturi - InvoicingCat",
+    "metaDescription": "Vizualizează toate facturile descărcate și gestionează-le statusul."
+  },
+  "InvoicesList": {
+    "title": "Istoric facturi",
+    "privacyMessage": "Toate informațiile sunt stocate doar în browserul tău."
+  },
+  "InvoicesTable": {
+    "title": "Istoric facturi",
+    "client": "Client",
+    "date": "Dată",
+    "status": "Status",
+    "total": "Total",
+    "actions": "Acțiuni",
+    "deleteTitle": "Șterge factura",
+    "deleteMessage": "Confirmă că vrei să ștergi această factură. Această acțiune este ireversibilă.",
+    "unknown": "Necunoscut",
+    "sent": "Trimisă",
+    "overdue": "Expirată",
+    "paid": "Plătită"
   }
 }

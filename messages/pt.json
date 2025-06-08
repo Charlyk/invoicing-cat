@@ -8,6 +8,7 @@
   "NavBar": {
     "downloadInvoice": "Baixar fatura",
     "clients": "Clientes",
+    "invoices": "Faturas",
     "home": "Início",
     "clientNullMessage": "Por favor, selecione um cliente no formulário da fatura primeiro."
   },
@@ -28,7 +29,8 @@
     "currency": "Moeda",
     "tax": "Imposto %",
     "selectCurrency": "Selecionar moeda",
-    "selectClient": "Selecionar cliente"
+    "selectClient": "Selecionar cliente",
+    "lastInvoiceNumber": "O último número da fatura foi #{invoiceNumber}"
   },
   "Products": {
     "title": "Produtos",
@@ -129,5 +131,28 @@
     "tax": "Imposto {value, number}%",
     "grandTotal": "Valor devido",
     "notes": "Notas"
+  },
+  "InvoicesPage": {
+    "title": "Histórico de faturas",
+    "metaTitle": "Histórico de faturas - InvoicingCat",
+    "metaDescription": "Veja todas as suas faturas baixadas e gerencie seu status."
+  },
+  "InvoicesList": {
+    "title": "Histórico de faturas",
+    "privacyMessage": "Todas as informações são armazenadas apenas no seu navegador."
+  },
+  "InvoicesTable": {
+    "title": "Histórico de faturas",
+    "client": "Cliente",
+    "date": "Data",
+    "status": "Status",
+    "total": "Total",
+    "actions": "Ações",
+    "deleteTitle": "Excluir fatura",
+    "deleteMessage": "Confirme que deseja excluir esta fatura. Esta ação não pode ser desfeita.",
+    "unknown": "Desconhecido",
+    "sent": "Enviada",
+    "overdue": "Vencida",
+    "paid": "Paga"
   }
 }

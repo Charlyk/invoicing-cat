@@ -33,7 +33,7 @@ function emptyProduct(): ProductData {
 
 const initialState: InvoicingSliceState = {
   logoFile: null,
-  invoiceNumber: "1",
+  invoiceNumber: '',
   senderName: '',
   senderEmail: '',
   client: null,
