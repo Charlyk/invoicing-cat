@@ -9,6 +9,10 @@ export const NavbarLinks = (props: StackProps) => {
       name: t('clients'),
       href: '/clients',
     },
+    {
+      name: t('invoices'),
+      href: '/invoices',
+    }
   ]
 
   return (

@@ -8,6 +8,7 @@
   "NavBar": {
     "downloadInvoice": "Download invoice",
     "clients": "Clients",
+    "invoices": "Invoices",
     "home": "Home",
     "clientNullMessage": "Please select a client in the invoice form first."
   },
@@ -28,7 +29,8 @@
     "currency": "Currency",
     "tax": "Tax %",
     "selectCurrency": "Select currency",
-    "selectClient": "Select client"
+    "selectClient": "Select client",
+    "lastInvoiceNumber": "Last invoice number was #{invoiceNumber}"
   },
   "Products": {
     "title": "Products",
@@ -129,5 +131,28 @@
     "tax": "Tax {value, number}%",
     "grandTotal": "Amount due",
     "notes": "Notes"
+  },
+  "InvoicesPage": {
+    "title": "Invoice history",
+    "metaTitle": "Invoice history - InvoicingCat",
+    "metaDescription": "View all your downloaded invoices and manage their status."
+  },
+  "InvoicesList": {
+    "title": "Invoice history",
+    "privacyMessage": "All the information is stored only in your browser."
+  },
+  "InvoicesTable": {
+    "title": "Invoice history",
+    "client": "Client",
+    "date": "Date",
+    "status": "Status",
+    "total": "Total",
+    "actions": "Actions",
+    "deleteTitle": "Delete invoice",
+    "deleteMessage": "Please confirm that you want to delete this invoice. This action can't be undone.",
+    "unknown": "Unknown",
+    "sent": "Sent",
+    "overdue": "Overdue",
+    "paid": "Paid"
   }
 }
