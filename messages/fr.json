@@ -6,7 +6,10 @@
     "preview": "Aperçu"
   },
   "NavBar": {
-    "downloadInvoice": "Télécharger la facture"
+    "downloadInvoice": "Télécharger la facture",
+    "clients": "Clients",
+    "home": "Accueil",
+    "clientNullMessage": "Veuillez d'abord sélectionner un client dans le formulaire de facture."
   },
   "Footer": {
     "createdBy": "❤️ Créé avec amour par Eduard Albu.",
@@ -14,22 +17,18 @@
   },
   "InvoiceDetails": {
     "title": "Détails de la facture",
-    "uploadLogo": "Télécharger votre logo",
-    "uploadSecureMessage": "Votre logo n'est pas téléchargé sur le serveur. Il est utilisé uniquement localement dans le navigateur.",
+    "uploadLogo": "Téléchargez votre logo",
+    "uploadSecureMessage": "Votre logo n'est pas téléchargé sur le serveur. Il est uniquement utilisé localement dans le navigateur.",
     "invoiceNumber": "Numéro de facture",
     "invoiceDate": "Date de la facture",
     "senderName": "Nom de l'expéditeur",
-    "senderEmail": "E-mail de l'expéditeur (Optionnel)",
-    "clientName": "Nom du client",
-    "clientEmail": "E-mail du client (Optionnel)",
-    "subject": "Sujet",
+    "senderEmail": "Email de l'expéditeur",
+    "subject": "Objet",
     "dueDate": "Date d'échéance",
     "currency": "Devise",
     "tax": "TVA %",
-    "invoice": "Facture {invoiceNumber}",
-    "selectCurrency": "Sélectionner la devise",
-    "createdBy": "Créé par",
-    "billedTo": "Facturé à"
+    "selectCurrency": "Sélectionnez une devise",
+    "selectClient": "Sélectionnez un client"
   },
   "Products": {
     "title": "Produits",
@@ -37,11 +36,8 @@
     "price": "Prix",
     "quantity": "Quantité",
     "total": "Total",
-    "subtotal": "Sous-total",
-    "discount": "Remise {value}",
     "discountTitle": "Remise",
     "selectDiscount": "Sélectionner une remise",
-    "tax": "TVA {value, number}%",
     "notes": "Notes",
     "notesPlaceholder": "Ajoutez des notes ici...",
     "addItem": "Ajouter un article"
@@ -69,7 +65,7 @@
       "sections": [
         {
           "title": "Cookies ?",
-          "description": "Oui, seulement les utiles 🍪"
+          "description": "Oui, uniquement les utiles 🍪"
         },
         {
           "title": "Cookies nécessaires",
@@ -78,10 +74,60 @@
         },
         {
           "title": "Analyse",
-          "description": "Utilisé pour suivre l'utilisation anonyme via Firebase Analytics.",
+          "description": "Utilisé pour suivre les données anonymes via Firebase Analytics.",
           "linkedCategory": "analytics"
         }
       ]
     }
+  },
+  "ClientsList": {
+    "title": "Clients",
+    "privacyMessage": "Toutes les informations sont stockées uniquement dans votre navigateur.",
+    "metaTitle": "Clients - InvoicingCat",
+    "metaDescription": "Clients - InvoicingCat",
+    "addClient": "Ajouter un client"
+  },
+  "ClientsTable": {
+    "name": "Nom",
+    "email": "Email",
+    "locale": "Langue",
+    "currency": "Devise",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "actions": "Actions",
+    "deleteClientTitle": "Supprimer le client",
+    "deleteClientMessage": "Veuillez confirmer la suppression de ce client. Cette action est irréversible."
+  },
+  "ClientFormDialog": {
+    "addTitle": "Ajouter un nouveau client",
+    "editTitle": "Modifier le client",
+    "name": "Nom du client",
+    "email": "Email du client",
+    "optional": "Optionnel",
+    "locale": "Langue",
+    "currency": "Devise",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "selectCurrency": "Sélectionnez une devise"
+  },
+  "ConfirmationDialog": {
+    "confirm": "Confirmer",
+    "cancel": "Annuler"
+  },
+  "InvoiceDocument": {
+    "invoice": "Facture n°{invoiceNumber}",
+    "dueDate": "Date d'échéance",
+    "subject": "Objet",
+    "createdBy": "Créé par",
+    "billedTo": "Facturé à",
+    "items": "Articles",
+    "quantity": "Quantité",
+    "price": "Prix",
+    "total": "Total",
+    "subtotal": "Sous-total",
+    "discount": "Remise {value}",
+    "tax": "TVA {value, number}%",
+    "grandTotal": "Montant dû",
+    "notes": "Notes"
   }
 }

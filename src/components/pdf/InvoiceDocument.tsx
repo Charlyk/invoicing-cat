@@ -4,10 +4,11 @@
 import React from 'react';
 import {Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer';
 import {colors} from '@/components/ui/theme';
-import currencies, {Currency} from "@/data/currencies";
 import {DateTime} from "luxon";
 import discounts, {DiscountOption} from "@/data/discounts";
 import {Font} from '@react-pdf/renderer'
+import {Client} from "@/lib/db";
+import formatCurrencyWithClient from "@/lib/formatCurrencyWithClient";
 
 Font.register({
     family: "Geist",
@@ -31,16 +32,18 @@ export type InvoiceStrings = {
         invoiceNumberTitle: string
         createdBy: string
         billedTo: string
+        subtotal: string,
+        grandTotal: string,
+        discountTitle: string,
+        taxTitle: string,
+        notesTitle: string
     },
     products: {
         items: string,
         price: string,
         quantity: string,
         total: string,
-        subtotal: string,
-        discountTitle: string,
-        taxTitle: string,
-        notesTitle: string
+
     }
 }
 
@@ -138,10 +141,9 @@ export const InvoiceDocument = ({
                                     dueDate,
                                     subject,
                                     senderName, senderEmail,
-                                    clientName,
-                                    clientEmail,
+                                    client,
                                     products,
-                                    currency = currencies[0],
+
                                     discount = discounts[0],
                                     tax = 0,
                                     notes = ''
@@ -152,10 +154,8 @@ export const InvoiceDocument = ({
     subject: string
     senderName: string
     senderEmail: string
-    clientName: string
-    clientEmail: string
+    client: Client
     products: ProductData[]
-    currency?: Currency
     discount?: DiscountOption
     tax?: number // percent (e.g., 15)
     notes?: string
@@ -165,12 +165,6 @@ export const InvoiceDocument = ({
     const taxableBase = subtotal - discountAmount
     const taxAmount = (tax / 100) * taxableBase
     const total = taxableBase + taxAmount
-
-    const formatCurrency = (value: number) =>
-        new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: currency.code || 'USD',
-        }).format(value);
 
     return (
         <Document>
@@ -201,8 +195,8 @@ export const InvoiceDocument = ({
                         </View>
                         <View style={styles.valueContainer}>
                             <Text style={styles.valueLabel}>{strings.details.billedTo}</Text>
-                            <Text style={styles.valueText}>{clientName || '---'}</Text>
-                            {clientEmail && <Text style={styles.valueText}>{clientEmail}</Text>}
+                            <Text style={styles.valueText}>{client.name || '---'}</Text>
+                            {client.email && <Text style={styles.valueText}>{client.email}</Text>}
                         </View>
                     </View>
                 </View>
@@ -219,10 +213,10 @@ export const InvoiceDocument = ({
                             <Text style={[styles.cell, styles.col8]}>{item.title}</Text>
                             <Text style={[styles.cell, styles.col2]}>{item.quantity}</Text>
                             <Text style={[styles.cell, styles.col2]}>
-                                {formatCurrency(item.price)}
+                                {formatCurrencyWithClient(item.price, client)}
                             </Text>
                             <Text style={[styles.cell, styles.colTotal]}>
-                                {formatCurrency((item.price * item.quantity))}
+                                {formatCurrencyWithClient(item.price * item.quantity, client)}
                             </Text>
                         </View>
                     ))}
@@ -235,13 +229,13 @@ export const InvoiceDocument = ({
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{strings.products.subtotal}</Text>
+                        }}>{strings.details.subtotal}</Text>
                         <Text style={{
                             width: '50%',
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{formatCurrency(subtotal)}</Text>
+                        }}>{formatCurrencyWithClient(subtotal, client)}</Text>
                     </View>
                     {discountAmount > 0 && (
                         <View style={styles.totalsRow}>
@@ -250,13 +244,13 @@ export const InvoiceDocument = ({
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>{strings.products.discountTitle}</Text>
+                            }}>{strings.details.discountTitle}</Text>
                             <Text style={{
                                 width: '50%',
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>-{formatCurrency(discountAmount)}</Text>
+                            }}>-{formatCurrencyWithClient(discountAmount, client)}</Text>
                         </View>
                     )}
                     {taxAmount > 0 && (
@@ -266,13 +260,13 @@ export const InvoiceDocument = ({
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>{strings.products.taxTitle}</Text>
+                            }}>{strings.details.taxTitle}</Text>
                             <Text style={{
                                 width: '50%',
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>{formatCurrency(taxAmount)}</Text>
+                            }}>{formatCurrencyWithClient(taxAmount, client)}</Text>
                         </View>
                     )}
                     <View style={styles.totalsRow}>
@@ -281,18 +275,18 @@ export const InvoiceDocument = ({
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{strings.products.total}</Text>
+                        }}>{strings.details.grandTotal}</Text>
                         <Text style={{
                             width: '50%',
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{formatCurrency(total)}</Text>
+                        }}>{formatCurrencyWithClient(total, client)}</Text>
                     </View>
                 </View>
                 {notes && (
                     <View style={styles.notesContainer}>
-                        <Text style={styles.notesTitle}>{strings.products.notesTitle}:</Text>
+                        <Text style={styles.notesTitle}>{strings.details.notesTitle}:</Text>
                         <Text style={styles.notesText}>{notes}</Text>
                     </View>
                 )}

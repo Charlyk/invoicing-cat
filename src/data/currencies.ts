@@ -8,6 +8,7 @@ const currencies: Currency[] = [
     { code: 'USD', name: 'United States Dollar', symbol: '$' },
     { code: 'EUR', name: 'Euro', symbol: '€' },
     { code: 'GBP', name: 'British Pound Sterling', symbol: '£' },
+    { code: 'RON', name: 'Romanian Leu', symbol: 'lei' },
     { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
     { code: 'CHF', name: 'Swiss Franc', symbol: 'CHF' },
     { code: 'CAD', name: 'Canadian Dollar', symbol: '$' },
