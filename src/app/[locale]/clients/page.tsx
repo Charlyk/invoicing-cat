@@ -1,48 +1,72 @@
 import {use} from 'react';
-import {Container, Flex, HStack, Stack, Tabs} from "@chakra-ui/react";
-import {InvoiceForm} from "@/components/invoice-form";
-import {Preview} from "@/components/preview";
+import {Container, Flex, Stack} from "@chakra-ui/react";
 import {NavBar} from "@/components/nav-bar";
-import {LuEye, LuPencil} from "react-icons/lu";
 import {Footer} from "@/components/footer";
-import {setRequestLocale} from "next-intl/server";
-import {useTranslations} from 'next-intl';
+import {getTranslations, setRequestLocale} from "next-intl/server";
+import {ClientsList} from "@/components/clients-list";
+import {routing} from "@/i18n/routing";
+import type {Metadata} from "next";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
+
+export async function generateMetadata({params}: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'ClientsList'});
+
+  return {
+    metadataBase: new URL('https://invoicingcat.com'),
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    icons: {
+      icon: [
+        {url: "/favicon.ico", sizes: "any"},
+        {url: "/favicon-16x16.png", sizes: "16x16"},
+        {url: "/favicon-32x32.png", sizes: "32x32"},
+      ],
+      apple: "/apple-touch-icon.png",
+      shortcut: "/favicon.ico",
+    },
+    manifest: "/site.webmanifest", // Optional if you plan to add PWA support
+    openGraph: {
+      title: t('metaTitle'),
+      description: t('metaDescription'),
+      url: "https://invoicingcat.com",
+      siteName: "SoloBridge",
+      images: [
+        {
+          url: "/android-chrome-512x512.png",
+          width: 512,
+          height: 512,
+          alt: "InvoicingCat logo",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: t('metaTitle'),
+      description: t('metaDescription'),
+      images: ["/android-chrome-192x192.png"],
+      creator: "@eduardalbu",
+    },
+  };
+}
 
 export default function Clients({params}: { params: Promise<{ locale: string }> }) {
-    const {locale} = use(params);
-    setRequestLocale(locale);
-    const t = useTranslations('HomePage');
+  const {locale} = use(params);
+  setRequestLocale(locale);
 
-    return (
-        <Stack colorPalette="orange">
-            <NavBar/>
-            <Flex flex={1} width="full" pt={8}>
-                <Container display="flex" flex="1" width="full">
-                    <Tabs.Root hideFrom="md" width="full" defaultValue="edit">
-                        <Tabs.List>
-                            <Tabs.Trigger value="edit">
-                                <LuPencil/>
-                                {t('edit')}
-                            </Tabs.Trigger>
-                            <Tabs.Trigger value="preview">
-                                <LuEye/>
-                                {t('preview')}
-                            </Tabs.Trigger>
-                        </Tabs.List>
-                        <Tabs.Content value="edit">
-                            <InvoiceForm/>
-                        </Tabs.Content>
-                        <Tabs.Content value="preview">
-                            <Preview/>
-                        </Tabs.Content>
-                    </Tabs.Root>
-                    <HStack width="full" align="flex-start" hideBelow="md" gap="8" py={{ base: 2, md: 4 }}>
-                        <InvoiceForm/>
-                        <Preview/>
-                    </HStack>
-                </Container>
-            </Flex>
-            <Footer/>
-        </Stack>
-    );
+  return (
+    <Stack colorPalette="orange">
+      <NavBar/>
+      <Flex flex={1} width="full" pt={8}>
+        <Container display="flex" flex="1" width="full">
+          <ClientsList/>
+        </Container>
+      </Flex>
+      <Footer/>
+    </Stack>
+  );
 }

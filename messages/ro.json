@@ -1,0 +1,133 @@
+{
+  "HomePage": {
+    "metaTitle": "InvoicingCat - Generator Gratuit de Facturi",
+    "metaDescription": "Generează facturi gratuit",
+    "edit": "Editează",
+    "preview": "Previzualizare"
+  },
+  "NavBar": {
+    "downloadInvoice": "Descarcă factura",
+    "clients": "Clienți",
+    "home": "Acasă",
+    "clientNullMessage": "Te rugăm să selectezi un client mai întâi în formularul facturii."
+  },
+  "Footer": {
+    "createdBy": "❤️ Creat cu drag de Eduard Albu.",
+    "copyright": "InvoicingCat, Toate drepturile rezervate."
+  },
+  "InvoiceDetails": {
+    "title": "Detalii Factură",
+    "uploadLogo": "Încarcă sigla ta",
+    "uploadSecureMessage": "Sigla ta nu este trimisă pe server. Este utilizată doar local în browser.",
+    "invoiceNumber": "Număr factură",
+    "invoiceDate": "Data facturii",
+    "senderName": "Nume expeditor",
+    "senderEmail": "Email expeditor",
+    "subject": "Subiect",
+    "dueDate": "Scadență",
+    "currency": "Monedă",
+    "tax": "Taxă %",
+    "selectCurrency": "Selectează moneda",
+    "selectClient": "Selectează clientul"
+  },
+  "Products": {
+    "title": "Produse",
+    "items": "Articole",
+    "price": "Preț",
+    "quantity": "Cant.",
+    "total": "Total",
+    "discountTitle": "Reducere",
+    "selectDiscount": "Selectează reducerea",
+    "notes": "Note",
+    "notesPlaceholder": "Adaugă note aici...",
+    "addItem": "Adaugă articol"
+  },
+  "Product": {
+    "name": "Nume articol",
+    "quantity": "Cantitate",
+    "price": "Preț",
+    "total": "Total:"
+  },
+  "CookieConsent": {
+    "consentModal": {
+      "title": "Folosim cookie-uri",
+      "description": "Folosim cookie-uri pentru a-ți îmbunătăți experiența cu Firebase Analytics.",
+      "acceptAllBtn": "Acceptă toate",
+      "acceptNecessaryBtn": "Respinge toate",
+      "showPreferencesBtn": "Gestionează preferințele"
+    },
+    "preferencesModal": {
+      "title": "Gestionează preferințele cookie",
+      "acceptAllBtn": "Acceptă toate",
+      "acceptNecessaryBtn": "Respinge toate",
+      "savePreferencesBtn": "Acceptă selecția",
+      "closeIconLabel": "Închide fereastra",
+      "sections": [
+        {
+          "title": "Cookie-uri?",
+          "description": "Da, doar cele utile 🍪"
+        },
+        {
+          "title": "Cookie-uri necesare",
+          "description": "Necesare pentru funcționarea corectă a site-ului.",
+          "linkedCategory": "necessary"
+        },
+        {
+          "title": "Analitice",
+          "description": "Folosite pentru a urmări date anonime prin Firebase Analytics.",
+          "linkedCategory": "analytics"
+        }
+      ]
+    }
+  },
+  "ClientsList": {
+    "title": "Clienți",
+    "privacyMessage": "Toate informațiile sunt stocate doar în browserul tău.",
+    "metaTitle": "Clienți - InvoicingCat",
+    "metaDescription": "Clienți - InvoicingCat",
+    "addClient": "Adaugă client"
+  },
+  "ClientsTable": {
+    "name": "Nume",
+    "email": "Email",
+    "locale": "Limbă",
+    "currency": "Monedă",
+    "edit": "Editează",
+    "delete": "Șterge",
+    "actions": "Acțiuni",
+    "deleteClientTitle": "Șterge clientul",
+    "deleteClientMessage": "Te rugăm să confirmi că vrei să ștergi acest client. Această acțiune nu poate fi anulată."
+  },
+  "ClientFormDialog": {
+    "addTitle": "Adaugă client nou",
+    "editTitle": "Editează clientul",
+    "name": "Nume client",
+    "email": "Email client",
+    "optional": "Opțional",
+    "locale": "Limbă",
+    "currency": "Monedă",
+    "cancel": "Anulează",
+    "save": "Salvează",
+    "selectCurrency": "Selectează moneda"
+  },
+  "ConfirmationDialog": {
+    "confirm": "Confirmă",
+    "cancel": "Anulează"
+  },
+  "InvoiceDocument": {
+    "invoice": "Factura #{invoiceNumber}",
+    "dueDate": "Scadență",
+    "subject": "Subiect",
+    "createdBy": "Creat de",
+    "billedTo": "Facturat către",
+    "items": "Articole",
+    "quantity": "Cant.",
+    "price": "Preț",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Reducere {value}",
+    "tax": "Taxă {value, number}%",
+    "grandTotal": "Total de plată",
+    "notes": "Note"
+  }
+}

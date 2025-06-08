@@ -1,25 +1,23 @@
 import {useAppSelector} from "@/lib/hooks";
 import {
-    selectClientEmail,
-    selectClientName,
+    selectClient,
     selectDueDate,
     selectInvoiceNumber, selectLogoFile, selectSenderEmail, selectSenderName,
     selectSubject
 } from "@/lib/features/ivoicing/invoicingSlice";
 import {SimpleGrid, Text, VStack, Image, HStack} from "@chakra-ui/react";
 import {DateTime} from "luxon";
-import {useTranslations} from "next-intl";
+import {useClientTranslation} from "@/i18n/useClientTranslation";
 
-export const InvoiceHeader = () => {
-    const t = useTranslations('InvoiceDetails')
+export const InvoiceHeader = ({locale}: {locale: string}) => {
     const invoiceNumber = useAppSelector(selectInvoiceNumber)
     const dueDate = useAppSelector(selectDueDate)
     const subject = useAppSelector(selectSubject)
     const senderName = useAppSelector(selectSenderName)
     const senderEmail = useAppSelector(selectSenderEmail)
-    const clientName = useAppSelector(selectClientName)
-    const clientEmail = useAppSelector(selectClientEmail)
+    const client = useAppSelector(selectClient)
     const logoFile = useAppSelector(selectLogoFile)
+    const t = useClientTranslation(locale)
 
     return (
         <VStack gap={8} width="full" overflow="hidden">
@@ -68,11 +66,11 @@ export const InvoiceHeader = () => {
                         {t('billedTo')}
                     </Text>
                     <Text fontSize="md" fontWeight="semibold">
-                        {clientName || '---'}
+                        {client?.name || '---'}
                     </Text>
-                    {clientEmail && (
+                    {client?.email && (
                         <Text fontSize="md" fontWeight="semibold">
-                            {clientEmail}
+                            {client?.email || '---'}
                         </Text>
                     )}
                 </VStack>

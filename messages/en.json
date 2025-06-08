@@ -8,7 +8,8 @@
   "NavBar": {
     "downloadInvoice": "Download invoice",
     "clients": "Clients",
-    "home": "Home"
+    "home": "Home",
+    "clientNullMessage": "Please select a client in the invoice form first."
   },
   "Footer": {
     "createdBy": "❤️ Created with love by Eduard Albu.",
@@ -22,16 +23,12 @@
     "invoiceDate": "Invoice Date",
     "senderName": "Sender name",
     "senderEmail": "Sender email",
-    "clientName": "Client name",
-    "clientEmail": "Customer email",
     "subject": "Subject",
     "dueDate": "Due date",
     "currency": "Currency",
     "tax": "Tax %",
-    "invoice": "Invoice {invoiceNumber}",
     "selectCurrency": "Select currency",
-    "createdBy": "Created by",
-    "billedTo": "Billed to"
+    "selectClient": "Select client"
   },
   "Products": {
     "title": "Products",
@@ -39,11 +36,8 @@
     "price": "Price",
     "quantity": "Qty",
     "total": "Total",
-    "subtotal": "Subtotal",
-    "discount": "Discount {value}",
     "discountTitle": "Discount",
     "selectDiscount": "Select discount",
-    "tax": "Tax {value, number}%",
     "notes": "Notes",
     "notesPlaceholder": "Add notes here...",
     "addItem": "Add item"
@@ -85,5 +79,55 @@
         }
       ]
     }
+  },
+  "ClientsList": {
+    "title": "Clients",
+    "privacyMessage": "All the information is stored only in your browser.",
+    "metaTitle": "Clients - InvoicingCat",
+    "metaDescription": "Clients - InvoicingCat",
+    "addClient": "Add client"
+  },
+  "ClientsTable": {
+    "name": "Name",
+    "email": "Email",
+    "locale": "Locale",
+    "currency": "Currency",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "Actions",
+    "deleteClientTitle": "Delete client",
+    "deleteClientMessage": "Please confirm that you want to delete this client. This action can't be undone."
+  },
+  "ClientFormDialog": {
+    "addTitle": "Add new client",
+    "editTitle": "Edit client",
+    "name": "Client name",
+    "email": "Client email",
+    "optional": "Optional",
+    "locale": "Locale",
+    "currency": "Currency",
+    "cancel": "Cancel",
+    "save": "Save",
+    "selectCurrency": "Select currency"
+  },
+  "ConfirmationDialog": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "InvoiceDocument": {
+    "invoice": "Invoice #{invoiceNumber}",
+    "dueDate": "Due date",
+    "subject": "Subject",
+    "createdBy": "Created by",
+    "billedTo": "Billed to",
+    "items": "Items",
+    "quantity": "Qty",
+    "price": "Price",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Discount {value}",
+    "tax": "Tax {value, number}%",
+    "grandTotal": "Amount due",
+    "notes": "Notes"
   }
 }

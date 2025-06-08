@@ -1,14 +1,15 @@
 {
   "HomePage": {
-    "metaTitle": "InvoicingCat – Kostenloser Rechnungsgenerator",
-    "metaDescription": "Erstelle Rechnungen kostenlos",
+    "metaTitle": "InvoicingCat - Kostenloser Rechnungsgenerator",
+    "metaDescription": "Erstellen Sie kostenlos Rechnungen",
     "edit": "Bearbeiten",
     "preview": "Vorschau"
   },
   "NavBar": {
     "downloadInvoice": "Rechnung herunterladen",
-    "clients": "Clients",
-    "home": "Home"
+    "clients": "Kunden",
+    "home": "Startseite",
+    "clientNullMessage": "Bitte wählen Sie zuerst einen Kunden im Formular aus."
   },
   "Footer": {
     "createdBy": "❤️ Mit Liebe erstellt von Eduard Albu.",
@@ -16,22 +17,18 @@
   },
   "InvoiceDetails": {
     "title": "Rechnungsdetails",
-    "uploadLogo": "Lade dein Logo hoch",
-    "uploadSecureMessage": "Dein Logo wird nicht auf dem Server gespeichert. Es wird nur lokal im Browser verwendet.",
+    "uploadLogo": "Logo hochladen",
+    "uploadSecureMessage": "Ihr Logo wird nicht auf dem Server gespeichert. Es wird nur lokal im Browser verwendet.",
     "invoiceNumber": "Rechnungsnummer",
     "invoiceDate": "Rechnungsdatum",
-    "senderName": "Name des Absenders",
-    "senderEmail": "E-Mail des Absenders",
-    "clientName": "Name des Kunden",
-    "clientEmail": "E-Mail des Kunden",
+    "senderName": "Absendername",
+    "senderEmail": "Absender-E-Mail",
     "subject": "Betreff",
     "dueDate": "Fälligkeitsdatum",
     "currency": "Währung",
-    "tax": "Steuer %",
-    "invoice": "Rechnung {invoiceNumber}",
+    "tax": "MwSt %",
     "selectCurrency": "Währung auswählen",
-    "createdBy": "Erstellt von",
-    "billedTo": "In Rechnung gestellt an"
+    "selectClient": "Kunden auswählen"
   },
   "Products": {
     "title": "Produkte",
@@ -39,11 +36,8 @@
     "price": "Preis",
     "quantity": "Menge",
     "total": "Gesamt",
-    "subtotal": "Zwischensumme",
-    "discount": "Rabatt {value}",
     "discountTitle": "Rabatt",
     "selectDiscount": "Rabatt auswählen",
-    "tax": "Steuer {value, number}%",
     "notes": "Notizen",
     "notesPlaceholder": "Notizen hier hinzufügen...",
     "addItem": "Artikel hinzufügen"
@@ -75,15 +69,65 @@
         },
         {
           "title": "Notwendige Cookies",
-          "description": "Erforderlich für die ordnungsgemäße Funktion der Website.",
+          "description": "Erforderlich, damit die Website richtig funktioniert.",
           "linkedCategory": "necessary"
         },
         {
-          "title": "Analyse",
-          "description": "Wird verwendet, um anonyme Nutzungsdaten über Firebase Analytics zu verfolgen.",
+          "title": "Analytics",
+          "description": "Verwendet zur anonymen Nachverfolgung über Firebase Analytics.",
           "linkedCategory": "analytics"
         }
       ]
     }
+  },
+  "ClientsList": {
+    "title": "Kunden",
+    "privacyMessage": "Alle Informationen werden nur in Ihrem Browser gespeichert.",
+    "metaTitle": "Kunden - InvoicingCat",
+    "metaDescription": "Kunden - InvoicingCat",
+    "addClient": "Kunden hinzufügen"
+  },
+  "ClientsTable": {
+    "name": "Name",
+    "email": "E-Mail",
+    "locale": "Sprache",
+    "currency": "Währung",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "actions": "Aktionen",
+    "deleteClientTitle": "Kunden löschen",
+    "deleteClientMessage": "Bitte bestätigen Sie, dass Sie diesen Kunden löschen möchten. Diese Aktion kann nicht rückgängig gemacht werden."
+  },
+  "ClientFormDialog": {
+    "addTitle": "Neuen Kunden hinzufügen",
+    "editTitle": "Kunden bearbeiten",
+    "name": "Kundenname",
+    "email": "Kunden-E-Mail",
+    "optional": "Optional",
+    "locale": "Sprache",
+    "currency": "Währung",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "selectCurrency": "Währung auswählen"
+  },
+  "ConfirmationDialog": {
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen"
+  },
+  "InvoiceDocument": {
+    "invoice": "Rechnung #{invoiceNumber}",
+    "dueDate": "Fälligkeitsdatum",
+    "subject": "Betreff",
+    "createdBy": "Erstellt von",
+    "billedTo": "Abgerechnet an",
+    "items": "Artikel",
+    "quantity": "Menge",
+    "price": "Preis",
+    "total": "Gesamt",
+    "subtotal": "Zwischensumme",
+    "discount": "Rabatt {value}",
+    "tax": "MwSt {value, number}%",
+    "grandTotal": "Fälliger Betrag",
+    "notes": "Notizen"
   }
 }

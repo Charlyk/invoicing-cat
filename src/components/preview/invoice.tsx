@@ -17,7 +17,7 @@ import {InvoicePage, MobileInvoicePage} from "@/components/preview/invoice-page"
 import {InvoiceTotals} from "@/components/preview/invoice-totals";
 import {InvoiceProducts} from "@/components/preview/invoice-products";
 import {InvoiceHeader} from "@/components/preview/invoice-header";
-import {useTranslations} from "next-intl";
+import {useClientTranslation} from "@/i18n/useClientTranslation";
 
 // 🧠 Pagination utility
 function paginateInvoiceItems<T>({
@@ -80,8 +80,8 @@ function paginateInvoiceItems<T>({
   return pages;
 }
 
-export const Invoice = () => {
-  const t = useTranslations('Products')
+export const Invoice = ({locale}: {locale: string}) => {
+  const t = useClientTranslation(locale);
   const [isMdUp] = useMediaQuery(['(min-width: 48em)'])
   const products = useAppSelector(selectItems)
   const notes = useAppSelector(selectNotes)
@@ -100,9 +100,9 @@ export const Invoice = () => {
           !isMdUp ? (
                 <MobileInvoicePage key={index}>
                   <VStack gap={8}>
-                    {index === 0 && <InvoiceHeader />}
-                    {pageItems.length > 0 && <InvoiceProducts items={pageItems} />}
-                    {index === productPages.length - 1 && <InvoiceTotals />}
+                    {index === 0 && <InvoiceHeader locale={locale} />}
+                    {pageItems.length > 0 && <InvoiceProducts locale={locale} items={pageItems} />}
+                    {index === productPages.length - 1 && <InvoiceTotals locale={locale} />}
                     {index === productPages.length - 1 && notes && (
                         <HStack width="full">
                           <Text fontWeight="semibold">{t('notes')}:</Text>
@@ -114,9 +114,9 @@ export const Invoice = () => {
             ) : (
                 <InvoicePage key={index}>
                   <VStack gap={8}>
-                    {index === 0 && <InvoiceHeader />}
-                    {pageItems.length > 0 && <InvoiceProducts items={pageItems} />}
-                    {index === productPages.length - 1 && <InvoiceTotals />}
+                    {index === 0 && <InvoiceHeader locale={locale} />}
+                    {pageItems.length > 0 && <InvoiceProducts locale={locale} items={pageItems} />}
+                    {index === productPages.length - 1 && <InvoiceTotals locale={locale} />}
                     {index === productPages.length - 1 && notes && (
                         <HStack width="full">
                           <Text fontWeight="semibold">{t('notes')}:</Text>
