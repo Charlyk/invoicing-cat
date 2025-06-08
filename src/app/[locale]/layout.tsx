@@ -36,7 +36,7 @@ export async function generateMetadata({params}: { params: Promise<{ locale: str
       title: t('metaTitle'),
       description: t('metaDescription'),
       url: "https://invoicingcat.com",
-      siteName: "SoloBridge",
+      siteName: "InvoicingCat",
       images: [
         {
           url: "/android-chrome-512x512.png",

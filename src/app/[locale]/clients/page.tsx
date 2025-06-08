@@ -11,9 +11,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
 
-export async function generateMetadata({params}: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const {locale} = await params;
-  const t = await getTranslations({locale, namespace: 'ClientsList'});
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'ClientsList' });
 
   return {
     metadataBase: new URL('https://invoicingcat.com'),
@@ -21,19 +21,19 @@ export async function generateMetadata({params}: { params: Promise<{ locale: str
     description: t('metaDescription'),
     icons: {
       icon: [
-        {url: "/favicon.ico", sizes: "any"},
-        {url: "/favicon-16x16.png", sizes: "16x16"},
-        {url: "/favicon-32x32.png", sizes: "32x32"},
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/favicon-16x16.png", sizes: "16x16" },
+        { url: "/favicon-32x32.png", sizes: "32x32" },
       ],
       apple: "/apple-touch-icon.png",
       shortcut: "/favicon.ico",
     },
-    manifest: "/site.webmanifest", // Optional if you plan to add PWA support
+    manifest: "/site.webmanifest",
     openGraph: {
       title: t('metaTitle'),
       description: t('metaDescription'),
       url: "https://invoicingcat.com",
-      siteName: "SoloBridge",
+      siteName: "InvoicingCat",
       images: [
         {
           url: "/android-chrome-512x512.png",
