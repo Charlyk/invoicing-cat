@@ -4,11 +4,11 @@
 import React from 'react';
 import {Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer';
 import {colors} from '@/components/ui/theme';
-import currencies, {Currency} from "@/data/currencies";
 import {DateTime} from "luxon";
 import discounts, {DiscountOption} from "@/data/discounts";
 import {Font} from '@react-pdf/renderer'
 import {Client} from "@/lib/db";
+import formatCurrencyWithClient from "@/lib/formatCurrencyWithClient";
 
 Font.register({
     family: "Geist",
@@ -143,7 +143,7 @@ export const InvoiceDocument = ({
                                     senderName, senderEmail,
                                     client,
                                     products,
-                                    currency = currencies[0],
+
                                     discount = discounts[0],
                                     tax = 0,
                                     notes = ''
@@ -156,7 +156,6 @@ export const InvoiceDocument = ({
     senderEmail: string
     client: Client
     products: ProductData[]
-    currency?: Currency
     discount?: DiscountOption
     tax?: number // percent (e.g., 15)
     notes?: string
@@ -166,12 +165,6 @@ export const InvoiceDocument = ({
     const taxableBase = subtotal - discountAmount
     const taxAmount = (tax / 100) * taxableBase
     const total = taxableBase + taxAmount
-
-    const formatCurrency = (value: number) =>
-        new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: currency.code || 'USD',
-        }).format(value);
 
     return (
         <Document>
@@ -220,10 +213,10 @@ export const InvoiceDocument = ({
                             <Text style={[styles.cell, styles.col8]}>{item.title}</Text>
                             <Text style={[styles.cell, styles.col2]}>{item.quantity}</Text>
                             <Text style={[styles.cell, styles.col2]}>
-                                {formatCurrency(item.price)}
+                                {formatCurrencyWithClient(item.price, client)}
                             </Text>
                             <Text style={[styles.cell, styles.colTotal]}>
-                                {formatCurrency((item.price * item.quantity))}
+                                {formatCurrencyWithClient(item.price * item.quantity, client)}
                             </Text>
                         </View>
                     ))}
@@ -242,7 +235,7 @@ export const InvoiceDocument = ({
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{formatCurrency(subtotal)}</Text>
+                        }}>{formatCurrencyWithClient(subtotal, client)}</Text>
                     </View>
                     {discountAmount > 0 && (
                         <View style={styles.totalsRow}>
@@ -257,7 +250,7 @@ export const InvoiceDocument = ({
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>-{formatCurrency(discountAmount)}</Text>
+                            }}>-{formatCurrencyWithClient(discountAmount, client)}</Text>
                         </View>
                     )}
                     {taxAmount > 0 && (
@@ -273,7 +266,7 @@ export const InvoiceDocument = ({
                                 textAlign: 'right',
                                 fontSize: 10,
                                 fontWeight: 'semibold'
-                            }}>{formatCurrency(taxAmount)}</Text>
+                            }}>{formatCurrencyWithClient(taxAmount, client)}</Text>
                         </View>
                     )}
                     <View style={styles.totalsRow}>
@@ -288,7 +281,7 @@ export const InvoiceDocument = ({
                             textAlign: 'right',
                             fontSize: 10,
                             fontWeight: 'semibold'
-                        }}>{formatCurrency(total)}</Text>
+                        }}>{formatCurrencyWithClient(total, client)}</Text>
                     </View>
                 </View>
                 {notes && (

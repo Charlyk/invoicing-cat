@@ -8,19 +8,15 @@ import {
   Field,
   VStack,
   HStack,
-  NativeSelect,
   Center,
   Image,
   Box,
   Button, Select, createListCollection, Portal
 } from '@chakra-ui/react';
 import {ChangeEvent, useMemo, useRef, useState} from 'react';
-import currencies from "@/data/currencies";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {
-  currency,
   dueDate, invoiceNumber, logoFile, selectClient,
-  selectCurrency,
   selectDueDate, selectInvoiceNumber, selectLogoFile, selectSenderEmail, selectSenderName,
   selectSubject,
   selectTax, senderEmail, senderName, setClient,
@@ -42,7 +38,6 @@ export const InvoiceDetails = () => {
   const clientValue = useAppSelector(selectClient)
   const subjectValue = useAppSelector(selectSubject);
   const dueDateValue = useAppSelector(selectDueDate);
-  const currencyValue = useAppSelector(selectCurrency);
   const taxValue = useAppSelector(selectTax);
   const fileValue = useAppSelector(selectLogoFile);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -234,31 +229,6 @@ export const InvoiceDetails = () => {
               </Field.Root>
             </HStack>
             <HStack width="full" gap="4">
-              <VStack gap="1" align="flex-start" flex="1">
-                <Text as="label" fontSize="sm" fontWeight="semibold">
-                  {t('currency')}
-                </Text>
-                <NativeSelect.Root>
-                  <NativeSelect.Field
-                    defaultValue={currencyValue.code}
-                    bg="bg"
-                    aria-label={t('selectCurrency')}
-                    onChange={(e) => {
-                      const currencyItem = currencies.find((c) => c.code === e.target.value)
-                      if (currencyItem) {
-                        dispatch(currency(currencyItem))
-                      }
-                    }}
-                  >
-                    {currencies.map((option) => (
-                      <option key={option.code} value={option.code}>
-                        {option.code} - {option.name} ({option.symbol})
-                      </option>
-                    ))}
-                  </NativeSelect.Field>
-                  <NativeSelect.Indicator/>
-                </NativeSelect.Root>
-              </VStack>
               <Field.Root flex="1">
                 <Field.Label>{t('tax')}</Field.Label>
                 <InputGroup endElement="%">

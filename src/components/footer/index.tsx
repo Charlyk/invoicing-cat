@@ -2,6 +2,7 @@ import {Container, HStack, Icon, Link, Stack} from '@chakra-ui/react'
 import {SiGithub, SiInstagram, SiLinkedin, SiReddit, SiX} from 'react-icons/si'
 import {Copyright} from './copyright'
 import {Logo} from "@/components/nav-bar/logo";
+import supportedLocales from "@/data/locales";
 
 export const Footer = () => (
     <Container as="footer" py={{base: '10', md: '12'}}>
@@ -36,9 +37,4 @@ const socialLinks = [
     {href: 'https://www.reddit.com/user/eduardalbu/', icon: <SiReddit/>},
 ]
 
-const navLinks = [
-    {href: '/en', label: 'English'},
-    {href: '/fr', label: 'Français'},
-    {href: '/de', label: 'Deutsch'},
-    {href: '/pt', label: 'Português'},
-];
+const navLinks = supportedLocales;

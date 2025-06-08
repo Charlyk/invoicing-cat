@@ -13,7 +13,7 @@ import {ColorModeButton} from "@/components/ui/color-mode";
 import {LuDownload} from "react-icons/lu";
 import {useAppSelector} from "@/lib/hooks";
 import {
-  selectClient, selectCurrency, selectDiscount,
+  selectClient, selectDiscount,
   selectDueDate, selectInvoiceNumber, selectItems, selectLogoFile, selectNotes, selectSenderEmail, selectSenderName,
   selectSubject, selectTax
 } from "@/lib/features/ivoicing/invoicingSlice";
@@ -36,7 +36,6 @@ export const NavBar = () => {
   const senderEmail = useAppSelector(selectSenderEmail)
   const client = useAppSelector(selectClient)
   const products = useAppSelector(selectItems)
-  const currency = useAppSelector(selectCurrency)
   const discount = useAppSelector(selectDiscount)
   const tax = useAppSelector(selectTax)
   const notes = useAppSelector(selectNotes)
@@ -83,7 +82,6 @@ export const NavBar = () => {
       senderEmail: senderEmail,
       client: client,
       products: products,
-      currency: currency,
       discount: discount,
       tax: tax,
       notes: notes,
