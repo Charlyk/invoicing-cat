@@ -4,7 +4,6 @@ import {pdf} from '@react-pdf/renderer'
 import {saveAs} from 'file-saver'
 import {InvoiceDocument, InvoiceStrings} from '@/components/pdf/InvoiceDocument'
 import {ProductData} from "@/components/pdf/InvoiceDocument";
-import discounts, {DiscountOption} from "@/data/discounts";
 import {toaster} from "@/components/ui/toaster";
 import {Client} from "@/lib/db";
 
@@ -17,7 +16,7 @@ export async function downloadInvoicePdf({
                                              senderName, senderEmail,
                                              client,
                                              products,
-                                             discount = discounts[0],
+                                             discount = 0,
                                              tax = 0,
                                              notes = ''
                                          }: {
@@ -30,7 +29,7 @@ export async function downloadInvoicePdf({
     senderEmail: string
     client: Client,
     products: ProductData[]
-    discount?: DiscountOption
+    discount?: number
     tax?: number // percent (e.g., 15)
     notes?: string
 }) {

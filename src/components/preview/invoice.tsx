@@ -90,7 +90,7 @@ export const Invoice = ({locale}: {locale: string}) => {
 
   const productPages = paginateInvoiceItems({
     items: products,
-    discount: discount.numeric,
+    discount: discount,
     tax,
   })
 

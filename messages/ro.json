@@ -30,7 +30,8 @@
     "tax": "Taxă %",
     "selectCurrency": "Selectează moneda",
     "selectClient": "Selectează clientul",
-    "lastInvoiceNumber": "Ultimul număr de factură a fost #{invoiceNumber}"
+    "lastInvoiceNumber": "Ultimul număr de factură a fost #{invoiceNumber}",
+    "discount": "Reducere %"
   },
   "Products": {
     "title": "Produse",
@@ -127,7 +128,7 @@
     "price": "Preț",
     "total": "Total",
     "subtotal": "Subtotal",
-    "discount": "Reducere {value}",
+    "discount": "Reducere {value, number}%",
     "tax": "Taxă {value, number}%",
     "grandTotal": "Total de plată",
     "notes": "Note"
