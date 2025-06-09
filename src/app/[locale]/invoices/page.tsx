@@ -3,9 +3,9 @@ import {Container, Flex, Stack} from "@chakra-ui/react";
 import {NavBar} from "@/components/nav-bar";
 import {Footer} from "@/components/footer";
 import {getTranslations, setRequestLocale} from "next-intl/server";
-import {ClientsList} from "@/components/clients-list";
 import {routing} from "@/i18n/routing";
 import type {Metadata} from "next";
+import {InvoicesList} from "@/components/invoices-list";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -13,7 +13,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'ClientsList' });
+  const t = await getTranslations({ locale, namespace: 'InvoicesPage' });
 
   return {
     metadataBase: new URL('https://invoicingcat.com'),
@@ -63,7 +63,7 @@ export default function Clients({params}: { params: Promise<{ locale: string }> 
       <NavBar downloadable={false}/>
       <Flex flex={1} width="full" pt={8}>
         <Container display="flex" flex="1" width="full">
-          <ClientsList/>
+          <InvoicesList/>
         </Container>
       </Flex>
       <Footer/>

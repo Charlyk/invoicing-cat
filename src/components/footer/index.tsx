@@ -1,33 +1,44 @@
+'use client'
+
 import {Container, HStack, Icon, Link, Stack} from '@chakra-ui/react'
 import {SiGithub, SiInstagram, SiLinkedin, SiReddit, SiX} from 'react-icons/si'
 import {Copyright} from './copyright'
 import {Logo} from "@/components/nav-bar/logo";
 import supportedLocales from "@/data/locales";
+import {usePathname} from "@/i18n/navigation";
 
-export const Footer = () => (
-    <Container as="footer" py={{base: '10', md: '12'}}>
-        <Stack gap="6">
-            <Stack direction="row" justify="space-between" align="center">
-                <Logo/>
-                <HStack gap="4">
-                    {socialLinks.map(({href, icon}, index) => (
+export const Footer = () => {
+    const pathname = usePathname()
+
+    const localizedPath = (href: string) => {
+        return `${href}/${pathname}`
+    }
+
+    return (
+      <Container as="footer" py={{base: '10', md: '12'}}>
+          <Stack gap="6">
+              <Stack direction="row" justify="space-between" align="center">
+                  <Logo/>
+                  <HStack gap="4">
+                      {socialLinks.map(({href, icon}, index) => (
                         <Link key={index} href={href} colorPalette="gray">
                             <Icon size="md">{icon}</Icon>
                         </Link>
-                    ))}
-                </HStack>
-            </Stack>
-            <HStack gap="4" justify="center">
-                {navLinks.map(({href, label}, index) => (
-                    <Link key={index} href={href} colorPalette="gray">
+                      ))}
+                  </HStack>
+              </Stack>
+              <HStack gap="4" justify="center">
+                  {navLinks.map(({href, label}, index) => (
+                    <Link key={index} href={localizedPath(href)} colorPalette="gray">
                         {label}
                     </Link>
-                ))}
-            </HStack>
-            <Copyright/>
-        </Stack>
-    </Container>
-)
+                  ))}
+              </HStack>
+              <Copyright/>
+          </Stack>
+      </Container>
+    )
+}
 
 const socialLinks = [
     {href: 'https://x.com/eduardalbu', icon: <SiX/>},

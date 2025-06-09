@@ -13,7 +13,7 @@ import {
   Box,
   Button, Select, createListCollection, Portal
 } from '@chakra-ui/react';
-import {ChangeEvent, useMemo, useRef, useState} from 'react';
+import {ChangeEvent, useEffect, useMemo, useRef, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {
   dueDate, invoiceNumber, logoFile, selectClient,
@@ -26,11 +26,14 @@ import {LuImageUp, LuPlus, LuTrash} from "react-icons/lu";
 import {useTranslations} from "next-intl";
 import {useClients} from "@/lib/db/clients";
 import {ClientFormDialog} from "@/components/clients-list/client-form-dialog";
+import {useInvoices} from "@/lib/db/invoices";
 
 export const InvoiceDetails = () => {
   const t = useTranslations('InvoiceDetails')
   const dispatch = useAppDispatch();
   const {allClients} = useClients()
+  const {getLastInvoiceNumber} = useInvoices()
+  const [lastInvoiceNumber, setLastInvoiceNumber] = useState<string | null>('')
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   const invoiceNumberValue = useAppSelector(selectInvoiceNumber);
   const senderNameValue = useAppSelector(selectSenderName);
@@ -41,6 +44,15 @@ export const InvoiceDetails = () => {
   const taxValue = useAppSelector(selectTax);
   const fileValue = useAppSelector(selectLogoFile);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const fetchLastInvoiceNumber = async () => {
+      const number = await getLastInvoiceNumber()
+      setLastInvoiceNumber(number ?? null)
+    }
+
+    fetchLastInvoiceNumber()
+  }, [getLastInvoiceNumber, setLastInvoiceNumber]);
 
   const clientsCollection = useMemo(() => {
     return createListCollection({
@@ -151,9 +163,14 @@ export const InvoiceDetails = () => {
               <Input
                 value={invoiceNumberValue}
                 type="text"
-                placeholder="#123456"
+                placeholder="123456"
                 onChange={(e) => dispatch(invoiceNumber(e.target.value))}
               />
+              {lastInvoiceNumber && (
+                <Field.HelperText>
+                  {t('lastInvoiceNumber', { invoiceNumber: lastInvoiceNumber })}
+                </Field.HelperText>
+              )}
             </Field.Root>
             <HStack width="full" gap="4">
               <Field.Root>

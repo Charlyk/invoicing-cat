@@ -1,5 +1,6 @@
 // db.ts
 import Dexie, { Table } from 'dexie';
+import {ProductData} from "@/components/invoice-form/types";
 
 export interface Client {
     id?: number;
@@ -23,28 +24,21 @@ export interface UserProfile {
     logo?: string; // base64 or URL
 }
 
+export type InvoiceStatus = "unknown" | "sent" | "overdue" | "paid";
+
 export interface Invoice {
     id?: number;
     createdAt: string;
 
-    client: {
-        name: string;
-        email?: string;
-        locale?: string;
-        currency?: string;
-    };
+    client: Client;
 
     sender: {
         name: string;
         email?: string;
-        logo?: string;
+        logo?: string | null;
     };
 
-    items: {
-        name: string;
-        quantity: number;
-        price: number;
-    }[];
+    items: ProductData[];
 
     notes?: string;
     tax?: number;
@@ -54,6 +48,8 @@ export interface Invoice {
     dueDate: string;
     subject?: string;
     currency: string;
+
+    status?: InvoiceStatus;
 }
 
 class InvoicingCatDB extends Dexie {

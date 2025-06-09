@@ -8,6 +8,7 @@
   "NavBar": {
     "downloadInvoice": "Télécharger la facture",
     "clients": "Clients",
+    "invoices": "Factures",
     "home": "Accueil",
     "clientNullMessage": "Veuillez d'abord sélectionner un client dans le formulaire de facture."
   },
@@ -28,7 +29,8 @@
     "currency": "Devise",
     "tax": "TVA %",
     "selectCurrency": "Sélectionnez une devise",
-    "selectClient": "Sélectionnez un client"
+    "selectClient": "Sélectionnez un client",
+    "lastInvoiceNumber": "Le dernier numéro de facture était n°{invoiceNumber}"
   },
   "Products": {
     "title": "Produits",
@@ -129,5 +131,28 @@
     "tax": "TVA {value, number}%",
     "grandTotal": "Montant dû",
     "notes": "Notes"
+  },
+  "InvoicesPage": {
+    "title": "Historique des factures",
+    "metaTitle": "Historique des factures – InvoicingCat",
+    "metaDescription": "Consultez toutes vos factures téléchargées et gérez leur statut."
+  },
+  "InvoicesList": {
+    "title": "Historique des factures",
+    "privacyMessage": "Toutes les informations sont stockées uniquement dans votre navigateur."
+  },
+  "InvoicesTable": {
+    "title": "Historique des factures",
+    "client": "Client",
+    "date": "Date",
+    "status": "Statut",
+    "total": "Total",
+    "actions": "Actions",
+    "deleteTitle": "Supprimer la facture",
+    "deleteMessage": "Veuillez confirmer que vous souhaitez supprimer cette facture. Cette action est irréversible.",
+    "unknown": "Inconnu",
+    "sent": "Envoyée",
+    "overdue": "En retard",
+    "paid": "Payée"
   }
 }
