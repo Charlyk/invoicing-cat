@@ -16,7 +16,8 @@ import {
 import {ChangeEvent, useEffect, useMemo, useRef, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {
-  dueDate, invoiceNumber, logoFile, selectClient,
+  discount,
+  dueDate, invoiceNumber, logoFile, selectClient, selectDiscount,
   selectDueDate, selectInvoiceNumber, selectLogoFile, selectSenderEmail, selectSenderName,
   selectSubject,
   selectTax, senderEmail, senderName, setClient,
@@ -43,6 +44,7 @@ export const InvoiceDetails = () => {
   const dueDateValue = useAppSelector(selectDueDate);
   const taxValue = useAppSelector(selectTax);
   const fileValue = useAppSelector(selectLogoFile);
+  const discountValue = useAppSelector(selectDiscount);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -246,6 +248,17 @@ export const InvoiceDetails = () => {
               </Field.Root>
             </HStack>
             <HStack width="full" gap="4">
+              <Field.Root flex="1">
+                <Field.Label>{t('discount')}</Field.Label>
+                <InputGroup endElement="%">
+                  <Input
+                    placeholder="0"
+                    type="number"
+                    value={discountValue}
+                    onChange={(e) => dispatch(discount(Number(e.target.value)))}
+                  />
+                </InputGroup>
+              </Field.Root>
               <Field.Root flex="1">
                 <Field.Label>{t('tax')}</Field.Label>
                 <InputGroup endElement="%">

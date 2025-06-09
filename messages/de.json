@@ -30,7 +30,8 @@
     "tax": "MwSt %",
     "selectCurrency": "Währung auswählen",
     "selectClient": "Kunden auswählen",
-    "lastInvoiceNumber": "Die letzte Rechnungsnummer war #{invoiceNumber}"
+    "lastInvoiceNumber": "Die letzte Rechnungsnummer war #{invoiceNumber}",
+    "discount": "Rabatt %"
   },
   "Products": {
     "title": "Produkte",
@@ -127,7 +128,7 @@
     "price": "Preis",
     "total": "Gesamt",
     "subtotal": "Zwischensumme",
-    "discount": "Rabatt {value}",
+    "discount": "Rabatt {value, number}%",
     "tax": "MwSt {value, number}%",
     "grandTotal": "Fälliger Betrag",
     "notes": "Notizen"

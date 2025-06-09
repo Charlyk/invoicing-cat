@@ -42,7 +42,7 @@ export interface Invoice {
 
     notes?: string;
     tax?: number;
-    discount?: { label: string; value: string; numeric: number };
+    discount?: number;
 
     invoiceNumber: string;
     dueDate: string;
@@ -60,7 +60,7 @@ class InvoicingCatDB extends Dexie {
 
     constructor() {
         super('InvoicingCatDB');
-        this.version(1).stores({
+        this.version(2).stores({
             clients: '++id, name, email',
             settings: 'id',
             profile: 'id',

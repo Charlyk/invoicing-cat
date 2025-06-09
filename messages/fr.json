@@ -30,7 +30,8 @@
     "tax": "TVA %",
     "selectCurrency": "Sélectionnez une devise",
     "selectClient": "Sélectionnez un client",
-    "lastInvoiceNumber": "Le dernier numéro de facture était n°{invoiceNumber}"
+    "lastInvoiceNumber": "Le dernier numéro de facture était n°{invoiceNumber}",
+    "discount": "Remise %"
   },
   "Products": {
     "title": "Produits",
@@ -127,7 +128,7 @@
     "price": "Prix",
     "total": "Total",
     "subtotal": "Sous-total",
-    "discount": "Remise {value}",
+    "discount": "Remise {value, number}%",
     "tax": "TVA {value, number}%",
     "grandTotal": "Montant dû",
     "notes": "Notes"
