@@ -5,7 +5,6 @@ import React from 'react';
 import {Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer';
 import {colors} from '@/components/ui/theme';
 import {DateTime} from "luxon";
-import discounts, {DiscountOption} from "@/data/discounts";
 import {Font} from '@react-pdf/renderer'
 import {Client} from "@/lib/db";
 import formatCurrencyWithClient from "@/lib/formatCurrencyWithClient";
@@ -143,8 +142,7 @@ export const InvoiceDocument = ({
                                   senderName, senderEmail,
                                   client,
                                   products,
-
-                                  discount = discounts[0],
+                                  discount = 0,
                                   tax = 0,
                                   notes = ''
                                 }: {
@@ -156,12 +154,12 @@ export const InvoiceDocument = ({
   senderEmail: string
   client: Client
   products: ProductData[]
-  discount?: DiscountOption
+  discount?: number
   tax?: number // percent (e.g., 15)
   notes?: string
 }) => {
   const subtotal = products.reduce((sum, p) => sum + p.price * p.quantity, 0)
-  const discountAmount = subtotal * discount.numeric
+  const discountAmount = subtotal * (discount / 100)
   const taxableBase = subtotal - discountAmount
   const taxAmount = (tax / 100) * taxableBase
   const total = taxableBase + taxAmount

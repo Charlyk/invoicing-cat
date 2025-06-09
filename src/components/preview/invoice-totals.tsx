@@ -19,7 +19,7 @@ export const InvoiceTotals = ({locale}: { locale: string }) => {
   const subtotal = products
     .map((item) => item.price * item.quantity)
     .reduce((a, b) => a + b, 0)
-  const discountAmount = Math.min(discount.numeric * subtotal, subtotal)
+  const discountAmount = Math.min((discount / 100) * subtotal, subtotal)
   const taxableBase = Math.max(subtotal - discountAmount, 0)
   const taxAmount = Math.max((tax / 100) * taxableBase, 0)
   const total = Math.max(taxableBase + taxAmount, 0)
@@ -29,7 +29,7 @@ export const InvoiceTotals = ({locale}: { locale: string }) => {
     ...(discountAmount > 0
       ? [{
         id: 'discount',
-        title: t('discount', {value: discount.value}),
+        title: t('discount', {value: discount}),
         value: formatCurrencyWithClient(-discountAmount, client)
       }]
       : []),

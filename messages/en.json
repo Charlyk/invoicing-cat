@@ -30,7 +30,8 @@
     "tax": "Tax %",
     "selectCurrency": "Select currency",
     "selectClient": "Select client",
-    "lastInvoiceNumber": "Last invoice number was #{invoiceNumber}"
+    "lastInvoiceNumber": "Last invoice number was #{invoiceNumber}",
+    "discount": "Discount %"
   },
   "Products": {
     "title": "Products",
@@ -127,7 +128,7 @@
     "price": "Price",
     "total": "Total",
     "subtotal": "Subtotal",
-    "discount": "Discount {value}",
+    "discount": "Discount {value, number}%",
     "tax": "Tax {value, number}%",
     "grandTotal": "Amount due",
     "notes": "Notes"

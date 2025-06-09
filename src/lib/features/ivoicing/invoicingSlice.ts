@@ -1,7 +1,6 @@
 import {createAppSlice} from "@/lib/createAppSlice";
 import type {PayloadAction} from "@reduxjs/toolkit";
 import {ProductData} from "@/components/invoice-form/types";
-import discounts, {DiscountOption} from "@/data/discounts";
 import {DateTime} from "luxon";
 import {v4 as uuidv4} from 'uuid';
 import {Client} from "@/lib/db";
@@ -17,7 +16,7 @@ export interface InvoicingSliceState {
   subject: string;
   dueDate: string;
   tax: number;
-  discount: DiscountOption;
+  discount: number;
   notes: string;
   items: ProductData[];
 }
@@ -42,7 +41,7 @@ const initialState: InvoicingSliceState = {
   subject: '',
   dueDate: DateTime.now().plus({day: 10}).toFormat('yyyy-MM-dd'),
   tax: 0,
-  discount: discounts[0],
+  discount: 0,
   notes: '',
   items: [
     emptyProduct(),
@@ -80,7 +79,7 @@ export const invoicingSlice = createAppSlice({
     tax: create.reducer((state, action: PayloadAction<number>) => {
       state.tax = action.payload
     }),
-    discount: create.reducer((state, action: PayloadAction<DiscountOption>) => {
+    discount: create.reducer((state, action: PayloadAction<number>) => {
       state.discount = action.payload
     }),
     notes: create.reducer((state, action: PayloadAction<string>) => {
