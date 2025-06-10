@@ -9,6 +9,7 @@
     "downloadInvoice": "Descarcă factura",
     "clients": "Clienți",
     "invoices": "Facturi",
+    "about": "Despre",
     "home": "Acasă",
     "clientNullMessage": "Te rugăm să selectezi un client mai întâi în formularul facturii."
   },
@@ -155,5 +156,39 @@
     "sent": "Trimisă",
     "overdue": "Expirată",
     "paid": "Plătită"
+  },
+  "AboutPage": {
+    "title": "Despre InvoicingCat",
+    "subtitle": "InvoicingCat este un generator de facturi rapid, simplu și gratuit, creat pentru freelanceri, mici antreprenori și oricine are nevoie de facturi curate fără înregistrare sau partajarea datelor personale. Totul este stocat local în browserul tău — fără conturi, fără cloud, fără urmărire.",
+    "metaTitle": "Despre - InvoicingCat",
+    "metaDescription": "Descoperă InvoicingCat — un generator de facturi gratuit, axat pe confidențialitate, pentru freelanceri și afaceri mici. Fără conturi, fără cloud. Rapid, local și ușor de utilizat."
+  },
+  "AboutHero": {
+    "title": "Despre InvoicingCat",
+    "subtitle": "InvoicingCat este un generator de facturi rapid, simplu și gratuit, creat pentru freelanceri, mici antreprenori și oricine are nevoie de facturi curate fără înregistrare sau partajarea datelor personale. Totul este stocat local în browserul tău — fără conturi, fără cloud, fără urmărire."
+  },
+  "WhyPeopleLove": {
+    "title": "De ce îl iubesc oamenii",
+    "instantUse": "<bold>Utilizare instantanee</bold> — fără configurare, fără timp de încărcare",
+    "privacyFirst": "<bold>Confidențialitate pe primul loc</bold> — datele nu părăsesc niciodată dispozitivul tău",
+    "completelyFree": "<bold>Complet gratuit</bold> — fără perioade de probă, fără limite, fără taxe ascunse",
+    "localized": "<bold>Multilingv & multivalutar</bold> — conceput pentru a funcționa în mai multe țări",
+    "offlineReady": "<bold>Disponibil offline</bold> — funcționează chiar și fără internet (în curând ca PWA)"
+  },
+  "TechnicalPerks": {
+    "title": "Avantaje tehnice",
+    "techStack": "Dezvoltat cu tehnologii web moderne (React, Next.js, Chakra UI, IndexedDB)",
+    "noServers": "Stochează datele local — fără servere sau conturi necesare",
+    "features": "Suportă istoric de facturi, clienți multipli și export PDF",
+    "localized": "Disponibil în {languagesSize, number} limbi ({languages})",
+    "currencies": "Suportă peste 20 de valute (USD, EUR, GBP, INR, BRL și altele)"
+  },
+  "SupportedCountries": {
+    "title": "Țări suportate",
+    "paragraph": "InvoicingCat este ideal pentru freelanceri și afaceri din Europa, America de Nord, America de Sud și Asia, cu suport pentru valute personalizate, taxe și formatare în funcție de localizare."
+  },
+  "ContactUs": {
+    "title": "Vrei să ne saluți?",
+    "paragraph": "Ai feedback, ai găsit un bug sau vrei să colaborezi?<br></br>Trimite-mi un email la: <email>eduard@invoicingcat.com</email><br></br>sau urmărește-ne pe rețelele sociale."
   }
 }
