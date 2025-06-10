@@ -9,6 +9,7 @@
     "downloadInvoice": "Rechnung herunterladen",
     "clients": "Kunden",
     "invoices": "Rechnungen",
+    "about": "Über",
     "home": "Startseite",
     "clientNullMessage": "Bitte wählen Sie zuerst einen Kunden im Formular aus."
   },
@@ -155,5 +156,39 @@
     "sent": "Gesendet",
     "overdue": "Überfällig",
     "paid": "Bezahlt"
+  },
+  "AboutPage": {
+    "title": "Über InvoicingCat",
+    "subtitle": "InvoicingCat ist ein schneller, einfacher und kostenloser Rechnungsgenerator für Freiberufler, Kleinunternehmer und alle, die saubere Rechnungen benötigen – ohne Anmeldung oder Datenweitergabe. Alles wird lokal in deinem Browser gespeichert – keine Konten, keine Cloud, kein Tracking.",
+    "metaTitle": "Über - InvoicingCat",
+    "metaDescription": "Entdecke InvoicingCat – ein kostenloser, datenschutzfreundlicher Rechnungsgenerator für Freiberufler und kleine Unternehmen. Keine Konten, keine Cloud. Schnell, lokal und einfach zu bedienen."
+  },
+  "AboutHero": {
+    "title": "Über InvoicingCat",
+    "subtitle": "InvoicingCat ist ein schneller, einfacher und kostenloser Rechnungsgenerator für Freiberufler, Kleinunternehmer und alle, die saubere Rechnungen benötigen – ohne Anmeldung oder Datenweitergabe. Alles wird lokal in deinem Browser gespeichert – keine Konten, keine Cloud, kein Tracking."
+  },
+  "WhyPeopleLove": {
+    "title": "Warum Menschen es lieben",
+    "instantUse": "<bold>Sofort einsatzbereit</bold> – keine Einrichtung, keine Ladezeiten",
+    "privacyFirst": "<bold>Datenschutz zuerst</bold> – keine Daten verlassen jemals dein Gerät",
+    "completelyFree": "<bold>Vollständig kostenlos</bold> – keine Testphasen, keine Limits, keine versteckten Kosten",
+    "localized": "<bold>Mehrsprachig & Mehrwährungsfähig</bold> – entwickelt für die Nutzung in verschiedenen Ländern",
+    "offlineReady": "<bold>Offline-fähig</bold> – funktioniert auch ohne Internet (bald als PWA)"
+  },
+  "TechnicalPerks": {
+    "title": "Technische Vorteile",
+    "techStack": "Erstellt mit moderner Webtechnologie (React, Next.js, Chakra UI, IndexedDB)",
+    "noServers": "Speichert Daten lokal – kein Server oder Konto erforderlich",
+    "features": "Unterstützt Rechnungshistorie, mehrere Kunden und PDF-Export",
+    "localized": "Verfügbar in {languagesSize, number} Sprachen ({languages})",
+    "currencies": "Unterstützt über 20 Währungen (USD, EUR, GBP, INR, BRL und mehr)"
+  },
+  "SupportedCountries": {
+    "title": "Unterstützte Länder",
+    "paragraph": "InvoicingCat ist ideal für Freiberufler und Unternehmen in Europa, Nordamerika, Südamerika und Asien – mit Unterstützung für benutzerdefinierte Währungen, Steuern und lokalisierte Formatierung."
+  },
+  "ContactUs": {
+    "title": "Möchtest du Hallo sagen?",
+    "paragraph": "Du hast Feedback, einen Fehler gefunden oder möchtest zusammenarbeiten?<br></br>Schreib mir eine E-Mail an: <email>eduard@invoicingcat.com</email><br></br>oder folge mir in den sozialen Medien."
   }
 }

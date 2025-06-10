@@ -9,6 +9,7 @@
     "downloadInvoice": "Download invoice",
     "clients": "Clients",
     "invoices": "Invoices",
+    "about": "About",
     "home": "Home",
     "clientNullMessage": "Please select a client in the invoice form first."
   },
@@ -155,5 +156,39 @@
     "sent": "Sent",
     "overdue": "Overdue",
     "paid": "Paid"
+  },
+  "AboutPage": {
+    "title": "About InvoicingCat",
+    "subtitle": "InvoicingCat is a fast, simple, and free invoice generator made for freelancers, small business owners, and anyone who needs clean invoices without signing up or giving away their data. Everything is stored locally in your browser — no accounts, no cloud, no tracking.",
+    "metaTitle": "About - InvoicingCat",
+    "metaDescription": "Discover InvoicingCat — a free, privacy-first invoice generator for freelancers and small businesses. No accounts, no cloud. Fast, local, and easy to use."
+  },
+  "AboutHero": {
+    "title": "About InvoicingCat",
+    "subtitle": "InvoicingCat is a fast, simple, and free invoice generator made for freelancers, small business owners, and anyone who needs clean invoices without signing up or giving away their data. Everything is stored locally in your browser — no accounts, no cloud, no tracking."
+  },
+  "WhyPeopleLove": {
+    "title": "Why people love it",
+    "instantUse": "<bold>Instant to use</bold> — no setup, no loading times",
+    "privacyFirst": "<bold>Privacy-first</bold> — no data ever leaves your device",
+    "completelyFree": "<bold>Completely free</bold> — no trials, no limits, no hidden fees",
+    "localized": "<bold>Multi-language & multi-currency</bold> — designed to work across countries",
+    "offlineReady": "<bold>Offline-ready</bold> — works even without internet (soon as a PWA)"
+  },
+  "TechnicalPerks": {
+    "title": "Technical perks",
+    "techStack": "Built using modern web tech (React, Next.js, Chakra UI, IndexedDB)",
+    "noServers": "Stores data locally — no server or account needed",
+    "features": "Supports invoice history, multiple clients, and PDF export",
+    "localized": "Available in {languagesSize, number} languages ({languages})",
+    "currencies": "Supports 20+ currencies (USD, EUR, GBP, INR, BRL, and more)"
+  },
+  "SupportedCountries": {
+    "title": "Supported Countries",
+    "paragraph": "InvoicingCat is ideal for freelancers and businesses across Europe, North America, South America, and Asia, with support for custom currencies, taxes, and locale-based formatting."
+  },
+  "ContactUs": {
+    "title": "Want to say hi?",
+    "paragraph": "Have feedback, found a bug, or want to collaborate?<br></br>Email me at: <email>eduard@invoicingcat.com</email><br></br>or follow along on social media."
   }
 }
