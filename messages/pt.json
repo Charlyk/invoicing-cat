@@ -9,6 +9,7 @@
     "downloadInvoice": "Baixar fatura",
     "clients": "Clientes",
     "invoices": "Faturas",
+    "about": "Sobre",
     "home": "Início",
     "clientNullMessage": "Por favor, selecione um cliente no formulário da fatura primeiro."
   },
@@ -155,5 +156,39 @@
     "sent": "Enviada",
     "overdue": "Vencida",
     "paid": "Paga"
+  },
+  "AboutPage": {
+    "title": "Sobre o InvoicingCat",
+    "subtitle": "InvoicingCat é um gerador de faturas rápido, simples e gratuito, feito para freelancers, pequenos empreendedores e qualquer pessoa que precise de faturas limpas sem precisar se cadastrar ou compartilhar dados. Tudo é armazenado localmente no seu navegador — sem contas, sem nuvem, sem rastreamento.",
+    "metaTitle": "Sobre - InvoicingCat",
+    "metaDescription": "Conheça o InvoicingCat — um gerador de faturas gratuito e focado em privacidade para freelancers e pequenos negócios. Sem contas, sem nuvem. Rápido, local e fácil de usar."
+  },
+  "AboutHero": {
+    "title": "Sobre o InvoicingCat",
+    "subtitle": "InvoicingCat é um gerador de faturas rápido, simples e gratuito, feito para freelancers, pequenos empreendedores e qualquer pessoa que precise de faturas limpas sem precisar se cadastrar ou compartilhar dados. Tudo é armazenado localmente no seu navegador — sem contas, sem nuvem, sem rastreamento."
+  },
+  "WhyPeopleLove": {
+    "title": "Por que as pessoas adoram",
+    "instantUse": "<bold>Uso instantâneo</bold> — sem configuração, sem tempo de carregamento",
+    "privacyFirst": "<bold>Privacidade em primeiro lugar</bold> — seus dados nunca saem do seu dispositivo",
+    "completelyFree": "<bold>Totalmente gratuito</bold> — sem testes, sem limites, sem taxas escondidas",
+    "localized": "<bold>Multilíngue e multimoeda</bold> — projetado para funcionar em vários países",
+    "offlineReady": "<bold>Pronto para uso offline</bold> — funciona mesmo sem internet (em breve como PWA)"
+  },
+  "TechnicalPerks": {
+    "title": "Vantagens técnicas",
+    "techStack": "Construído com tecnologias web modernas (React, Next.js, Chakra UI, IndexedDB)",
+    "noServers": "Armazena os dados localmente — sem necessidade de servidor ou conta",
+    "features": "Suporta histórico de faturas, múltiplos clientes e exportação em PDF",
+    "localized": "Disponível em {languagesSize, number} idiomas ({languages})",
+    "currencies": "Suporta mais de 20 moedas (USD, EUR, GBP, INR, BRL e outras)"
+  },
+  "SupportedCountries": {
+    "title": "Países suportados",
+    "paragraph": "InvoicingCat é ideal para freelancers e empresas da Europa, América do Norte, América do Sul e Ásia, com suporte para moedas personalizadas, impostos e formatação local."
+  },
+  "ContactUs": {
+    "title": "Quer dizer oi?",
+    "paragraph": "Tem algum feedback, encontrou um bug ou quer colaborar?<br></br>Me envie um e-mail: <email>eduard@invoicingcat.com</email><br></br>ou acompanhe nas redes sociais."
   }
 }
