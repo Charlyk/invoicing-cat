@@ -27,7 +27,7 @@ export const Footer = () => {
                       ))}
                   </HStack>
               </Stack>
-              <HStack gap="4" justify="center">
+              <HStack gap="4" justify="center" flexWrap="wrap">
                   {navLinks.map(({href, label}, index) => (
                     <Link key={index} href={localizedPath(href)} colorPalette="gray">
                         {label}
