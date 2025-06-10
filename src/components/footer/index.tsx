@@ -11,7 +11,7 @@ export const Footer = () => {
     const pathname = usePathname()
 
     const localizedPath = (href: string) => {
-        return `${href}/${pathname}`
+        return `${href}${pathname}`
     }
 
     return (
