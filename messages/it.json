@@ -1,0 +1,194 @@
+{
+  "HomePage": {
+    "metaTitle": "InvoicingCat - Generatore di Fatture Gratuito",
+    "metaDescription": "Genera fatture gratuitamente",
+    "edit": "Modifica",
+    "preview": "Anteprima"
+  },
+  "NavBar": {
+    "downloadInvoice": "Scarica fattura",
+    "clients": "Clienti",
+    "invoices": "Fatture",
+    "about": "Informazioni",
+    "home": "Home",
+    "clientNullMessage": "Seleziona prima un cliente nel modulo della fattura."
+  },
+  "Footer": {
+    "createdBy": "❤️ Creato con amore da Eduard Albu.",
+    "copyright": "InvoicingCat, Tutti i diritti riservati."
+  },
+  "InvoiceDetails": {
+    "title": "Dettagli Fattura",
+    "uploadLogo": "Carica il tuo logo",
+    "uploadSecureMessage": "Il tuo logo non viene caricato sul server. Viene utilizzato solo localmente nel browser.",
+    "invoiceNumber": "Numero Fattura",
+    "invoiceDate": "Data Fattura",
+    "senderName": "Nome mittente",
+    "senderEmail": "Email mittente",
+    "subject": "Oggetto",
+    "dueDate": "Data di scadenza",
+    "currency": "Valuta",
+    "tax": "IVA %",
+    "selectCurrency": "Seleziona valuta",
+    "selectClient": "Seleziona cliente",
+    "lastInvoiceNumber": "L'ultimo numero di fattura è stato #{invoiceNumber}",
+    "discount": "Sconto %"
+  },
+  "Products": {
+    "title": "Prodotti",
+    "items": "Articoli",
+    "price": "Prezzo",
+    "quantity": "Qty",
+    "total": "Totale",
+    "discountTitle": "Sconto",
+    "selectDiscount": "Seleziona sconto",
+    "notes": "Note",
+    "notesPlaceholder": "Aggiungi note qui...",
+    "addItem": "Aggiungi articolo"
+  },
+  "Product": {
+    "name": "Nome articolo",
+    "quantity": "Quantità",
+    "price": "Prezzo",
+    "total": "Totale:"
+  },
+  "CookieConsent": {
+    "consentModal": {
+      "title": "Usiamo i cookie",
+      "description": "Utilizziamo i cookie per migliorare la tua esperienza con Firebase Analytics.",
+      "acceptAllBtn": "Accetta tutto",
+      "acceptNecessaryBtn": "Rifiuta tutto",
+      "showPreferencesBtn": "Gestisci preferenze"
+    },
+    "preferencesModal": {
+      "title": "Gestisci preferenze cookie",
+      "acceptAllBtn": "Accetta tutto",
+      "acceptNecessaryBtn": "Rifiuta tutto",
+      "savePreferencesBtn": "Salva selezionati",
+      "closeIconLabel": "Chiudi finestra",
+      "sections": [
+        {
+          "title": "Cookie?",
+          "description": "Sì, solo quelli utili 🍪"
+        },
+        {
+          "title": "Cookie necessari",
+          "description": "Necessari per il corretto funzionamento del sito.",
+          "linkedCategory": "necessario"
+        },
+        {
+          "title": "Analisi",
+          "description": "Utilizzati per tracciare dati anonimi tramite Firebase Analytics.",
+          "linkedCategory": "analisi"
+        }
+      ]
+    }
+  },
+  "ClientsList": {
+    "title": "Clienti",
+    "privacyMessage": "Tutte le informazioni sono memorizzate solo nel tuo browser.",
+    "metaTitle": "Clienti - InvoicingCat",
+    "metaDescription": "Clienti - InvoicingCat",
+    "addClient": "Aggiungi cliente"
+  },
+  "ClientsTable": {
+    "name": "Nome",
+    "email": "Email",
+    "locale": "Lingua",
+    "currency": "Valuta",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "actions": "Azioni",
+    "deleteClientTitle": "Elimina cliente",
+    "deleteClientMessage": "Confermi di voler eliminare questo cliente? Questa azione è irreversibile."
+  },
+  "ClientFormDialog": {
+    "addTitle": "Aggiungi nuovo cliente",
+    "editTitle": "Modifica cliente",
+    "name": "Nome cliente",
+    "email": "Email cliente",
+    "optional": "Facoltativo",
+    "locale": "Lingua",
+    "currency": "Valuta",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "selectCurrency": "Seleziona valuta"
+  },
+  "ConfirmationDialog": {
+    "confirm": "Conferma",
+    "cancel": "Annulla"
+  },
+  "InvoiceDocument": {
+    "invoice": "Fattura #{invoiceNumber}",
+    "dueDate": "Data di scadenza",
+    "subject": "Oggetto",
+    "createdBy": "Creato da",
+    "billedTo": "Fatturato a",
+    "items": "Articoli",
+    "quantity": "Qty",
+    "price": "Prezzo",
+    "total": "Totale",
+    "subtotal": "Totale parziale",
+    "discount": "Sconto {value, number}%",
+    "tax": "IVA {value, number}%",
+    "grandTotal": "Totale da pagare",
+    "notes": "Note"
+  },
+  "InvoicesPage": {
+    "title": "Storico fatture",
+    "metaTitle": "Storico fatture - InvoicingCat",
+    "metaDescription": "Visualizza tutte le tue fatture scaricate e gestisci il loro stato."
+  },
+  "InvoicesList": {
+    "title": "Storico fatture",
+    "privacyMessage": "Tutte le informazioni sono memorizzate solo nel tuo browser."
+  },
+  "InvoicesTable": {
+    "title": "Storico fatture",
+    "client": "Cliente",
+    "date": "Data",
+    "status": "Stato",
+    "total": "Totale",
+    "actions": "Azioni",
+    "deleteTitle": "Elimina fattura",
+    "deleteMessage": "Confermi di voler eliminare questa fattura? Questa azione è irreversibile.",
+    "unknown": "Sconosciuto",
+    "sent": "Inviata",
+    "overdue": "Scaduta",
+    "paid": "Pagata"
+  },
+  "AboutPage": {
+    "title": "Informazioni su InvoicingCat",
+    "subtitle": "InvoicingCat è un generatore di fatture veloce, semplice e gratuito realizzato per freelance, piccoli imprenditori o chiunque abbia bisogno di fatture pulite senza registrarsi o cedere i propri dati. Tutto è memorizzato localmente nel browser — niente account, niente cloud, niente tracciamento.",
+    "metaTitle": "Informazioni - InvoicingCat",
+    "metaDescription": "Scopri InvoicingCat — un generatore di fatture gratuito pensato per la privacy per freelance e piccole imprese. Niente account, niente cloud. Veloce, locale e facile da usare."
+  },
+  "AboutHero": {
+    "title": "Informazioni su InvoicingCat",
+    "subtitle": "InvoicingCat è un generatore di fatture veloce, semplice e gratuito realizzato per freelance, piccoli imprenditori o chiunque abbia bisogno di fatture pulite senza registrarsi o cedere i propri dati. Tutto è memorizzato localmente nel browser — niente account, niente cloud, niente tracciamento."
+  },
+  "WhyPeopleLove": {
+    "title": "Perché le persone lo amano",
+    "instantUse": "<bold>Utilizzo immediato</bold> — nessuna configurazione, nessun tempo di caricamento",
+    "privacyFirst": "<bold>Privacy prima di tutto</bold> — nessun dato lascia mai il tuo dispositivo",
+    "completelyFree": "<bold>Completamente gratuito</bold> — niente prove, niente limiti, niente costi nascosti",
+    "localized": "<bold>Multi-lingua e multi-valuta</bold> — progettato per funzionare in diversi paesi",
+    "offlineReady": "<bold>Pronto per l'offline</bold> — funziona anche senza internet (presto come PWA)"
+  },
+  "TechnicalPerks": {
+    "title": "Vantaggi tecnici",
+    "techStack": "Costruito utilizzando tecnologie web moderne (React, Next.js, Chakra UI, IndexedDB)",
+    "noServers": "Memorizza dati localmente — nessun server o account necessario",
+    "features": "Supporta lo storico delle fatture, più clienti e l'esportazione in PDF",
+    "localized": "Disponibile in {languagesSize, number} lingue ({languages})",
+    "currencies": "Supporta oltre 20 valute (USD, EUR, GBP, INR, BRL e altre)"
+  },
+  "SupportedCountries": {
+    "title": "Paesi supportati",
+    "paragraph": "InvoicingCat è ideale per freelance e aziende in Europa, Nord America, Sud America e Asia, con supporto per valute personalizzate, imposte e formattazione in base alla lingua."
+  },
+  "ContactUs": {
+    "title": "Vuoi salutare?",
+    "paragraph": "Hai un feedback, hai trovato un bug o vuoi collaborare?<br></br>Scrivimi un'email a: <email>eduard@invoicingcat.com</email><br></br>o seguimi sui social media."
+  }
+}
